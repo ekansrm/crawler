@@ -1,6 +1,6 @@
 [
   {
-    "number": "Refcard #001",
+    "number": 1,
     "title": "GWT Style, Configuration and JSNI Reference",
     "subtitle": "Using the Google Web Toolkit",
     "description": "Introduces Ajax, a group interrelated techniques used in client-side web development for creating asynchronous web applications.",
@@ -8,7 +8,7 @@
     "url": "https://dzone.com/refcardz/gwt-style-configuration-and-js"
   },
   {
-    "number": "Refcard #002",
+    "number": 2,
     "title": "Getting Started with Ajax",
     "subtitle": "Unlocking Unobtrusive JavaScript",
     "description": "Introduces Ajax, a group interrelated techniques used in client-side web development for creating asynchronous web applications.",
@@ -16,7 +16,7 @@
     "url": "https://dzone.com/refcardz/getting-started-ajax"
   },
   {
-    "number": "Refcard #003",
+    "number": 3,
     "title": "Getting Started with Eclipse",
     "subtitle": "Test and Debug Code With Java\u2019s Leading IDE",
     "description": "Eclipse IDE is a cross-platform, multi-purpose, open-source Integrated Development Environment. It is widely used to develop projects in Java, JavaScript, PHP, C++, Scala, and many others. This newly updated Refcard breaks down installing, setting up, and getting started with Eclipse. It also covers productivity tips, creating new projects and files, accessing Source Control Managers, and debugging configurations.",
@@ -24,7 +24,7 @@
     "url": "https://dzone.com/refcardz/getting-started-eclipse"
   },
   {
-    "number": "Refcard #004",
+    "number": 4,
     "title": "Spring Configuration",
     "subtitle": "Dependency Injection in a Nutshell",
     "description": "Catalogs the XML elements available as of Spring 2.5 and highlights those most commonly used: a handy resource for Spring context configuration.",
@@ -32,7 +32,7 @@
     "url": "https://dzone.com/refcardz/spring-configuration"
   },
   {
-    "number": "Refcard #005",
+    "number": 5,
     "title": "Windows PowerShell",
     "subtitle": "A Powerful Windows Shell and Scripting Language",
     "description": "Introduces Windows PowerShell, an object-based command shell and scripting language designed for Microsoft Windows.",
@@ -40,7 +40,7 @@
     "url": "https://dzone.com/refcardz/windows-powershell"
   },
   {
-    "number": "Refcard #006",
+    "number": 6,
     "title": "Dependency Injection in EJB 3",
     "subtitle": "Empowering Enterprise Java Developers",
     "description": "Shows you Enterprise JavaBeans, a component model/framework that lets you build enterprise Java applications.",
@@ -48,7 +48,7 @@
     "url": "https://dzone.com/refcardz/dependency-injection-in-ejb3"
   },
   {
-    "number": "Refcard #007",
+    "number": 7,
     "title": "jQuery Selectors",
     "subtitle": "The Core jQuery Reference",
     "description": "Introduces jQuery Selectors, which allow you to select and manipulate HTML elements as a group or as a single element in jQuery.",
@@ -56,7 +56,7 @@
     "url": "https://dzone.com/refcardz/jquery-selectors"
   },
   {
-    "number": "Refcard #008",
+    "number": 8,
     "title": "Design Patterns",
     "subtitle": "Building Maintainable and Scalable Software",
     "description": "Learn design patterns quickly with Jason McDonald's outstanding tutorial on the original 23 Gang of Four design patterns, including class diagrams, explanations, usage info, and real world examples.",
@@ -64,7 +64,7 @@
     "url": "https://dzone.com/refcardz/design-patterns"
   },
   {
-    "number": "Refcard #009",
+    "number": 9,
     "title": "Flexible Rails: Flex 3 on Rails 2",
     "subtitle": "Flex UI on Ruby Web Apps",
     "description": "Provides an overview of Flex and Rails and how they can be used together to build a simple Flex+Rails application using XML over HTTPService.",
@@ -72,7 +72,7 @@
     "url": "https://dzone.com/refcardz/flexible-rails"
   },
   {
-    "number": "Refcard #010",
+    "number": 10,
     "title": "Silverlight 2",
     "subtitle": "Microsoft's RIA Platform",
     "description": "Introduces Silverlight, Microsoft\u2019s offering for designing, developing, and delivering rich interactive applications over the Internet.",
@@ -80,7 +80,7 @@
     "url": "https://dzone.com/refcardz/silverlight2"
   },
   {
-    "number": "Refcard #011",
+    "number": 11,
     "title": "IntelliJ IDEA",
     "subtitle": "Getting Started with the High-octane IDE",
     "description": "Guides you towards becoming an expert at IntelliJ IDEA, and shows you how to unlock all the powerful features of this tool.",
@@ -88,7 +88,7 @@
     "url": "https://dzone.com/refcardz/intellij-idea"
   },
   {
-    "number": "Refcard #012",
+    "number": 12,
     "title": "Getting Started with GlassFish",
     "subtitle": "The GlassFish Application Server Version 3",
     "description": "A must-have for anyone new to the GlassFish Java application server. It covers version 3 of GlassFish.",
@@ -96,7 +96,7 @@
     "url": "https://dzone.com/refcardz/glassfish-application-server"
   },
   {
-    "number": "Refcard #013",
+    "number": 13,
     "title": "RSS and Atom",
     "subtitle": "Build a Subscribable Feed",
     "description": "Guides you through creating and serving, or subscribing to and parsing feeds, using RSS and Atom.",
@@ -104,7 +104,7 @@
     "url": "https://dzone.com/refcardz/rss-and-atom"
   },
   {
-    "number": "Refcard #014",
+    "number": 14,
     "title": "NetBeans IDE 7 Java Editor",
     "subtitle": "A Well-Aligned JDK 7 Development Experience",
     "description": "Get as much out of JDK 7 and NetBeans IDE 7 as their creators intended.",
@@ -112,7 +112,7 @@
     "url": "https://dzone.com/refcardz/netbeans"
   },
   {
-    "number": "Refcard #015",
+    "number": 15,
     "title": "Groovy",
     "subtitle": "A Rapid-Development JVM Language",
     "description": "Shows you best practices and idiomatic solutions to help you achieve solutions that fully leverage the power of the Groovy language.",
@@ -120,7 +120,7 @@
     "url": "https://dzone.com/refcardz/groovy"
   },
   {
-    "number": "Refcard #016",
+    "number": 16,
     "title": "C# Development",
     "subtitle": "13 Things Every C# Developer Should Know",
     "description": "Gives 13 useful tips and references for using C#, a simple, modern, general purpose, object-oriented, multi-paradigm programming language.",
@@ -128,7 +128,7 @@
     "url": "https://dzone.com/refcardz/csharp"
   },
   {
-    "number": "Refcard #017",
+    "number": 17,
     "title": "Very First Steps in Flex",
     "subtitle": "Rapid Development of Rich Internet Applications",
     "description": "Gets you started with Flex, an SDK for rich Internet applications, by walking you through three projects you can begin right away.",
@@ -136,7 +136,7 @@
     "url": "https://dzone.com/refcardz/very-first-steps-flex"
   },
   {
-    "number": "Refcard #018",
+    "number": 18,
     "title": "Core .NET",
     "subtitle": "Your Go-To .NET Desk Reference",
     "description": "Snapshot of the modern .NET Framework from 30,000 feet, plus deep dive into .NET types, portable class libraries, encodings, and asynchronous programming.",
@@ -144,7 +144,7 @@
     "url": "https://dzone.com/refcardz/coredotnet"
   },
   {
-    "number": "Refcard #019",
+    "number": 19,
     "title": "Core CSS: Part I",
     "subtitle": "First Steps in CSS",
     "description": "Covers Core principles of CSS that will expand and strengthen your professional ability to work with CSS. Part one of three.",
@@ -152,7 +152,7 @@
     "url": "https://dzone.com/refcardz/corecss-part1"
   },
   {
-    "number": "Refcard #020",
+    "number": 20,
     "title": "Struts2",
     "subtitle": "The Sturdy JEE Web Framework",
     "description": "Explains the configuration elements to make the most of Struts2, an application framework for developing Java EE web applications.",
@@ -160,7 +160,7 @@
     "url": "https://dzone.com/refcardz/struts2"
   },
   {
-    "number": "Refcard #021",
+    "number": 21,
     "title": "JavaServer Faces",
     "subtitle": "Easy Web Development in Java",
     "description": "Describes the JSF development process, standard JSF tags, the JSF expression language, and the faces-config.xml configuration file.",
@@ -168,7 +168,7 @@
     "url": "https://dzone.com/refcardz/javaserver-faces"
   },
   {
-    "number": "Refcard #022",
+    "number": 22,
     "title": "Getting Started with JPA",
     "subtitle": "Standardized Java ORM",
     "description": "Gets you started with the Java Persistence API, covering the basics of JPA and preparing you to write JPA applications.",
@@ -176,7 +176,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-jpa"
   },
   {
-    "number": "Refcard #023",
+    "number": 23,
     "title": "PHP 5.4",
     "subtitle": "Scripting with PHP",
     "description": "Covers many important aspects of the simple, yet powerful, scripting language.",
@@ -184,7 +184,7 @@
     "url": "https://dzone.com/refcardz/php-54-scalable"
   },
   {
-    "number": "Refcard #024",
+    "number": 24,
     "title": "Core Java",
     "subtitle": "A Power-User's Guide to Java",
     "description": "Gives you an overview of key aspects of the Java language and references on the core library, commonly used tools, and Java 8 features.",
@@ -192,7 +192,7 @@
     "url": "https://dzone.com/refcardz/core-java"
   },
   {
-    "number": "Refcard #025",
+    "number": 25,
     "title": "Core CSS: Part II",
     "subtitle": "Understanding Selectors",
     "description": "Covers Core principles of CSS that will expand and strengthen your professional ability to work with CSS. Part two of three.",
@@ -200,7 +200,7 @@
     "url": "https://dzone.com/refcardz/corecss2"
   },
   {
-    "number": "Refcard #026",
+    "number": 26,
     "title": "Spring Annotations",
     "subtitle": "Become a Spring Guru",
     "description": "Guides you through all annotations supported in Spring 2.5, covering Core Spring Annotations, Spring MVC Annotations, and more.",
@@ -208,7 +208,7 @@
     "url": "https://dzone.com/refcardz/spring-annotations"
   },
   {
-    "number": "Refcard #27",
+    "number": 27,
     "title": "Getting Started with MyEclipse",
     "subtitle": "A More Productive Eclipse",
     "description": "Introduces MyEclipse, the #1 commercial Eclipse-based IDE, and provides valuable knowledge and helpful tools to help begin and deploy projects.",
@@ -216,7 +216,7 @@
     "url": "https://dzone.com/refcardz/myeclipse"
   },
   {
-    "number": "Refcard #028",
+    "number": 28,
     "title": "JUnit and EasyMock",
     "subtitle": "Seamless Unit Testing and Mocking for Java",
     "description": "Guides you through the creation of unit tests with JUnit and EasyMock, with detailed definitions for unit testing and mock objects.",
@@ -224,7 +224,7 @@
     "url": "https://dzone.com/refcardz/junit-and-easymock"
   },
   {
-    "number": "Refcard #029",
+    "number": 29,
     "title": "Essential MySQL",
     "subtitle": "Exploring the World's Most Popular Open Source Database",
     "description": "Navigates some of MySQL\u2019s most popular features, including configuration, administration software, backup procedures, SQL features, and user management.",
@@ -232,7 +232,7 @@
     "url": "https://dzone.com/refcardz/essential-mysql"
   },
   {
-    "number": "Refcard #030",
+    "number": 30,
     "title": "Essential Ruby",
     "subtitle": "The Perfect Ruby Quick Reference",
     "description": "Provides a quick reference to the Ruby language, including language elements and many important API functions for quick look-up.",
@@ -240,7 +240,7 @@
     "url": "https://dzone.com/refcardz/essential-ruby"
   },
   {
-    "number": "Refcard #31",
+    "number": 31,
     "title": "Core Seam",
     "subtitle": "Seam in Practice",
     "description": "Covers commonly used annotations and XML elements as of Seam 2.1. and points you to examples of how the configuration options can be used in practice.",
@@ -248,7 +248,7 @@
     "url": "https://dzone.com/refcardz/core-seam"
   },
   {
-    "number": "Refcard #032",
+    "number": 32,
     "title": "Getting Started with Hibernate Search",
     "subtitle": "The Key to Effective ORM",
     "description": "Hibernate Search is an extension to Hibernate ORM that adds powerful capabilities, boosting the power and efficiency of queries. It depends on Apache Lucene and is typically used to implement \u201cfull-text search.\u201d This newly updated Refcard breaks down getting started with Hibernate Search and searching your database. Learn more about configuration properties, mapping entities and executing queries, synchronizing the index and database, and more.",
@@ -256,7 +256,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-hibernate"
   },
   {
-    "number": "Refcard #033",
+    "number": 33,
     "title": "Essential JSP Expression Language",
     "subtitle": "The Perfect JPEL Quick Reference",
     "description": "Gives you the essentials of the JSP Expression Language, a scripting language that can be used to evaluate dynamic expressions within a JSP page.",
@@ -264,7 +264,7 @@
     "url": "https://dzone.com/refcardz/essential-jsp-expression"
   },
   {
-    "number": "Refcard #034",
+    "number": 34,
     "title": "Core CSS: Part III",
     "subtitle": "The CSS Way",
     "description": "Covers Core principles of CSS that will expand and strengthen your professional ability to work with CSS. Part three of three.",
@@ -272,7 +272,7 @@
     "url": "https://dzone.com/refcardz/corecss3"
   },
   {
-    "number": "Refcard #035",
+    "number": 35,
     "title": "Using XML in Java",
     "subtitle": "A Pro's Guide to XML Processing Technology",
     "description": "Provides developers a concise overview of the different XML processing technologies in Java, and a use case of each technology.",
@@ -280,7 +280,7 @@
     "url": "https://dzone.com/refcardz/using-xml-java"
   },
   {
-    "number": "Refcard #036",
+    "number": 36,
     "title": "Core Mule",
     "subtitle": "Mule in a Nutshell",
     "description": "Summarizes the Mule architecture and shows the different routers, transformers, and filters available, including example configurations.",
@@ -288,7 +288,7 @@
     "url": "https://dzone.com/refcardz/core-mule"
   },
   {
-    "number": "Refcard #037",
+    "number": 37,
     "title": "Getting Started with Equinox and OSGi",
     "subtitle": "Modular Java",
     "description": "Gives you a quick tour of Equinox, a highly modular, dynamic Java runtime environment, covering how it works and how to use it.",
@@ -296,7 +296,7 @@
     "url": "https://dzone.com/refcardz/equinox"
   },
   {
-    "number": "Refcard #038",
+    "number": 38,
     "title": "SOA Patterns",
     "subtitle": "Service-Orient Your Enterprise",
     "description": "Covers SOA Patterns and includes Pattern names, Icons, Summaries, Problems, Solutions, Applications, Diagrams, Results, and Examples.",
@@ -304,7 +304,7 @@
     "url": "https://dzone.com/refcardz/soa-patterns"
   },
   {
-    "number": "Refcard #039",
+    "number": 39,
     "title": "Essential EMF",
     "subtitle": "An Eclipse Standard for Data Models",
     "description": "Gets you started with the Eclipse Modeling Framework, including a quick start to generating a model, regeneration and merging, and more.",
@@ -312,7 +312,7 @@
     "url": "https://dzone.com/refcardz/essential-emf"
   },
   {
-    "number": "Refcard #040",
+    "number": 40,
     "title": "Apache Tapestry 5.0",
     "subtitle": "Convention Over Configuration for Java Web Apps",
     "description": "Reviews the structure of Tapestry applications, the format of Tapestry markup templates, standard components, and typical configuration options.",
@@ -320,7 +320,7 @@
     "url": "https://dzone.com/refcardz/apache-tapestry-50"
   },
   {
-    "number": "Refcard #041",
+    "number": 41,
     "title": "SOA Governance",
     "subtitle": "Manage Organizations and Architecture",
     "description": "Provides you with an overview of the considerations, approaches, and technologies necessary for successful SOA governance.",
@@ -328,7 +328,7 @@
     "url": "https://dzone.com/refcardz/soa-governance"
   },
   {
-    "number": "Refcard #042",
+    "number": 42,
     "title": "Seam UI",
     "subtitle": "Building a Java Interface",
     "description": "Introduces Seam, a next generation web framework that integrates Java EE technologies with a wide variety of non-standard technologies.",
@@ -336,7 +336,7 @@
     "url": "https://dzone.com/refcardz/seam-ui"
   },
   {
-    "number": "Refcard #043",
+    "number": 43,
     "title": "Scalability & High Availability",
     "subtitle": "Performing Well at Any Scale",
     "description": "Provides the tools to define Scalability and High Availability, so your team can implement critical systems with well-understood performance goals.",
@@ -344,7 +344,7 @@
     "url": "https://dzone.com/refcardz/scalability"
   },
   {
-    "number": "Refcard #044",
+    "number": 44,
     "title": "JBoss RichFaces",
     "subtitle": "Ajax Meets Java",
     "description": "Introduces JBoss RichFaces, a JSF component library consisting of two main parts: Ajax enabled JSF components and the Component Development Kit.",
@@ -352,7 +352,7 @@
     "url": "https://dzone.com/refcardz/richfaces"
   },
   {
-    "number": "Refcard #045",
+    "number": 45,
     "title": "Agile Adoption: Decreasing Time to Market",
     "subtitle": "Find the Right Agile Practices for Your Team",
     "description": "Helps you find the right Agile practices for your team or organization when getting to market faster is of prime importance.",
@@ -360,7 +360,7 @@
     "url": "https://dzone.com/refcardz/agile-adoption-decreasing-time"
   },
   {
-    "number": "Refcard #046",
+    "number": 46,
     "title": "Core ASP.NET",
     "subtitle": "Elegant Web Development",
     "description": "Explains the most commonly used Core functions and controls in ASP.NET, a framework for the development of dynamic websites and web services.",
@@ -368,7 +368,7 @@
     "url": "https://dzone.com/refcardz/core-aspnet"
   },
   {
-    "number": "Refcard #047",
+    "number": 47,
     "title": "The Top Twelve Integration Patterns for Apache Camel",
     "subtitle": "Implement in Java or Spring XML",
     "description": "Check out the 12 most common integration patterns and implementation methods for Apache Camel.",
@@ -376,7 +376,7 @@
     "url": "https://dzone.com/refcardz/enterprise-integration"
   },
   {
-    "number": "Refcard #048",
+    "number": 48,
     "title": "Flex & Spring Integration",
     "subtitle": "Combining Flash and Java Technologies",
     "description": "Shows you how to integrate Flex and Spring to create a powerful platform for building robust Rich Internet Applications.",
@@ -384,7 +384,7 @@
     "url": "https://dzone.com/refcardz/flex-spring-integration"
   },
   {
-    "number": "Refcard #049",
+    "number": 49,
     "title": "Getting Started with BIRT",
     "subtitle": "Eclipse-Based BI and Big Data Visualization",
     "description": "Provides an overview of the BIRT 3.7 components, focusing on a few key capabilities of the BIRT Designer, BIRT Runtime APIs, and BIRT Web Viewer.",
@@ -392,7 +392,7 @@
     "url": "https://dzone.com/refcardz/birt"
   },
   {
-    "number": "Refcard #050",
+    "number": 50,
     "title": "Scrum",
     "subtitle": "The Most Popular Agile Methodology",
     "description": "Scrum is a framework that allows people to productively and creatively deliver products of the highest possible value. With over 70% of Agile teams using Scrum or Scrum hybrid, learn more about its benefits in managing complex product development. This newly updated Refcard explores the details of Scrum, including theory, values, roles, and events. It also includes a sample of a popular approach to deliver Integrated Increments in a scaled environment.",
@@ -400,7 +400,7 @@
     "url": "https://dzone.com/refcardz/scrum"
   },
   {
-    "number": "Refcard #051",
+    "number": 51,
     "title": "Effective Process Modeling with BPM & BPMN",
     "subtitle": "Empowering the BPM Lifecycle",
     "description": "Provides an overview of the BPM lifecycle with the roles and results of business process modeling, the BPM Notation, and the most important BPM patterns.",
@@ -408,7 +408,7 @@
     "url": "https://dzone.com/refcardz/bpm-bpmn"
   },
   {
-    "number": "Refcard #052",
+    "number": 52,
     "title": "IntelliJ IDEA Essentials",
     "subtitle": "Your Guide to the Most Intelligent Java IDE",
     "description": "Helps Java developers navigate the various facets of this world-class IDE, with tips, tricks, shortcuts, and quick tutorials on editor basics, navigation, and more.",
@@ -416,7 +416,7 @@
     "url": "https://dzone.com/refcardz/intellij-idea-update"
   },
   {
-    "number": "Refcard #053",
+    "number": 53,
     "title": "Getting Started With db4o",
     "subtitle": "Persisting .NET Object Data",
     "description": "Walks you through db4o's basic operations, its various query types, and techniques for optimal data access performance.",
@@ -424,7 +424,7 @@
     "url": "https://dzone.com/refcardz/getting-started-db4o"
   },
   {
-    "number": "Refcard #054",
+    "number": 54,
     "title": "Agile Adoption: Reducing Cost",
     "subtitle": "Building the System for Less",
     "description": "Helps you build software faster, better, and cheaper, and teaches you four practical strategies for reducing the cost of software development.",
@@ -432,7 +432,7 @@
     "url": "https://dzone.com/refcardz/agile-adoption-reducing-cost"
   },
   {
-    "number": "Refcard #055",
+    "number": 55,
     "title": "Apache Maven 2",
     "subtitle": "Enabling You to Build Better Java Code",
     "description": "Gives Java developers a wide range of execution commands, tips for debugging Mavenized builds, and a clear introduction to the Maven vocabulary.",
@@ -440,7 +440,7 @@
     "url": "https://dzone.com/refcardz/apache-maven-2"
   },
   {
-    "number": "Refcard #056",
+    "number": 56,
     "title": "JavaFX",
     "subtitle": "Making it Easier to Build Better RIAs",
     "description": "Gets you started with JavaFX, which makes it easier to build better RIAs with graphics, animation, and media.",
@@ -448,7 +448,7 @@
     "url": "https://dzone.com/refcardz/getting-started-javafx"
   },
   {
-    "number": "Refcard #057",
+    "number": 57,
     "title": "Getting Started with Spring-DM",
     "subtitle": "Bringing Spring and OSGi Together",
     "description": "Shows you how to use Spring-DM to wire together OSGi services to build highly modular and dynamic applications.",
@@ -456,7 +456,7 @@
     "url": "https://dzone.com/refcardz/getting-started-spring-dm"
   },
   {
-    "number": "Refcard #058",
+    "number": 58,
     "title": "JavaServer Faces 2.0",
     "subtitle": "The JSF Expression Language",
     "description": "Provides summaries of the tags and attributes needed for JSF programming, a summary of the JSF expression language, and a list of code snippets for common operations.",
@@ -464,7 +464,7 @@
     "url": "https://dzone.com/refcardz/javaserver-faces-20"
   },
   {
-    "number": "Refcard #059",
+    "number": 59,
     "title": "Getting Started with Drupal 7",
     "subtitle": "Managing Content, Modules, and Themes",
     "description": "Introduces Drupal 7, including a discussion of Drupal pages, from types to content nodes, and instructions for installation.",
@@ -472,7 +472,7 @@
     "url": "https://dzone.com/refcardz/getting-started-drupal"
   },
   {
-    "number": "Refcard #060",
+    "number": 60,
     "title": "Getting Started with Grails",
     "subtitle": "A Full-Stack Web Application Framework",
     "description": "Takes you through a brief introduction of Grails, and helps you to set up your first Grails application in minutes.",
@@ -480,7 +480,7 @@
     "url": "https://dzone.com/refcardz/getting-started-grails"
   },
   {
-    "number": "Refcard #061",
+    "number": 61,
     "title": "Core Java Concurrency",
     "subtitle": "Understanding the Core Concurrency Concepts",
     "description": "This Refcard will help Java developers working with multi-threaded programs to understand core concurrency concepts and how to apply them. Overview the key aspects of the Java language and get references on the core library.",
@@ -488,7 +488,7 @@
     "url": "https://dzone.com/refcardz/core-java-concurrency"
   },
   {
-    "number": "Refcard #062",
+    "number": 62,
     "title": "Getting Started with Eclipse RCP",
     "subtitle": "Providing a Foundation for Building and Deploying Rich Client Applications",
     "description": "Introduces you to the Eclipse plug-in development environment and shows you how to add key functionality to your RCP application.",
@@ -496,7 +496,7 @@
     "url": "https://dzone.com/refcardz/getting-started-eclipse-rcp"
   },
   {
-    "number": "Refcard #063",
+    "number": 63,
     "title": "Getting Started with Apache Wicket",
     "subtitle": "Creating Standard Wicket Components",
     "description": "Covers how to configure the framework, define your domain model, create standard Wicket components and add internationalization options.",
@@ -504,7 +504,7 @@
     "url": "https://dzone.com/refcardz/getting-started-apache-wicket"
   },
   {
-    "number": "Refcard #064",
+    "number": 64,
     "title": "Core HTML",
     "subtitle": "The Foundation of All Web Development",
     "description": "Introduces the basics of HTML and XHTML, Page Structure Elements, Key Structural Elements, Specialty Markup and Validation. Great for beginners and veterans alike.",
@@ -512,7 +512,7 @@
     "url": "https://dzone.com/refcardz/core-html"
   },
   {
-    "number": "Refcard #065",
+    "number": 65,
     "title": "ServiceMix 4.2",
     "subtitle": "The Apache Open Source ESB",
     "description": "Get the lowdown and the know-how on what's new with this open-source ESB.",
@@ -520,7 +520,7 @@
     "url": "https://dzone.com/refcardz/servicemix"
   },
   {
-    "number": "Refcard #066",
+    "number": 66,
     "title": "Getting Started With ColdFusion 9",
     "subtitle": "A Rapid Application Development Toolkit",
     "description": "Great start sheet that lists various ways of communicating with databases, other tools, services and languages.",
@@ -528,7 +528,7 @@
     "url": "https://dzone.com/refcardz/getting-started-coldfusion-9"
   },
   {
-    "number": "Refcard #067",
+    "number": 67,
     "title": "Getting Started With Selenium",
     "subtitle": "A Portable Software Testing Framework for Web Applications",
     "description": "Covers the latest updates to Selenium and gives you the tools you need to launch Selenium on any major browser, on any major operating system.",
@@ -536,7 +536,7 @@
     "url": "https://dzone.com/refcardz/getting-started-selenium"
   },
   {
-    "number": "Refcard #068",
+    "number": 68,
     "title": "Getting Started with Oracle Berkeley DB",
     "subtitle": "Transaction Support, Performance Tuning, Backup, and Recovery",
     "description": "Provides a brief introduction to the Oracle Berkeley DB family and discusses in depth the Oracle Berkeley DB Java Edition.",
@@ -544,7 +544,7 @@
     "url": "https://dzone.com/refcardz/getting-started-oracle"
   },
   {
-    "number": "Refcard #069",
+    "number": 69,
     "title": "Getting Started with ASP.NET MVC 1.0",
     "subtitle": "Setting Up An Environment and Creating a Web Application",
     "description": "Explains how to setup your environment to work with ASP.NET MVC and how to create an ASP.NET MVC Web application",
@@ -552,7 +552,7 @@
     "url": "https://dzone.com/refcardz/getting-started-aspnet-mvc-10"
   },
   {
-    "number": "Refcard #070",
+    "number": 70,
     "title": "Eclipse Plug-in Development",
     "subtitle": "Customize and Enhance Your Eclipse Experience",
     "description": "Explains to the reader the process of Eclipse-based plug-in development, from plug-in basics to the OSGi manifest, the plug-in manifest and hot tips.",
@@ -560,7 +560,7 @@
     "url": "https://dzone.com/refcardz/eclipse-plug-development"
   },
   {
-    "number": "Refcard #071",
+    "number": 71,
     "title": "Essential PostgreSQL",
     "subtitle": "Become a PostgreSQL Power User",
     "description": "Navigates PostgreSQL\u2019s most popular features and hidden gems and covers topics such as configuration, administration, language support, and more.",
@@ -568,7 +568,7 @@
     "url": "https://dzone.com/refcardz/essential-postgresql"
   },
   {
-    "number": "Refcard #072",
+    "number": 72,
     "title": "Getting Started with Windows Presentation Foundation",
     "subtitle": "Learn to Master WPF",
     "description": "Helps you understand the basics of WPF, ranging from XAML and Markup Extensions to Panels and Data Binding.",
@@ -576,7 +576,7 @@
     "url": "https://dzone.com/refcardz/getting-started-windows"
   },
   {
-    "number": "Refcard #073",
+    "number": 73,
     "title": "Getting Started With LiveCycle Data Services ES",
     "subtitle": "A New Way to Develop Web Apps",
     "description": "Introduces Adobe LiveCycle Data Services ES, a scalable web app development framework for the Flash Platform.",
@@ -584,7 +584,7 @@
     "url": "https://dzone.com/refcardz/getting-started-livecycle-data"
   },
   {
-    "number": "Refcard #074",
+    "number": 74,
     "title": "Agile Adoption: Improving Software Quality",
     "subtitle": "Reducing Bugs and Improving Design",
     "description": "Gives you a quick introduction to Agile practices and strategies for adopting the practices in your organization.",
@@ -592,7 +592,7 @@
     "url": "https://dzone.com/refcardz/agile-adoption-improving"
   },
   {
-    "number": "Refcard #075",
+    "number": 75,
     "title": "Getting Started with BlazeDS",
     "subtitle": "Integrating Adobe Flex and Java",
     "description": "Learn about Adobe's tool for coupling together Flash platform-based interfaces with robust Java enterprise servers.",
@@ -600,7 +600,7 @@
     "url": "https://dzone.com/refcardz/getting-started-blazeds"
   },
   {
-    "number": "Refcard #076",
+    "number": 76,
     "title": "Domain-Driven Design",
     "subtitle": "Object-Orientation Done Right",
     "description": "Developers build software to solve real-world problems. But everything from tool choice to the halting problem (to the pointy-haired boss) constrains and shapes the software you create. Learn how to make your code and your problem domain fit beautifully together.",
@@ -608,7 +608,7 @@
     "url": "https://dzone.com/refcardz/getting-started-domain-driven"
   },
   {
-    "number": "Refcard #077",
+    "number": 77,
     "title": "Core WS-BPEL: Business Process Execution Language",
     "subtitle": "Business Process Execution Language",
     "description": "Covers WS-BPEL 2.0, its process structure, standard faults, default attribute values, and all important BPEL activities.",
@@ -616,7 +616,7 @@
     "url": "https://dzone.com/refcardz/core-ws-bpel-business-process"
   },
   {
-    "number": "Refcard #078",
+    "number": 78,
     "title": "Getting Started with Virtualization",
     "subtitle": "Virtual Networking for VMware ESX and ESXi",
     "description": "A perfect guide for anyone new to the Virtualization space. Veteran users will be interested in the Operational Issues section.",
@@ -624,7 +624,7 @@
     "url": "https://dzone.com/refcardz/getting-started-virtualization"
   },
   {
-    "number": "Refcard #079",
+    "number": 79,
     "title": "Google App Engine for Java",
     "subtitle": "Google's PaaS for Java",
     "description": "Covers the basics of compiling, deploying, and data storage to GAE's specialized capabilities and supporting frameworks.",
@@ -632,7 +632,7 @@
     "url": "https://dzone.com/refcardz/google-app-engine-java"
   },
   {
-    "number": "Refcard #080",
+    "number": 80,
     "title": "Essential NetBeans Platform",
     "subtitle": "Learn this Swing Framework for Your Applications",
     "description": "Get started with developing your very own robust and extensible applications",
@@ -640,7 +640,7 @@
     "url": "https://dzone.com/refcardz/netbeans-platform-70"
   },
   {
-    "number": "Refcard #081",
+    "number": 81,
     "title": "Essential F#",
     "subtitle": "The Best Parts of F#",
     "description": "Learn to use this .NET programming language with both functional and object-oriented features to create some mind-bending code.",
@@ -648,7 +648,7 @@
     "url": "https://dzone.com/refcardz/essential-f"
   },
   {
-    "number": "Refcard #082",
+    "number": 82,
     "title": "Understanding Cloud Computing",
     "subtitle": "Amazon EC2, Google App Engine, and Microsoft Azure",
     "description": "This Refcard will walk you through the basics, from where exactly clouds are located, to deciphering the differences between cloud service types (IaaS, PaaS, SaaS), and the key benefits you can expect to receive.",
@@ -656,7 +656,7 @@
     "url": "https://dzone.com/refcardz/getting-started-cloud"
   },
   {
-    "number": "Refcard #083",
+    "number": 83,
     "title": "Contexts and Dependency Injection for the Java EE Platform",
     "subtitle": "Understanding CDI",
     "description": "Java EE 6 introduced Contexts and Dependency Injections (CDI) as a set of component management services that allow for loose coupling of components across layers (through dependency injection) in a type-safe way. The benefits of CDI include a simplified architecture and more reusable code. In this newly updated Refcard, you will learn about the main features of CDI 1.2 in Java EE 7, how to get the most from CDI, and how to get your CDI code up and running.",
@@ -664,7 +664,7 @@
     "url": "https://dzone.com/refcardz/contexts-and-depencency"
   },
   {
-    "number": "Refcard #084",
+    "number": 84,
     "title": "Continuous Integration",
     "subtitle": "Patterns and Anti-Patterns",
     "description": "Reap the full benefits of quality, better testing, and early error detection with proper CI implementation. This newly updated Refcard explains patterns and anti-patterns and the benefits of CI. Using specific examples from the Git Command Line Interface and Git Plugin hooks for Jenkins, it also walks through build management, build configuration, testing, and code quality.",
@@ -672,7 +672,7 @@
     "url": "https://dzone.com/refcardz/continuous-integration"
   },
   {
-    "number": "Refcard #085",
+    "number": 85,
     "title": "Getting Started With Vaadin 10",
     "subtitle": "Modern Web Apps in Java",
     "description": "Vaadin makes it quick and simple to create HTML user interfaces using Java. Using a built-in selection of components, themes, data binding, and more, Vaadin is the ideal in web application development frameworks.",
@@ -680,7 +680,7 @@
     "url": "https://dzone.com/refcardz/getting-started-vaadin"
   },
   {
-    "number": "Refcard #086",
+    "number": 86,
     "title": "Spring Web Flow",
     "subtitle": "The Essential SWF Cheat Sheet",
     "description": "See how to add Spring Web Flow to a Spring application and define flows that initiate conversations between the application and its users.",
@@ -688,7 +688,7 @@
     "url": "https://dzone.com/refcardz/spring-web-flow"
   },
   {
-    "number": "Refcard #087",
+    "number": 87,
     "title": "Continuous Integration: Servers and Tools",
     "subtitle": "Learning to Utilize DevOps with Servers and Tools",
     "description": "Follow this walkthrough of Continuous Integration that uses Hudson as an example. A must-have for all those working with CI.",
@@ -696,7 +696,7 @@
     "url": "https://dzone.com/refcardz/continuous-integration-servers"
   },
   {
-    "number": "Refcard #088",
+    "number": 88,
     "title": "Getting Started With Caucho Resin",
     "subtitle": "The Java EE 6 Web Profile in an App Server",
     "description": "Learn the basics of the Resin app server and the features of Resin 4.0. Resin comes in two flavors: Resin Open Source and Resin Professional.",
@@ -704,7 +704,7 @@
     "url": "https://dzone.com/refcardz/getting-started-caucho-resin"
   },
   {
-    "number": "Refcard #089",
+    "number": 89,
     "title": "Getting Started with the Zend Framework",
     "subtitle": "Learning to Master the PHP Framework",
     "description": "Introduces you to the basics of the Zend Framework, such as prerequisites, installation, and creating your first project.",
@@ -712,7 +712,7 @@
     "url": "https://dzone.com/refcardz/getting-started-zend-framework"
   },
   {
-    "number": "Refcard #090",
+    "number": 90,
     "title": "Getting Started With Adobe ColdFusion Builder",
     "subtitle": "Delivering Truly Rapid Application Development",
     "description": "Learn to install the Eclipse-based Adobe ColdFusion Builder IDE and build a ColdFusion project while reviewing the IDE's features.",
@@ -720,7 +720,7 @@
     "url": "https://dzone.com/refcardz/getting-started-adobe"
   },
   {
-    "number": "Refcard #091",
+    "number": 91,
     "title": "Getting Started With Adobe Flash Builder 4",
     "subtitle": "An IDE for ActionScript and Flex Development",
     "description": "How to use Flash Builder to develop Flex applications, including creating projects, developing, building, testing, and debugging flex apps.",
@@ -728,7 +728,7 @@
     "url": "https://dzone.com/refcardz/getting-started-adobe-flash"
   },
   {
-    "number": "Refcard #092",
+    "number": 92,
     "title": "Getting Started with Silverlight and Expression Blend",
     "subtitle": "A Cross-Browser, Cross-Platform Plug-In For Your Browser",
     "description": "Learn to use Silverlight 4 and Expression Blend with a step by step guide through the development of your first application.",
@@ -736,7 +736,7 @@
     "url": "https://dzone.com/refcardz/getting-started-silverlight"
   },
   {
-    "number": "Refcard #093",
+    "number": 93,
     "title": "Lean Software Development",
     "subtitle": "",
     "description": "Many companies have a major opportunity to optimize efficiency and minimize waste in the development of their software using lean software development practices, yet many have simply not discovered the methodology. For those who have attempted to adopt this concept, most discussions and literature don\u2019t provide specific, easy-to-follow practices for implementing lean software development. This Refcard fills the gap by covering a step-by-step approach to carrying out a lean software development process, including best practices to streamline your technology value stream.",
@@ -744,7 +744,7 @@
     "url": "https://dzone.com/refcardz/getting-started-lean-software"
   },
   {
-    "number": "Refcard #094",
+    "number": 94,
     "title": "Getting Started with Git",
     "subtitle": "The De Facto Standard For Version Control",
     "description": "This updated Refcard explains why so many developers are migrating to this exciting platform. Learn about creating a new Git repository, cloning existing projects, the remote workflow, and more to pave the way for limitless content version control.",
@@ -752,7 +752,7 @@
     "url": "https://dzone.com/refcardz/getting-started-git"
   },
   {
-    "number": "Refcard #095",
+    "number": 95,
     "title": "Getting Started with Java GUI Development",
     "subtitle": "Building a Swing Application",
     "description": "To develop standalone Java apps, developers can use either Java Swing or SWT. This Refcard will help users get started with either.",
@@ -760,7 +760,7 @@
     "url": "https://dzone.com/refcardz/getting-started-java-gui"
   },
   {
-    "number": "Refcard #096",
+    "number": 96,
     "title": "Getting Started With Integrating PHP and Flex",
     "subtitle": "Adobe/Zend Tools for the PHP Professional",
     "description": "Developed by Adobe and Zend Technologies, Flash Builder 4.5 improves Flash Builder 4 to help PHP developers get the most out of their apps.",
@@ -768,7 +768,7 @@
     "url": "https://dzone.com/refcardz/getting-started-php-and-flex"
   },
   {
-    "number": "Refcard #097",
+    "number": 97,
     "title": "Getting Started With JBoss Enterprise Application Platform 7",
     "subtitle": "Red Hat's Expansive Development Platform",
     "description": "Red Hat JBoss EAP is a middleware platform built on open standards, compliant with the Java EE 7 specification. This newly updated Refcard walks you through installing JBoss EAP 7, gives an overview of the standalone vs. domain directory structure, provides administration and application deployment tutorials, and explains how JBoss EAP uses modular-based class loading.",
@@ -776,7 +776,7 @@
     "url": "https://dzone.com/refcardz/getting-started-jboss"
   },
   {
-    "number": "Refcard #098",
+    "number": 98,
     "title": "Getting Started with Maven Repository Management",
     "subtitle": "The Ultimate Solution for Codebase Management",
     "description": "Begin learning about Maven Repository Management, covering proxy repositories, hosted repositories, and repository groups.",
@@ -784,7 +784,7 @@
     "url": "https://dzone.com/refcardz/getting-started-repository"
   },
   {
-    "number": "Refcard #099",
+    "number": 99,
     "title": "Java EE Security Essentials",
     "subtitle": "Specification Level Security",
     "description": "The Java EE security specification supports a set of required security functionalities including authentication, authorization, data integrity, and transport security. This newly updated Refcard begins by introducing some common terms and concepts related to Java EE security such as identity stores and authentication mechanisms. We then explore authentication authorization, web module security, EJB module security, and application client security with in-depth examples.",
@@ -792,7 +792,7 @@
     "url": "https://dzone.com/refcardz/getting-started-java-ee"
   },
   {
-    "number": "Refcard #100",
+    "number": 100,
     "title": "Getting Started with FitNesse",
     "subtitle": "Bringing Programmers and Testers Together",
     "description": "Learn to use Fitnesse, an open source testing framework that enables customers, testers, and programmers to easily create and edit tests.",
@@ -800,7 +800,7 @@
     "url": "https://dzone.com/refcardz/getting-started-fitnesse"
   },
   {
-    "number": "Refcard #101",
+    "number": 101,
     "title": "JDBC Best Practices",
     "subtitle": "Use JDBC Like a Pro",
     "description": "Learn advanced JDBC, a data access standard for Java, on codeless configuration, SSO, debugging, and logging.",
@@ -808,7 +808,7 @@
     "url": "https://dzone.com/refcardz/jdbc-best-practices"
   },
   {
-    "number": "Refcard #102",
+    "number": 102,
     "title": "Flex 4 & Spring 3 Integration",
     "subtitle": "Harnessing Flash and Java Together",
     "description": "Use Flex Remoting and Messaging to connect to Spring and Hibernate. Also included is a section on how to use Spring Security with Flex.",
@@ -816,7 +816,7 @@
     "url": "https://dzone.com/refcardz/flex-4-and-spring-3"
   },
   {
-    "number": "Refcard #103",
+    "number": 103,
     "title": "Leveraging ColdFusion 9 Exposed Services from Java",
     "subtitle": "CF-as-a-Service From Java",
     "description": "Expand your knowledge of ColdFusion with Exposed Services to unlock capabilities that other languages and technologies can take advantage of.",
@@ -824,7 +824,7 @@
     "url": "https://dzone.com/refcardz/leveraging-coldfusion-9"
   },
   {
-    "number": "Refcard #104",
+    "number": 104,
     "title": "Getting Started with Apache Ant",
     "subtitle": "The TDD Build Tool for Java",
     "description": "Learn to automate software build processes with Apache Ant, the most widely used test-driven development build tool for Java projects.",
@@ -832,7 +832,7 @@
     "url": "https://dzone.com/refcardz/getting-started-apache-ant"
   },
   {
-    "number": "Refcard #105",
+    "number": 105,
     "title": "Getting Started with NoSQL and Data Scalability",
     "subtitle": "Intro to MongoDB, XAP, and Google Datastore",
     "description": "Learn about core concepts of NoSQL high availability and scalability terminology and techniques, and how to apply them to MongoDB and XAP.",
@@ -840,7 +840,7 @@
     "url": "https://dzone.com/refcardz/getting-started-nosql-and-data"
   },
   {
-    "number": "Refcard #106",
+    "number": 106,
     "title": "Expression-Based Authorization with Spring Security 3",
     "subtitle": "Baking Security Into Enterprise Apps",
     "description": "Begin to master Spring Security by learning the key features of expression-based authorization for a challenging framework.",
@@ -848,7 +848,7 @@
     "url": "https://dzone.com/refcardz/expression-based-authorization"
   },
   {
-    "number": "Refcard #107",
+    "number": 107,
     "title": "Getting Started With Griffon",
     "subtitle": "Groovy Apps on the Desktop",
     "description": "Develop rich desktop applications with Griffon, a Grails-like app built on Groovy, Java, and Swing that automates many common tasks.",
@@ -856,7 +856,7 @@
     "url": "https://dzone.com/refcardz/getting-started-griffon"
   },
   {
-    "number": "Refcard #108",
+    "number": 108,
     "title": "Getting Started Firebug 1.5",
     "subtitle": "The Browser IDE for Firefox",
     "description": "Learn to debug, edit, and monitor any website's CSS, HTML, DOM, or JavaScript with Firebug for Mozilla Firefox.",
@@ -864,7 +864,7 @@
     "url": "https://dzone.com/refcardz/getting-started-firebug-15"
   },
   {
-    "number": "Refcard #109",
+    "number": 109,
     "title": "Getting Started with Kanban for Software Development",
     "subtitle": "A Lightweight Work Management Technique",
     "description": "Learn to smooth out kinks in the arrival of new development work with a Kanban card board and a work queue.",
@@ -872,7 +872,7 @@
     "url": "https://dzone.com/refcardz/getting-started-kanban"
   },
   {
-    "number": "Refcard #110",
+    "number": 110,
     "title": "Objective-C for the iPhone and iPad",
     "subtitle": "The Basics of Objective-C",
     "description": "Develop apps for Apple's Mac OS X and iOS with Objective-C. This Refcard covers class declaration, memory management, Xcode, debugging, and more.",
@@ -880,7 +880,7 @@
     "url": "https://dzone.com/refcardz/objective-c-iphone-and-ipad"
   },
   {
-    "number": "Refcard #111",
+    "number": 111,
     "title": "Getting Started with Windows Communication Foundation 4.0",
     "subtitle": "The Standard in .NET Messaging",
     "description": "Gets you up to speed with WCF and covers configuration, contracts, bindings, behaviors, hosted services, diagnostics, and consuming services.",
@@ -888,7 +888,7 @@
     "url": "https://dzone.com/refcardz/getting-started-windows-0"
   },
   {
-    "number": "Refcard #112",
+    "number": 112,
     "title": "Getting Started with UML",
     "subtitle": "Software Design, Simplified with UML",
     "description": "Outlines the key elements of Unified Modeling Language (UML) to provide you with a useful reference when designing software.",
@@ -896,7 +896,7 @@
     "url": "https://dzone.com/refcardz/getting-started-uml"
   },
   {
-    "number": "Refcard #113",
+    "number": 113,
     "title": "Getting Started With Adobe Flash Catalyst",
     "subtitle": "Codeless Web and App Design",
     "description": "Provides you with an excellent introduction to Adobe Flash Catalyst and its features.",
@@ -904,7 +904,7 @@
     "url": "https://dzone.com/refcardz/getting-started-adobe-flash-0"
   },
   {
-    "number": "Refcard #114",
+    "number": 114,
     "title": "Application Prototyping with SketchFlow",
     "subtitle": "Application Prototyping Explained",
     "description": "Cover the core aspects, practical guidelines and principles that are key to SketchFlow Application Prototyping.",
@@ -912,7 +912,7 @@
     "url": "https://dzone.com/refcardz/application-prototyping"
   },
   {
-    "number": "Refcard #115",
+    "number": 115,
     "title": "Getting Started with Infinispan",
     "subtitle": "Enhance Performance With Scalable, Highly Available Data Stores",
     "description": "Infinispan is an open-source, ASL 2.0-licensed, in-memory data grid platform based on Java 8. This newly updated Refcard offers tips for implementing Infinispan, gives a practical example for using it in embedded mode, and lists key APIs and cache features. Learn more about running Infinispan in containers and how to integrate the platform with Hibernate ORM, Apache Hadoop, Apache Spark, and Apache Camel.",
@@ -920,7 +920,7 @@
     "url": "https://dzone.com/refcardz/getting-started-infinispan"
   },
   {
-    "number": "Refcard #116",
+    "number": 116,
     "title": "Adobe ColdFusion Web Services for PHP Programmers",
     "subtitle": "Making Web Apps the Easy Way",
     "description": "Details how to access and discover exposed web services and services from PHP, generate documents and charts, and manipulate PDFs and images.",
@@ -928,7 +928,7 @@
     "url": "https://dzone.com/refcardz/adobe-coldfusion-web-services-0"
   },
   {
-    "number": "Refcard #117",
+    "number": 117,
     "title": "Getting Started With Apache Hadoop",
     "subtitle": "Learn the Basics of the Hadoop Framework",
     "description": "Lately, it has become expensive and otherwise impossible for companies to store their data in one system and to analyze it with traditional solutions. Download this Refcard to learn how Apache Hadoop stores and processes large datasets, get a breakdown of the core components of Hadoop, and learn the most popular frameworks for processing data on Hadoop.",
@@ -936,7 +936,7 @@
     "url": "https://dzone.com/refcardz/getting-started-apache-hadoop"
   },
   {
-    "number": "Refcard #118",
+    "number": 118,
     "title": "Getting Started with Visual Studio 2010",
     "subtitle": "Learn These Visual Studio 2010 Tips and Tricks",
     "description": "Focuses on the new features in Visual Studio 2010 and the most common keyboard shortcuts.",
@@ -944,7 +944,7 @@
     "url": "https://dzone.com/refcardz/getting-started-visual-studio"
   },
   {
-    "number": "Refcard #119",
+    "number": 119,
     "title": "Getting Started with Application Lifecycle Management",
     "subtitle": "Your Guide to ALM",
     "description": "Offers advice on change request tracking, inventory control, process automation, deployment automation, compliance reporting, and ALM.",
@@ -952,7 +952,7 @@
     "url": "https://dzone.com/refcardz/getting-started-application"
   },
   {
-    "number": "Refcard #120",
+    "number": 120,
     "title": "Apache Solr: Getting Optimal Search Results",
     "subtitle": "Optimize Your Search Results With Apache Solr",
     "description": "Learn about searching, solrconfig.xml, schema.xml, field types, analyzers, indexing, and advanced search features.",
@@ -960,7 +960,7 @@
     "url": "https://dzone.com/refcardz/solr-essentials"
   },
   {
-    "number": "Refcard #121",
+    "number": 121,
     "title": "Open Source Media Framework",
     "subtitle": "Building Simple Custom Video Players",
     "description": "Learn about Strobe Media Playback, Flash Media, key events, streaming, composite elements, and more.",
@@ -968,7 +968,7 @@
     "url": "https://dzone.com/refcardz/getting-started-web-video"
   },
   {
-    "number": "Refcard #122",
+    "number": 122,
     "title": "Functional Programming with Clojure",
     "subtitle": "Simple Concurrency on the JVM",
     "description": "Highlights the major improvements and new features in HTML5 and illustrates the JavaScript APIs available to work with those features.",
@@ -976,7 +976,7 @@
     "url": "https://dzone.com/refcardz/functional-programming-clojure"
   },
   {
-    "number": "Refcard #123",
+    "number": 123,
     "title": "HTML5: The Evolution of Web Standards",
     "subtitle": "The Next Generation in Web Standards",
     "description": "Highlights the major improvements and new features in HTML5 and illustrates the JavaScript APIs available to work with those features.",
@@ -984,7 +984,7 @@
     "url": "https://dzone.com/refcardz/html5-new-standards-web-interactivity"
   },
   {
-    "number": "Refcard #124",
+    "number": 124,
     "title": "PHPUnit: PHP Test-Driven Development Automated Tools to Improve Your PHP Code Quality",
     "subtitle": "Clean Up Your Code Quality with PHPUnit",
     "description": "Shows you how to set up and automate your testing with ease and help you improve code quality.",
@@ -992,7 +992,7 @@
     "url": "https://dzone.com/refcardz/phpunit-php-test-driven"
   },
   {
-    "number": "Refcard #125",
+    "number": 125,
     "title": "Selenium 2.0: Using the Webdriver API to Create Robust User Acceptance Tests",
     "subtitle": "Automate User Acceptance Tests With Selenium 2.0",
     "description": "Covers the background of Selenium 2.0, WebDriver architecture, installation, driver implementation, page interaction models and mobile support.",
@@ -1000,7 +1000,7 @@
     "url": "https://dzone.com/refcardz/getting-started-selenium-20"
   },
   {
-    "number": "Refcard #126",
+    "number": 126,
     "title": "Essential Liferay",
     "subtitle": "A Definitive Guide for Enterprise Portal Development",
     "description": "Includes web content management, workflow, administration, hot tips and more.",
@@ -1008,7 +1008,7 @@
     "url": "https://dzone.com/refcardz/essential-liferay-leading-open"
   },
   {
-    "number": "Refcard #127",
+    "number": 127,
     "title": "Developing a Silverlight Application for Windows Phone",
     "subtitle": "Learn to Develop Silverlight Apps for Your Windows Phone",
     "description": "Get key information about dev tools, hardware considerations, layouts, debugging, data handling, lifecycle, and other common mobile features.",
@@ -1016,7 +1016,7 @@
     "url": "https://dzone.com/refcardz/developing-silverlight"
   },
   {
-    "number": "Refcard #128",
+    "number": 128,
     "title": "What's New in JPA 2.0",
     "subtitle": "JPA 2.0: A Java Persistence Update",
     "description": "Covers JDBC Properties, Access Mode, Mappings, Shared Cache, the TypedQuery interface, JPQL, Pessimistic Locking, the Criteria API and Validation.",
@@ -1024,7 +1024,7 @@
     "url": "https://dzone.com/refcardz/whats-new-jpa-20"
   },
   {
-    "number": "Refcard #129",
+    "number": 129,
     "title": "Foundations of RESTful Architecture",
     "subtitle": "",
     "description": "The Representational State Transfer (REST) architectural style is a worldview that elevates information into a first-class element of architectures. REST allows us to achieve the architectural properties of performance, scalability, generality, simplicity, modifiability, and extensibility. This newly updated Refcard explains main HTTP verbs, describes response codes, and lists libraries and frameworks. It also gives additional resources to further explore each topic.",
@@ -1032,7 +1032,7 @@
     "url": "https://dzone.com/refcardz/rest-foundations-restful"
   },
   {
-    "number": "Refcard #130",
+    "number": 130,
     "title": "Designing Quality Software",
     "subtitle": "Architectural and Technical Best Practices",
     "description": "Provides a comprehensive list of design rules, programming rules, testing rules, environment rules, and common sense rules to build better software.",
@@ -1040,7 +1040,7 @@
     "url": "https://dzone.com/refcardz/designing-quality-software"
   },
   {
-    "number": "Refcard #131",
+    "number": 131,
     "title": "ADO.NET Entity Framework",
     "subtitle": "Object-Relational Mapping and Data Access",
     "description": "Become an expert at developing ADO.NET framework. This DZone Refcard will give you a major advantage when developing the data architecture for your .NET applications.",
@@ -1048,7 +1048,7 @@
     "url": "https://dzone.com/refcardz/adonet-entity-framework-object"
   },
   {
-    "number": "Refcard #132",
+    "number": 132,
     "title": "Mastering Portals with a Portlet Bridge",
     "subtitle": "Learn to Configure JBoss Portlet Bridge",
     "description": "Learn to configure the JBoss Portlet Bridge, which will alow you to run application frameworks in a portal environment without worrying about the underlying portlet API or portlet concepts.",
@@ -1056,7 +1056,7 @@
     "url": "https://dzone.com/refcardz/mastering-portals-portlet"
   },
   {
-    "number": "Refcard #133",
+    "number": 133,
     "title": "Apache Hadoop Deployment",
     "subtitle": "A Blueprint for Reliable Distributed Computing",
     "description": "Learn how to use one of the most popular open source data projects out there. This Refcard reviews a basic blueprint for deploying Apache Hadoop HDFS and MapReduce using the Cloudera Distribution.",
@@ -1064,7 +1064,7 @@
     "url": "https://dzone.com/refcardz/deploying-hadoop"
   },
   {
-    "number": "Refcard #134",
+    "number": 134,
     "title": "Cloud Computing with Windows Azure Platform",
     "subtitle": "Configure and Compute in the Cloud",
     "description": "Get familiar with the Windows Azure cloud service configurations, storage allocations to compute instances, and Windows Azure AppFabric.",
@@ -1072,7 +1072,7 @@
     "url": "https://dzone.com/refcardz/cloud-computing-windows-azure"
   },
   {
-    "number": "Refcard #135",
+    "number": 135,
     "title": "The MVVM Design Pattern",
     "subtitle": "A Formula for Elegant, Maintainable Mobile Apps",
     "description": "Learn how to use Silverlight to create gorgeous mobiles apps for the Windows Phone. Included in this Refcard is everything from an explanation of the MVVM Design Pattern to some examples of MVVM Project Templates.",
@@ -1080,7 +1080,7 @@
     "url": "https://dzone.com/refcardz/mvvm-design-pattern-formula"
   },
   {
-    "number": "Refcard #136",
+    "number": 136,
     "title": "WebMatrix",
     "subtitle": "Advanced Web Development Made Simple",
     "description": "Learn to make a website quickly without having to build it from scratch. WebMatrix is a powerful, task-focused tool that is designed to make it easy to create, customize and publish websites based on open source technologies.",
@@ -1088,7 +1088,7 @@
     "url": "https://dzone.com/refcardz/webmatrix"
   },
   {
-    "number": "Refcard #137",
+    "number": 137,
     "title": "Understanding Lucene",
     "subtitle": "Powering Better Search Results",
     "description": "Learn to use the powerful multi-language search engine from Lucene. This Refcard will give you a foundational knowledge of Lucenes features from the inverted index structure on up.",
@@ -1096,7 +1096,7 @@
     "url": "https://dzone.com/refcardz/lucene"
   },
   {
-    "number": "Refcard #138",
+    "number": 138,
     "title": "RichFaces 4.0",
     "subtitle": "A Next Generation JSF Framework",
     "description": "Get an in-depth introduction to this new JSF Framework. This DZone Refcard will get you started with RichFaces 4.0 and introduce the core JSF 2 extensions, render options, queue, client-side validation, rich tags, client functions, and skinning.",
@@ -1104,7 +1104,7 @@
     "url": "https://dzone.com/refcardz/richfaces-40-next-generation"
   },
   {
-    "number": "Refcard #139",
+    "number": 139,
     "title": "Spring Roo",
     "subtitle": "Open-Source Rapid Application Development for Java",
     "description": "Get started on your first project with theg Spring Roo open source RAD. You'll be guided through the source code, common commands, dynamic finders, remoting support, incremental database reverse engineering, and removing Spring Roo.",
@@ -1112,7 +1112,7 @@
     "url": "https://dzone.com/refcardz/spring-roo-open-source-rapid"
   },
   {
-    "number": "Refcard #140",
+    "number": 140,
     "title": "Mule 3.3",
     "subtitle": "Simplifying SOA",
     "description": "Learn how to deply on this SOA. If you are a new user, it will serve as a handy reference when building your integration flows in Mule. If you are an existing user, especially of Mule 2, it will help ease your transition into using Mule 3.",
@@ -1120,7 +1120,7 @@
     "url": "https://dzone.com/refcardz/essential-mule-3-3"
   },
   {
-    "number": "Refcard #141",
+    "number": 141,
     "title": "Node.js",
     "subtitle": "Server-Side JavaScript for Backends, API Servers, and Web Apps",
     "description": "Node.js is a JavaScript runtime that runs on top of Google\u2019s open-source JavaScript engine called V8. Pairing JavaScript\u2019s naturally event-driven, asynchronous coding style with non-blocking I/O libraries makes Node.js fast, lightweight, and efficient. This newly updated Refcard introduces Node, explains how it works, and dives into its architecture. Learn how to install and use Node to its full potential and access a list of the most commonly used APIs.",
@@ -1128,7 +1128,7 @@
     "url": "https://dzone.com/refcardz/nodejs"
   },
   {
-    "number": "Refcard #142",
+    "number": 142,
     "title": "Adobe Flash Builder 4.5",
     "subtitle": "Develop for the Web, Desktop, and Mobile",
     "description": "Reap the benefits of Flash Builder 4.5 to develop Flex applications and deploy them on web, desktop or mobile platforms.",
@@ -1136,7 +1136,7 @@
     "url": "https://dzone.com/refcardz/adobe-flash-builder-45-develop"
   },
   {
-    "number": "Refcard #143",
+    "number": 143,
     "title": "ColdFusion Builder 2",
     "subtitle": "Faster Coding, Less Errors",
     "description": "Check out the improvements Adobe made to its popular Builder 1. This DZone Refcard will take you through installation and starting a new project, to server connections, views, and search.",
@@ -1144,7 +1144,7 @@
     "url": "https://dzone.com/refcardz/coldfusion-builder-2-faster"
   },
   {
-    "number": "Refcard #144",
+    "number": 144,
     "title": "EclipseLink JPA",
     "subtitle": "An Advanced ORM Persistence Framework",
     "description": "Build your JPA knowledge with an advanced look at the EclipseLink Framework. This Refcard focuses on EclipseLinks object to relational mapping (ORM) functionality along with its extensions of JPA 2.0.",
@@ -1152,7 +1152,7 @@
     "url": "https://dzone.com/refcardz/eclipselink-jpa"
   },
   {
-    "number": "Refcard #145",
+    "number": 145,
     "title": "Continuous Delivery",
     "subtitle": "Patterns and Anti-Patterns in the Software Lifecycle",
     "description": "Minimize the time it takes to go from idea to usable software. Learn to use agile techniques and automate the entire software delivery system: build, deploy, test, release.",
@@ -1160,7 +1160,7 @@
     "url": "https://dzone.com/refcardz/continuous-delivery-patterns"
   },
   {
-    "number": "Refcard #146",
+    "number": 146,
     "title": "Flex Mobile Development",
     "subtitle": "Build Apps for Android, iOS, and BlackBerry Tablet OS",
     "description": "The Flex Mobile Development Refcard will walk you through the easiest process yet for developing and deploying cross-platform applications on multiple devices and platforms with the richness that you expect out of an Adobe creative tool.",
@@ -1168,7 +1168,7 @@
     "url": "https://dzone.com/refcardz/flex-mobile-development-build"
   },
   {
-    "number": "Refcard #147",
+    "number": 147,
     "title": "Eclipse Tools for Spring",
     "subtitle": "The SpringSource Tool Suite",
     "description": "Get to know all of Spring's out-of-the-box developer tools for Eclipse. This Refcard will walk you through installation, configuration, validation, Bean navigation, Spring Aspect Oriented Programming, and analysis.",
@@ -1176,7 +1176,7 @@
     "url": "https://dzone.com/refcardz/eclipse-tools-spring"
   },
   {
-    "number": "Refcard #148",
+    "number": 148,
     "title": "Mastering Portal UI",
     "subtitle": "Development With Vaadin and Liferay",
     "description": "Create gorgeous applications for your enterprise with this Refcard. For application development, Liferay Portal includes Vaadin as a pre-packaged framework for developing attractive, easy-to-use applications.",
@@ -1184,7 +1184,7 @@
     "url": "https://dzone.com/refcardz/mastering-portal-ui"
   },
   {
-    "number": "Refcard #149",
+    "number": 149,
     "title": "Chef An Open Source Tool for Scalable Cloud and Data Center Automation",
     "subtitle": "An Open Source Tool for Scalable Cloud and Data Center Automation",
     "description": "Get the ultimate cheat sheet for a new breed of open-source infrastructure. You\u2019ll learn how to create a Chef cookbook, and you\u2019ll learn about Run Lists, \u201cKnife,\u201d and the 0hai Ruby library.",
@@ -1192,7 +1192,7 @@
     "url": "https://dzone.com/refcardz/chef-open-source-tool-scalable"
   },
   {
-    "number": "Refcard #150",
+    "number": 150,
     "title": "Java Enterprise Edition 6",
     "subtitle": "The Most Elegant Enterprise Java Yet",
     "description": "Engages with the very best parts of Java EE 6's public APIs with descriptions, code examples, and class names.",
@@ -1200,7 +1200,7 @@
     "url": "https://dzone.com/refcardz/java-enterprise-edition-6-most"
   },
   {
-    "number": "Refcard #151",
+    "number": 151,
     "title": "HTML5 Canvas",
     "subtitle": "A Web Standard for Dynamic Graphics",
     "description": "Check out the standard for dynamic graphics in HTML5 Canvas",
@@ -1208,7 +1208,7 @@
     "url": "https://dzone.com/refcardz/html5-canvas-web-standard"
   },
   {
-    "number": "Refcard #152",
+    "number": 152,
     "title": "HTML5 WebSocket",
     "subtitle": "Full-Duplex, Real-Time Web Communication",
     "description": "Includes technical details of the WebSocket protocol, sample API usage, fallbacks for older browsers, and more.",
@@ -1216,7 +1216,7 @@
     "url": "https://dzone.com/refcardz/html5-websocket"
   },
   {
-    "number": "Refcard #153",
+    "number": 153,
     "title": "Apache Cassandra",
     "subtitle": "A Fault-Tolerant, Massively Scalable NoSQL Database",
     "description": "Covers data model, architecture, partitioning, strategies, indexes, libraries in various languages, and more.",
@@ -1224,7 +1224,7 @@
     "url": "https://dzone.com/refcardz/apache-cassandra"
   },
   {
-    "number": "Refcard #154",
+    "number": 154,
     "title": "Core Jetty",
     "subtitle": "A Lightweight, Open-Source Web Server and Servlet Container",
     "description": "Includes architecture, configuration, basic, and advanced usage, with many code examples.",
@@ -1232,7 +1232,7 @@
     "url": "https://dzone.com/refcardz/jetty"
   },
   {
-    "number": "Refcard #155",
+    "number": 155,
     "title": "Mockito",
     "subtitle": "A Simple, Intuitive Mocking Framework",
     "description": "Covers the testing framework for Java that automatoes unit tests using Test-Driven Deployment or Behavior-Driven Deployment.",
@@ -1240,7 +1240,7 @@
     "url": "https://dzone.com/refcardz/mockito"
   },
   {
-    "number": "Refcard #156",
+    "number": 156,
     "title": "Java FX",
     "subtitle": "A Rich Client Platform for Java",
     "description": "Includes writing JavaFX applications and also serves as a convenient reference to some of the more advanced APIs in JavaFX 2.0.",
@@ -1248,7 +1248,7 @@
     "url": "https://dzone.com/refcardz/javafx-20-rich-client-platform"
   },
   {
-    "number": "Refcard #157",
+    "number": 157,
     "title": "Database Partitioning with MySQL",
     "subtitle": "Improving Performance, Availability, and Manageability",
     "description": "Provides an overview of the MySQL database partitioning techniques and how these techniques lead to operational excellence.",
@@ -1256,7 +1256,7 @@
     "url": "https://dzone.com/refcardz/database-partitioning"
   },
   {
-    "number": "Refcard #158",
+    "number": 158,
     "title": "Machine Learning",
     "subtitle": "Patterns for Predictive Analytics",
     "description": "Covers machine learning for predictive analytics, explains setting up training and testing data, and offers machine learning model snippets.",
@@ -1264,7 +1264,7 @@
     "url": "https://dzone.com/refcardz/machine-learning-predictive"
   },
   {
-    "number": "Refcard #159",
+    "number": 159,
     "title": "Essential Apache HBase",
     "subtitle": "Learn HBase: the NoSQL Database for Hadoop and Big Data",
     "description": "HBase Tutorial - Learn HBase quickly with this beginner's introduction to the Hadoop database: a distributed, scalable Big Data store for managing very large tables.",
@@ -1272,7 +1272,7 @@
     "url": "https://dzone.com/refcardz/hbase"
   },
   {
-    "number": "Refcard #160",
+    "number": 160,
     "title": "Data Warehousing",
     "subtitle": "Best Practices for Collecting, Storing, and Delivering Decision-Support Data",
     "description": "As a total architecture, data warehousing provides decision-support data that is consistent, integrated, standard, and simply understood. From descriptions to diagrams and integration patterns, this newly updated Refcard walks you through each aspect of data warehousing. Gain a complete understanding of data modeling, infrastructure, relationships, attributes, and speedy history loading and recording with atomic data.",
@@ -1280,7 +1280,7 @@
     "url": "https://dzone.com/refcardz/data-warehousing"
   },
   {
-    "number": "Refcard #161",
+    "number": 161,
     "title": "Jenkins on PaaS",
     "subtitle": "Continuous Integration with Jenkins for Java Projects",
     "description": "Includes a review of the most useful plugins, best practices, security, integration to an enterprise environment, and more.",
@@ -1288,7 +1288,7 @@
     "url": "https://dzone.com/refcardz/jenkins-paas"
   },
   {
-    "number": "Refcard #162",
+    "number": 162,
     "title": "Java Profiling with VisualVM",
     "subtitle": "X-Ray Vision for Dramatic Performance Gains",
     "description": "Describes how VisualVM can enhance the capability of monitoring and performance analysis for the Java SE platform.",
@@ -1296,7 +1296,7 @@
     "url": "https://dzone.com/refcardz/java-profiling-visualvm"
   },
   {
-    "number": "Refcard #163",
+    "number": 163,
     "title": "Code Gems for Android Developers",
     "subtitle": "Working with the World's Most Popular Mobile OS",
     "description": "Provides an overview of the API and Tools to develop applications using the Java platform.",
@@ -1304,7 +1304,7 @@
     "url": "https://dzone.com/refcardz/android-application"
   },
   {
-    "number": "Refcard #164",
+    "number": 164,
     "title": "Getting Started With Scala",
     "subtitle": "A General-Purpose Programming Language",
     "description": "Covers creating a new Scala project, a tour of Scala's features, an introduction to classes and objects within Scala, and much more.",
@@ -1312,7 +1312,7 @@
     "url": "https://dzone.com/refcardz/scala"
   },
   {
-    "number": "Refcard #165",
+    "number": 165,
     "title": "Deployment Automation Patterns",
     "subtitle": "Solutions to Common Software Deployment Issues",
     "description": "Covers seven useful deployment automation patterns, antipatterns and code snippets.",
@@ -1320,7 +1320,7 @@
     "url": "https://dzone.com/refcardz/deployment-automation-patterns"
   },
   {
-    "number": "Refcard #166",
+    "number": 166,
     "title": "Patterns of Modular Architecture",
     "subtitle": "18 Patterns for the Java Platform",
     "description": "Covers 18 modularity patterns to help developers incorporate modular design thinking into development initiatives.",
@@ -1328,7 +1328,7 @@
     "url": "https://dzone.com/refcardz/patterns-modular-architecture"
   },
   {
-    "number": "Refcard #167",
+    "number": 167,
     "title": "Software Configuration Management Patterns",
     "subtitle": "Improve Working and Developing Together",
     "description": "Covers 16 patterns that serve to increase team agility, enhanced by general guidelines for improved SCM, and a list of resources.",
@@ -1336,7 +1336,7 @@
     "url": "https://dzone.com/refcardz/software-configuration"
   },
   {
-    "number": "Refcard #168",
+    "number": 168,
     "title": "Refactoring Patterns",
     "subtitle": "Learn About an Awesome Code Transformation",
     "description": "Provides examples of Refactoring patterns that can be used in a variety of scenarios.",
@@ -1344,7 +1344,7 @@
     "url": "https://dzone.com/refcardz/refactoring-patterns"
   },
   {
-    "number": "Refcard #169",
+    "number": 169,
     "title": "Essential Apache HTTP Server",
     "subtitle": "Configure and Administer the World's Most Popular Web Server",
     "description": "Shows how to configure and administer the Apache HTTP server (versions 2.2 and 2.4)",
@@ -1352,7 +1352,7 @@
     "url": "https://dzone.com/refcardz/essential-apache-http-server"
   },
   {
-    "number": "Refcard #170",
+    "number": 170,
     "title": "Camel Essential Components",
     "subtitle": "Simplify Service Integrations With Intelligent Routing",
     "description": "Apache Camel is an open-source, lightweight integration library that allows your applications to accomplish intelligent routing, message transformation, and protocol mediation. This newly updated Refcard introduces Apache Camel, explains its benefits, and demonstrates essential components. Gain a deeper understanding of implementing JMS and ActiveMQ, the Bean Component, Log and Metrics Components, and Camel's REST DSL.",
@@ -1360,7 +1360,7 @@
     "url": "https://dzone.com/refcardz/essential-camel-components"
   },
   {
-    "number": "Refcard #171",
+    "number": 171,
     "title": "MongoDB",
     "subtitle": "Flexible NoSQL for Humongous Data",
     "description": "Covers configuration options, shell functions, types of cursors, sharding and more.",
@@ -1368,7 +1368,7 @@
     "url": "https://dzone.com/refcardz/mongodb"
   },
   {
-    "number": "Refcard #172",
+    "number": 172,
     "title": "Introduction to HTTP",
     "subtitle": "The Hypertext Transfer Protocol",
     "description": "Provides an introduction to HTTP as well as dedicated request methods, header fields and MIME types.",
@@ -1376,7 +1376,7 @@
     "url": "https://dzone.com/refcardz/http-hypertext-transfer-0"
   },
   {
-    "number": "Refcard #173",
+    "number": 173,
     "title": "Core JSON",
     "subtitle": "The Fat-Free Alternative to XML",
     "description": "Covers JSON syntax, validation, modeling, JSON Schema. Includes tips and tricks for using JSON with various tools and programming languages.",
@@ -1384,7 +1384,7 @@
     "url": "https://dzone.com/refcardz/core-json"
   },
   {
-    "number": "Refcard #174",
+    "number": 174,
     "title": "Object-Oriented JavaScript",
     "subtitle": "Advanced Techniques for Serious Web Applications",
     "description": "Covers advanced object-oriented techniques in JavaScript, including object creation, member scoping, namespaces, inheritance and modularization.",
@@ -1392,7 +1392,7 @@
     "url": "https://dzone.com/refcardz/object-oriented-javascript"
   },
   {
-    "number": "Refcard #175",
+    "number": 175,
     "title": "Core Dart",
     "subtitle": "The Next-Generation Client-Side Web Programming Language",
     "description": "Covers optional typing, core types, functions, classes and interfaces in Core Dart (Google's answer to JavaScript).",
@@ -1400,7 +1400,7 @@
     "url": "https://dzone.com/refcardz/core-dart"
   },
   {
-    "number": "Refcard #176",
+    "number": 176,
     "title": "Essential Couchbase APIs",
     "subtitle": "Open Source NoSQL Data Access from Java, Ruby, and .NET",
     "description": "Provides an overview of connection, storage, retrieval, update, and query operations on Couchbase databases from Java, Ruby, and .NET applications.",
@@ -1408,7 +1408,7 @@
     "url": "https://dzone.com/refcardz/couchbase-apis"
   },
   {
-    "number": "Refcard #177",
+    "number": 177,
     "title": "HTML5 Web Workers",
     "subtitle": "Multithreaded JavaScript for High-Performance Web Applications",
     "description": "Covers the basics of Web Workers, including: creating workers, passing messages, handling errors and best practices.",
@@ -1416,7 +1416,7 @@
     "url": "https://dzone.com/refcardz/html5-web-workers"
   },
   {
-    "number": "Refcard #178",
+    "number": 178,
     "title": "Git Patterns and Anti-Patterns",
     "subtitle": "Scaling from Workgroup to Enterprise",
     "description": "Suggests patterns and anti-patterns, including Hybrid SCM, Git champions, blessed repository, per-feature topic branches, and ALM integration.",
@@ -1424,7 +1424,7 @@
     "url": "https://dzone.com/refcardz/git-patterns-and-anti-patterns"
   },
   {
-    "number": "Refcard #179",
+    "number": 179,
     "title": "Sencha Touch",
     "subtitle": "Open Source HTML5 Mobile Web Development Made Easy",
     "description": "Provides a quick reference of this application framework along with examples of the class, component, event systems, selectors, theming, and more.",
@@ -1432,7 +1432,7 @@
     "url": "https://dzone.com/refcardz/sencha-touch"
   },
   {
-    "number": "Refcard #180",
+    "number": 180,
     "title": "Preparing for Continuous Delivery",
     "subtitle": "Building Your DevOps Pipeline",
     "description": "Continuous delivery is the practice of releasing in frequent, short delivery cycles, enabling constant improvement of your application. In this Refcard you will learn the fundamentals of continuous delivery, including how to set up your delivery pipeline, putting you one step closer to decreased cycle times and faster delivery.",
@@ -1440,7 +1440,7 @@
     "url": "https://dzone.com/refcardz/preparing-continuous-delivery"
   },
   {
-    "number": "Refcard #181",
+    "number": 181,
     "title": "Using Repository Managers",
     "subtitle": "The Best Way to Organize, Store, and Distribute Software Components",
     "description": "Intended to help you design and configure a binary repository, optimize it for various workflows, and fit it smoothly into your software development lifecycle.",
@@ -1448,7 +1448,7 @@
     "url": "https://dzone.com/refcardz/binary-repository-management"
   },
   {
-    "number": "Refcard #182",
+    "number": 182,
     "title": "Practical DNS",
     "subtitle": "Managing Domains for Safety, Reliability, and Speed",
     "description": "Introduces DNS and explains how DNS works, DNS configuration, security, and common problems, in order to get you up and running quickly, safely, and reliably.",
@@ -1456,7 +1456,7 @@
     "url": "https://dzone.com/refcardz/dns"
   },
   {
-    "number": "Refcard #183",
+    "number": 183,
     "title": "Practical Data Mining with Python",
     "subtitle": "Discovering and Visualizing Patterns with Python",
     "description": "Covers the tools used in practical Data Mining for finding and describing structural patterns in data using Python.",
@@ -1464,7 +1464,7 @@
     "url": "https://dzone.com/refcardz/data-mining-discovering-and"
   },
   {
-    "number": "Refcard #184",
+    "number": 184,
     "title": "Core Spring Data",
     "subtitle": "A Must-Have Reference for the Spring Data Project",
     "description": "Covers support modules for traditional, NoSQL, and big data technologies and provides a consistent Spring-based programming model across database technologies.",
@@ -1472,7 +1472,7 @@
     "url": "https://dzone.com/refcardz/core-spring-data"
   },
   {
-    "number": "Refcard #185",
+    "number": 185,
     "title": "Subversion",
     "subtitle": "Get Into the Subversion Source Control Repository",
     "description": "Intended for both version control novices and experienced developers who want to use Subversion more effectively.",
@@ -1480,7 +1480,7 @@
     "url": "https://dzone.com/refcardz/getting-started-subversion"
   },
   {
-    "number": "Refcard #186",
+    "number": 186,
     "title": "HTML5 Mobile Development",
     "subtitle": "Important HTML5 Mobile Technologies, Tools, Frameworks, and Communities",
     "description": "Covers the most important HTML5 mobile technologies and is intended to bring you up to speed in mobile HTML5 development.",
@@ -1488,7 +1488,7 @@
     "url": "https://dzone.com/refcardz/html5-mobile-development"
   },
   {
-    "number": "Refcard #187",
+    "number": 187,
     "title": "Spring Batch",
     "subtitle": "A Lightweight, Open Source Java Framework for Batch Processing",
     "description": "Covers the core framework and additional components that provides developers to build robust batch applications that are used in everyday enterprise environments.",
@@ -1496,7 +1496,7 @@
     "url": "https://dzone.com/refcardz/spring-batch-refcard"
   },
   {
-    "number": "Refcard #188",
+    "number": 188,
     "title": "Business Rule Management With Drools",
     "subtitle": "An IDE for ActionScript and Flex Development",
     "description": "Introduces Drools, a rules engine for Java and .NET. Aimed at experienced developers who are new to Business Rule Management Systems (BRMS).",
@@ -1504,7 +1504,7 @@
     "url": "https://dzone.com/refcardz/drools"
   },
   {
-    "number": "Refcard #189",
+    "number": 189,
     "title": "Core C++",
     "subtitle": "The Essential Core C++ Cheat Sheet",
     "description": "Provides an overview of key aspects of C++, and is aimed at existing C++ programmers and object-oriented developers looking to transition to C++.",
@@ -1512,7 +1512,7 @@
     "url": "https://dzone.com/refcardz/core-cpp"
   },
   {
-    "number": "Refcard #190",
+    "number": 190,
     "title": "Essential PostGIS",
     "subtitle": "Spatial Extender for PostgreSQL",
     "description": "Reviews installation, data types & administration, functions, location queries and other common tasks you perform when using PostGIS.",
@@ -1520,7 +1520,7 @@
     "url": "https://dzone.com/refcardz/essential-postgis"
   },
   {
-    "number": "Refcard #191",
+    "number": 191,
     "title": "Getting Started With PhoneGap",
     "subtitle": "The Framework for Hybrid Mobile Apps",
     "description": "Provides an introduction to PhoneGap, and is intended for experienced developers who have a basic conceptual grasp of mobile app development.",
@@ -1528,7 +1528,7 @@
     "url": "https://dzone.com/refcardz/getting-started-phonegap"
   },
   {
-    "number": "Refcard #192",
+    "number": 192,
     "title": "CSS3 Basics",
     "subtitle": "New Features for Super-Powered Web Development",
     "description": "Covers the most important features introduced or updated in CSS3, including new selectors, color styles, font, text styles and background styles.",
@@ -1536,7 +1536,7 @@
     "url": "https://dzone.com/refcardz/css3"
   },
   {
-    "number": "Refcard #193",
+    "number": 193,
     "title": "Core Python",
     "subtitle": "Creating Beautiful Code with an Interpreted, Dynamically Typed Language",
     "description": "Python is an interpreted, dynamically typed language. Python uses indentation to create readable, even beautiful code. With Python\u2019s vast array of built-in libraries, it can handle many jobs without the need for further libraries, allowing you to write useful code almost immediately. But Python's extensive network of external libraries makes it easy to add functionality based on your needs.",
@@ -1544,7 +1544,7 @@
     "url": "https://dzone.com/refcardz/core-python"
   },
   {
-    "number": "Refcard #194",
+    "number": 194,
     "title": "Search Patterns",
     "subtitle": "Patterns for Integrating Cloud-Based Searches",
     "description": "Provides patterns for integrating cloud-based search with a variety of applications, check it out.",
@@ -1552,7 +1552,7 @@
     "url": "https://dzone.com/refcardz/search-patterns"
   },
   {
-    "number": "Refcard #195",
+    "number": 195,
     "title": "HTML5 IndexedDB",
     "subtitle": "Features, Groups, Characters, and Quantifiers",
     "description": "Introduces you to IndexedDB by guiding you through setting up and using an IndexedDB database, and covers advanced usage and known issues.",
@@ -1560,7 +1560,7 @@
     "url": "https://dzone.com/refcardz/html5-indexeddb"
   },
   {
-    "number": "Refcard #196",
+    "number": 196,
     "title": "Regular Expressions",
     "subtitle": "A Look at Characters, Types, Operators, and More",
     "description": "Covers basic features of regular expressions, including normal and special characters, quantifiers, capturing and non-capturing groups.",
@@ -1568,7 +1568,7 @@
     "url": "https://dzone.com/refcardz/regular-expressions"
   },
   {
-    "number": "Refcard #197",
+    "number": 197,
     "title": "Spring Integration",
     "subtitle": "Core Components of the Leading Java Framework",
     "description": "Covers core components, messaging channels, message routing and transformation of this Java- based framework.",
@@ -1576,7 +1576,7 @@
     "url": "https://dzone.com/refcardz/spring-integration"
   },
   {
-    "number": "Refcard #198",
+    "number": 198,
     "title": "Java Enterprise Edition 7",
     "subtitle": "Streamlining Modern Java Development",
     "description": "Java Enterprise Edition allows programmers to write less and focus on delivering clean business logic. This newly updated Refcard covers the key APIs of Java EE 7 that are the most relevant to modern development - such as WebSocket, JSON Processing, Concurrency Utilities, and JAX-RS.",
@@ -1584,7 +1584,7 @@
     "url": "https://dzone.com/refcardz/java-enterprise-edition-7"
   },
   {
-    "number": "Refcard #199",
+    "number": 199,
     "title": "Debugging JavaScript",
     "subtitle": "Picking the Right Tools for the Most Popular Programming Language",
     "description": "Covers common problems, debugging jQuery, mobile app debugging, useful tools, and more.",
@@ -1592,7 +1592,7 @@
     "url": "https://dzone.com/refcardz/debugging-javascript"
   },
   {
-    "number": "Refcard #200",
+    "number": 200,
     "title": "Java Performance Optimization",
     "subtitle": "Tools and Techniques for Turbocharged Apps",
     "description": "Getting Java apps to run is one thing. But getting them to run fast is another. Performance is a tricky beast in any object-oriented environment, but the complexity of the JVM adds a whole new level of performance-tweaking trickiness -- and opportunity. This Refcard covers JVM internals, class loading (updated to reflect the new Metaspace in Java 8), garbage collection, troubleshooting, monitoring, concurrency, and more.",
@@ -1600,7 +1600,7 @@
     "url": "https://dzone.com/refcardz/java-performance-optimization"
   },
   {
-    "number": "Refcard #201",
+    "number": 201,
     "title": "Reactive Programming with Akka",
     "subtitle": "Event-Driven, Scalable, Resilient, and Responsive Java and Scala",
     "description": "Dives into Akka, covering defining and creating actors and messages, actor hierarchies, fault-tolerance and self-healing, and more.",
@@ -1608,7 +1608,7 @@
     "url": "https://dzone.com/refcardz/reactive-programming-akka"
   },
   {
-    "number": "Refcard #202",
+    "number": 202,
     "title": "Getting Started With Play Framework",
     "subtitle": "A Web Framework for Java and Scala",
     "description": "The Play Framework drastically improves developer productivity without sacrificing scalability. In this Refcard, learn how to create a new Play app, how to utilize controllers in Play, and how to manage routing requests within this web framework.",
@@ -1616,7 +1616,7 @@
     "url": "https://dzone.com/refcardz/getting-started-play-framework"
   },
   {
-    "number": "Refcard #203",
+    "number": 203,
     "title": "Querying Graphs with Neo4j",
     "subtitle": "An Open-Source, NoSQL Graph Database Limited Only By Hardware",
     "description": "Independent of the size of the total dataset, graph databases excel at managing highly connected data and complex queries. Armed only with a pattern and a set of starting points, graph databases explore the larger neighborhoods around these initial entities \u2014 collecting and aggregating information from millions of nodes and relationships \u2014 but leaving the billions outside the search perimeter untouched.",
@@ -1624,7 +1624,7 @@
     "url": "https://dzone.com/refcardz/querying-graphs-neo4j"
   },
   {
-    "number": "Refcard #204",
+    "number": 204,
     "title": "Apache Spark",
     "subtitle": "An Engine for Large-Scale Data Processing",
     "description": "Introduces Spark, explains its place in big data, walks through setup and creation of a Spark application, and explains commonly used actions and operations.",
@@ -1632,7 +1632,7 @@
     "url": "https://dzone.com/refcardz/apache-spark"
   },
   {
-    "number": "Refcard #205",
+    "number": 205,
     "title": "PHP 5.5 & 5.6",
     "subtitle": "What's New in PHP",
     "description": "Covers new improvements and platform enhancements in the 5.5 and 5.6 releases of this server-side scripting language.",
@@ -1640,7 +1640,7 @@
     "url": "https://dzone.com/refcardz/whats-new-php-55-56"
   },
   {
-    "number": "Refcard #206",
+    "number": 206,
     "title": "Angular Essentials",
     "subtitle": "",
     "description": "This Refcard will teach you about the essential pieces of Angular and the main concepts behind working with this ever-growing platform for web-based applications through detailed diagrams, example code snippets, and in-depth explanations. You will learn about using TypeScript libraries, component classes, data binding mechanisms, and more.",
@@ -1648,7 +1648,7 @@
     "url": "https://dzone.com/refcardz/angularjs-essentials"
   },
   {
-    "number": "Refcard #207",
+    "number": 207,
     "title": "Cloud Foundry",
     "subtitle": "Open-Source PaaS for Streamlined Development and Deployment",
     "description": "Covers technologies supported by Cloud Foundry, finding a hosting provider, writing apps for and deploying to Cloud Foundry, scaling and managing apps in the cloud, and more.",
@@ -1656,7 +1656,7 @@
     "url": "https://dzone.com/refcardz/cloud-foundry"
   },
   {
-    "number": "Refcard #208",
+    "number": 208,
     "title": "Getting Started With OpenStack",
     "subtitle": "The Most Popular Open-Source IaaS",
     "description": "Introduces OpenStack, an open source IaaS platform used to manage large pools of compute, storage, and networking resources in a data center.",
@@ -1664,7 +1664,7 @@
     "url": "https://dzone.com/refcardz/getting-started-openstack-most"
   },
   {
-    "number": "Refcard #209",
+    "number": 209,
     "title": "Distributed Machine Learning with Apache Mahout",
     "subtitle": "The Library for Distributed Machine Learning",
     "description": "Introduces Mahout, a library for scalable machine learning, and studies potential applications through two Mahout projects.",
@@ -1672,7 +1672,7 @@
     "url": "https://dzone.com/refcardz/distributed-machine-learning"
   },
   {
-    "number": "Refcard #210",
+    "number": 210,
     "title": "NoSQL and Data Scalability",
     "subtitle": "Keeping Up With the World of Non-Relational Databases",
     "description": "NoSQL databases offer superior performance and scalability and handle several tasks that the relational model is not able to manage. This Refcard covers the range of NoSQL database types available today, whether NoSQL is right for you, and several real-life use cases for using a NoSQL database.",
@@ -1680,7 +1680,7 @@
     "url": "https://dzone.com/refcardz/nosql-and-data-scalability-20"
   },
   {
-    "number": "Refcard #211",
+    "number": 211,
     "title": "Mobile Web Application Testing",
     "subtitle": "Making Better Web Apps for Mobile Platforms",
     "description": "Covers many tools that will help to simplify the complexities of the mobile testing process, saving you time and money.",
@@ -1688,7 +1688,7 @@
     "url": "https://dzone.com/refcardz/mobile-web-application-testing"
   },
   {
-    "number": "Refcard #212",
+    "number": 212,
     "title": "Getting Started With Apache Tomcat",
     "subtitle": "Learn the Tomcat Pure Java Open-Source Web Server",
     "description": "Learn Apache Tomcat, a pure Java open-source web server that implements the Java Servlet, JavaServer Pages, and Expression Language specifications.",
@@ -1696,7 +1696,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-apache-tomcat"
   },
   {
-    "number": "Refcard #213",
+    "number": 213,
     "title": "Monitoring NGINX",
     "subtitle": "Learn How to Monitor the Popular HTTP Server",
     "description": "Overcome dropped connections, server errors, and more by efficiently monitoring your NGINX web server.",
@@ -1704,7 +1704,7 @@
     "url": "https://dzone.com/refcardz/monitoring-nginx"
   },
   {
-    "number": "Refcard #214",
+    "number": 214,
     "title": "Getting Started With MQTT",
     "subtitle": "A Protocol for the Internet of Things",
     "description": "HTTP is too heavyweight for IoT devices, and request-response isn't responsive enough. Learn MQTT instead. Refcard includes message types, QoS levels, client libraries, and security.",
@@ -1712,7 +1712,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-mqtt"
   },
   {
-    "number": "Refcard #215",
+    "number": 215,
     "title": "Getting Started With Microservices",
     "subtitle": "Design Patterns for Decomposing the Monolith",
     "description": "Welcome to the world of microservices, where continuous deployment isn\u2019t just an aspiration, but a reality. With microservices, you can ditch the complexities of monolithic architecture for the nimble and flexible approach that embraces the \u201cdo one thing, and do it well\u201d mentality. In this updated Refcard, you will learn why microservices are becoming the cornerstone of modern architecture, how to begin refactoring your monolithic application, and common patterns to help you get started.",
@@ -1720,7 +1720,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-microservices"
   },
   {
-    "number": "Refcard #216",
+    "number": 216,
     "title": "Java Caching",
     "subtitle": "Strategies and the JCache API",
     "description": "Explores the building blocks of JCache and other caching APIs, as well as multiple strategies for implementing temporary data storage in your application.",
@@ -1728,7 +1728,7 @@
     "url": "https://dzone.com/refcardz/java-caching"
   },
   {
-    "number": "Refcard #217",
+    "number": 217,
     "title": "Functional Programming in JavaScript",
     "subtitle": "The Functional Paradigm in a Familiar Language",
     "description": "Explains functions, data types, and techniques to demonstrate the functional paradigm through the familiar JavaScript language.",
@@ -1736,7 +1736,7 @@
     "url": "https://dzone.com/refcardz/functional-programming-with-javascript"
   },
   {
-    "number": "Refcard #218",
+    "number": 218,
     "title": "Continuous Delivery With Jenkins Workflow",
     "subtitle": "The Jenkins Plugin for Managing Complex DevOps Pipelines",
     "description": "Provides an introduction to the Jenkins Workflow plugin, a tool that extends the popular CD application to manage even the most complex software pipelines and help you continuously deliver more efficiently.",
@@ -1744,7 +1744,7 @@
     "url": "https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow"
   },
   {
-    "number": "Refcard #219",
+    "number": 219,
     "title": "JavaFX 8",
     "subtitle": "The UI Toolkit for Java-Based Client Applications",
     "description": "Gives you what you need to start using the powerful JavaFX 8 UI and graphics tool with code snippets and visual examples of shapes and controls.",
@@ -1752,7 +1752,7 @@
     "url": "https://dzone.com/refcardz/javafx-8-1"
   },
   {
-    "number": "Refcard #220",
+    "number": 220,
     "title": "Getting Started With Real User Monitoring",
     "subtitle": "Monitor Website Performance Based on Real User Data",
     "description": "Teaches you how to use new web standards\u2014like W3C\u2019s Beacon API\u2014to see how your site is performing for actual users, letting you better understand how to improve overall user experience.",
@@ -1760,7 +1760,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-real-user-monitoring"
   },
   {
-    "number": "Refcard #221",
+    "number": 221,
     "title": "Getting Started With Docker",
     "subtitle": "The De Facto Open-Source Containerization Solution",
     "description": "In what seems like an instant, Docker has become the benchmark for organizations to automate infrastructure, isolate applications, maintain consistency, and improve resource utilizations. In this Refcard, learn how to run a container, explore several useful commands, and discover how to create local Docker machines.",
@@ -1768,7 +1768,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-docker-1"
   },
   {
-    "number": "Refcard #222",
+    "number": 222,
     "title": "Getting Started With Industrial Internet",
     "subtitle": "The Rise of Industrial IoT",
     "description": "Introduces basic concepts and technologies of the Industrial Internet, including sensors and actuators, industrial control systems, human-machine interfaces, real-time streaming data, device security, and more.",
@@ -1776,7 +1776,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-industrial-internet"
   },
   {
-    "number": "Refcard #223",
+    "number": 223,
     "title": "SQL Syntax for Apache Drill",
     "subtitle": "Using SQL for the SQL-on-Everything Engine",
     "description": "Acquaints you with the agility and flexibility of Apache Drill and enables you to easily query non-relational datastores, including Hadoop. Discover the benefits of data agility and gain faster insights into BI and analytics through advanced SQL queries on massive datasets.",
@@ -1784,7 +1784,7 @@
     "url": "https://dzone.com/refcardz/sql-syntax-for-apache-drill"
   },
   {
-    "number": "Refcard #224",
+    "number": 224,
     "title": "React.js Essentials",
     "subtitle": "The Simple Front-end Library for User Interfaces",
     "description": "Gives you the essentials of React.js, from the architecture to the virtual DOM, from building components to styling them.",
@@ -1792,7 +1792,7 @@
     "url": "https://dzone.com/refcardz/reactjs-essentials"
   },
   {
-    "number": "Refcard #225",
+    "number": 225,
     "title": "AMQP Essentials",
     "subtitle": "The Binary Transfer Protocol for Enterprise Applications and IoT",
     "description": "Practical introduction to AMQP \u2014 a binary, multiplexed, symmetric, secure, and lightweight message transport protocol designed for enterprise applications and particularly useful for IoT.",
@@ -1800,7 +1800,7 @@
     "url": "https://dzone.com/refcardz/amqp-essentials"
   },
   {
-    "number": "Refcard #227",
+    "number": 227,
     "title": "Reactive Programming in JavaScript With RxJS",
     "subtitle": "Using Streams for Event-Driven Web Applications",
     "description": "Web application code quickly becomes tangled, hard to maintain, and hard to test. The problem is that asynchronous computations are inherently difficult to manage. RxJS solves async without the callback pyramid of doom.",
@@ -1808,7 +1808,7 @@
     "url": "https://dzone.com/refcardz/rxjs-streams"
   },
   {
-    "number": "Refcard #228",
+    "number": 228,
     "title": "Getting Started With Apache JMeter",
     "subtitle": "Your Open-Source, Pure Java Solution for Load Testing",
     "description": "Pragmatic introduction to the open-source, wildly popular, easily extensible load testing framework. Learn how to build a test plan, follow a typical testing workflow, and interpret results.",
@@ -1816,7 +1816,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-apache-jmeter"
   },
   {
-    "number": "Refcard #229",
+    "number": 229,
     "title": "IoT Applications With Java and Raspberry Pi",
     "subtitle": "Bring Your Internet of Things Vision to Life",
     "description": "Covers hardware setup, Raspbian installation, and general-purpose I/O (GPIO) via two Java libraries. So where will your next project take you \u2013 a self-driving car, a portable gaming console, or...?",
@@ -1824,7 +1824,7 @@
     "url": "https://dzone.com/refcardz/iot-applications-with-java-and-raspberry-pi"
   },
   {
-    "number": "Refcard #230",
+    "number": 230,
     "title": "Java Containerization",
     "subtitle": "Containerizing Your Java Applications",
     "description": "This Refcard focuses on the design, deployment, service discovery, and management of Java applications on the open-source project called Docker so that you can get your Java application up and running inside a Docker-deployed Linux container. Expand your knowledge with extensive code snippets, informative diagrams, and workflow tips.",
@@ -1832,7 +1832,7 @@
     "url": "https://dzone.com/refcardz/java-containerization"
   },
   {
-    "number": "Refcard #231",
+    "number": 231,
     "title": "From Relational to Graph: A Developer's Guide",
     "subtitle": "Your Guide to Moving From RDBMS to Neo4j's Open-Source, NoSQL Graph Database",
     "description": "We live in a connected world, and representing connected data shouldn\u2019t feel odd. Enter the graph database: a flexible and expressive model that ditches table-based schemae in favor of a more natural approach that treats connections as first-class citizens. In this Refcard, developers familiar with relational databases will get an introduction to the wonderful world of graph databases with working examples in Neo4j.",
@@ -1840,7 +1840,7 @@
     "url": "https://dzone.com/refcardz/from-relational-to-graph-a-developers-guide"
   },
   {
-    "number": "Refcard #232",
+    "number": 232,
     "title": "R Essentials",
     "subtitle": "The Language for Data Manipulation and Statistical Analysis",
     "description": "R is a highly extensible, open-source programming language used mainly for statistical analysis and graphics. R has become a widely popular language because of its varying data structures, which can be more intuitive than data storage in other languages; its built-in statistical and graphical functions; and its large collection of useful plugins that can enhance the language\u2019s abilities in many different ways.",
@@ -1848,7 +1848,7 @@
     "url": "https://dzone.com/refcardz/r-essentials-1"
   },
   {
-    "number": "Refcard #233",
+    "number": 233,
     "title": "Getting Started With Kubernetes",
     "subtitle": "An open-source orchestration system for managing containerized applications across multiple hosts.",
     "description": "Containers weighing you down? Kubernetes can scale them. In order to run and maintain successful containerized applications, organization is key. Kubernetes is a powerful system that provides a method for managing Docker and Rocket containers across multiple hosts. This Refcard has all you need to know about Kubernetes including how to begin using it, how to successfully build your first pod and scale intelligently, and more.",
@@ -1856,7 +1856,7 @@
     "url": "https://dzone.com/refcardz/kubernetes-essentials"
   },
   {
-    "number": "Refcard #234",
+    "number": 234,
     "title": "Microservices in Java",
     "subtitle": "Microservices patterns to support building systems\u00a0that are tolerant of failure.",
     "description": "How quickly can you stand up a new Java microservice? You've either bought the idea of microservices \u2013 isn't this just the UNIX philosophy generalized? \u2013 or you're wondering how we're not just going to rehearse the migraines of CORBA and DCOM and EJB. Nice concept, but the devil is in the implementation details. This Refcard turns concepts into code and lets you jump on the design and runtime scalability train right away \u2013 complete with working Java snippets that run the twelve-factor gamut from config to service registration and discovery to load balancing, gateways, circuit breakers, cluster coordination, security, and more.",
@@ -1864,7 +1864,7 @@
     "url": "https://dzone.com/refcardz/learn-microservices-in-java"
   },
   {
-    "number": "Refcard #235",
+    "number": 235,
     "title": "Swift Essentials",
     "subtitle": "Explore the essentials of this open source, type-safe, object-oriented programming language.",
     "description": "With its rapid development process, impressive safety and performance, and spirited open source community, Swift has quickly become the language of choice for iOS, macOS, and Linux applications. This Refcard will get you started with Swift, provides a quick reference guide for Swift syntax, and explores security and testing features in the world\u2019s fastest growing programming language today.",
@@ -1872,7 +1872,7 @@
     "url": "https://dzone.com/refcardz/swift-essentials"
   },
   {
-    "number": "Refcard #236",
+    "number": 236,
     "title": "Introduction to Docker Monitoring",
     "subtitle": "Making Microservices a Reality",
     "description": "Docker has rapidly evolved into a production-ready infrastructure platform, promising flexible and scalable delivery of software to end users. This Refcard looks into the challenges that containers (or black boxes) present in DevOps, explores architectural models for monitoring containers, and investigates pros and cons of Docker monitoring and troubleshooting options. It also covers a complex, real-world example with Sysdig Cloud to understand what to monitor and how.",
@@ -1880,7 +1880,7 @@
     "url": "https://dzone.com/refcardz/intro-to-docker-monitoring"
   },
   {
-    "number": "Refcard #237",
+    "number": 237,
     "title": ".NET on Linux",
     "subtitle": "Microsoft's powerful framework on open source's most popular OS.",
     "description": "This Refcard guides you through productively using .NET on Linux, from installation to debugging. You will find an architectural overview, tips for using the new Command Line Interface (CLI), and tools and helpful settings as they relate to your development efforts. This Refcard also covers building MVC web sites, RESTful services, and standalone applications.",
@@ -1888,7 +1888,7 @@
     "url": "https://dzone.com/refcardz/net-on-linux"
   },
   {
-    "number": "Refcard #238",
+    "number": 238,
     "title": "RESTful API Lifecycle Management",
     "subtitle": "",
     "description": "In this Refcard, familiarize yourself with the benefits of a managed API lifecycle and walk through specific examples of using RAML to design your API.",
@@ -1896,7 +1896,7 @@
     "url": "https://dzone.com/refcardz/restful-api-lifecycle-management"
   },
   {
-    "number": "Refcard #239",
+    "number": 239,
     "title": "Getting Started With Appium",
     "subtitle": "Mobile App Automation Made Awesome",
     "description": "In this Refcard you will learn everything you need to know about getting started with this open-source tool, from installing the Appium server to running your first tests. Download this Refcard now to see why Appium is \"Mobile App Automation Made Awesome.\"",
@@ -1904,7 +1904,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-appium"
   },
   {
-    "number": "Refcard #240",
+    "number": 240,
     "title": "Reactive Microservices With Lagom and Java",
     "subtitle": "The Reactive Microservices Framework",
     "description": "Building Reactive Systems can be hard, but\u00a0Lagom\u00a0abstracts the complexities away. Using this open-source framework, you can build Microservices as reactive systems that are elastic and resilient from within. Lagom also provides a development environment that saves you from monotonous setup and scripting, allowing you to use a single command to build your project and start your services.",
@@ -1912,7 +1912,7 @@
     "url": "https://dzone.com/refcardz/reactive-microservices-with-lagom-and-java"
   },
   {
-    "number": "Refcard #241",
+    "number": 241,
     "title": "Declarative Pipeline With Jenkins",
     "subtitle": "A Powerful Set of Automation Tools for Jenkins",
     "description": "To fully recognize the benefits of Jenkins Pipeline, this Refcard will help you build a Jenkins Declarative Pipeline and manage it with Blue Ocean. Learn the details of creating a Jenkinsfile, branches and pull requests, pipeline fundamentals, and using the agent directive. In addition, understand post actions for cleaning up files, archiving results, or sending notifications; and access a complete syntax reference.",
@@ -1920,7 +1920,7 @@
     "url": "https://dzone.com/refcardz/declarative-pipeline-with-jenkins"
   },
   {
-    "number": "Refcard #242",
+    "number": 242,
     "title": "Recommendations Using Redis",
     "subtitle": "How to Develop a Simple Recommendations Engine Using Redis",
     "description": "Unlike other in-memory data stores, Redis can persist your data to a disk and accommodate a wide variety of data structures. In this Refcard, learn to develop a simple recommendation system with Redis, based on user-indicated interests and collaborative filtering. Use data structures to easily create your system, learn how to use commands, and optimize your system for real-time recommendations in production.",
@@ -1928,7 +1928,7 @@
     "url": "https://dzone.com/refcardz/recommendations-using-redis"
   },
   {
-    "number": "Refcard #243",
+    "number": 243,
     "title": "Getting Started With Java-Based CMS",
     "subtitle": "Using Content Management Systems in Java Applications",
     "description": "In this Refcard, learn to create a Content Management System to craft and deploy content-enabled digital experiences quickly. Learn to create and deploy content-enabled digital experiences quickly. Additionally, walk through the process of putting a modern CMS into practice, from installation to project creation.",
@@ -1936,7 +1936,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-java-based-cms"
   },
   {
-    "number": "Refcard #244",
+    "number": 244,
     "title": "Getting to Know Google Compute Engine and How to Use It",
     "subtitle": "Google\u2019s Virtual Machine Offering",
     "description": "Google Compute Engine is Google's Infrastructure-as-a-Service (IaaS) virtual machine offering. It allows customers to use powerful virtual machines in the Cloud as server resources instead of acquiring and managing server hardware. This Refcard serves as an introduction to the Compute Engine and explores its main features. Learn more about machine types, instance groups, and ways to interact with Compute Engine.",
@@ -1944,7 +1944,7 @@
     "url": "https://dzone.com/refcardz/getting-to-know-google-compute-engine-and-how-to-u"
   },
   {
-    "number": "Refcard #245",
+    "number": 245,
     "title": "Getting Started With Redis",
     "subtitle": "The Open-Source Data Structure Server",
     "description": "Redis is an open source, in-memory data store that gives you the opportunity to store and access data quickly and efficiently. In this Refcard, you will get started on your Redis journey with a simple guide to installing and utilizing Redis, a complete glossary of data types, and the various commands to operate in Redis with detailed examples.",
@@ -1952,7 +1952,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-redis"
   },
   {
-    "number": "Refcard #246",
+    "number": 246,
     "title": "Continuous Testing 101",
     "subtitle": "The Key to In-Sprint Testing",
     "description": "There are many misconceptions as to what Continuous Testing is. Is it the same thing as Continuous Delivery? It\u2019s probably a QA-led activity, right? You\u2019re getting warmer. These concepts are certainly connected. Let\u2019s push the misconceptions aside and learn exactly what Continuous Testing is, the 10 key elements of Continuous Testing methodology, and the benefits of utilizing this concept.",
@@ -1960,7 +1960,7 @@
     "url": "https://dzone.com/refcardz/continuous-testing-101"
   },
   {
-    "number": "Refcard #247",
+    "number": 247,
     "title": "Getting Started With Spring Boot and Microservices",
     "subtitle": "Enhancing The Benefits Of Microservices As An Architectural Pattern",
     "description": "As beneficial as it is to use a microservice architectural approach, there are still downsides and obstacles to face. This Refcard will show you how to incorporate Spring Boot and Hazelcast IMDG into a microservices platform, how to enhance the benefits of the microservices landscape, and how to alleviate the drawbacks of utilizing this method.",
@@ -1968,7 +1968,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-spring-boot-and-microservices"
   },
   {
-    "number": "Refcard #248",
+    "number": 248,
     "title": "Java Application Vulnerabilities",
     "subtitle": "What They Are and How to Fix Them",
     "description": "Java Applications, like any other, are susceptible to gaps in security. This Refcard focuses on the top vulnerabilities that can affect Java applications and how to combat them.",
@@ -1976,7 +1976,7 @@
     "url": "https://dzone.com/refcardz/java-application-vulnerabilities"
   },
   {
-    "number": "Refcard #249",
+    "number": 249,
     "title": "An Overview of GraphQL",
     "subtitle": "A New Paradigm for Building APIs",
     "description": "As an alternative to REST, GraphQL is quickly gaining popularity as a tool for building APIs. This Refcard introduces GraphQL concepts such as the GraphQL type system and schema, and demonstrates how to build a GraphQL service that connects to a database using JavaScript.",
@@ -1984,7 +1984,7 @@
     "url": "https://dzone.com/refcardz/an-overview-of-graphql"
   },
   {
-    "number": "Refcard #250",
+    "number": 250,
     "title": "Getting Started With Memcached",
     "subtitle": "A high-performance, distributed memory object caching solution.",
     "description": "This new Refcard provides you with basic configuration information for servers and client-side commands to use memcached as a caching solution for your applications. Begin your installation, learn useful commands, and see what tools are available to help monitor and troubleshoot.",
@@ -1992,7 +1992,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-memcached"
   },
   {
-    "number": "Refcard #251",
+    "number": 251,
     "title": "Introduction to TensorFlow",
     "subtitle": "",
     "description": "TensorFlow has a rich set of application programming interfaces for most major languages and environments needed for deep learning projects. Use cases for this open-source library include sentiment analysis, object detection in photos, and cancer detection. This Refcard will help you understand how TensorFlow works, how to install it, and how to get started with in-depth examples.",
@@ -2000,7 +2000,7 @@
     "url": "https://dzone.com/refcardz/introduction-to-tensorflow"
   },
   {
-    "number": "Refcard #252",
+    "number": 252,
     "title": "Graph-Powered Search: Neo4j & Elasticsearch",
     "subtitle": "",
     "description": "See how combining technologies adds another level of quality to search results. In this new Refcard, we include code and examples for using Elasticsearch to enable full-text search and Neo4j to power graph-aided search.",
@@ -2008,7 +2008,7 @@
     "url": "https://dzone.com/refcardz/graph-powered-search-neo4j-amp-elasticsearch"
   },
   {
-    "number": "Refcard #253",
+    "number": 253,
     "title": "Introduction to Web Components",
     "subtitle": "",
     "description": "Download this new Refcard to learn more about Web Components. Newly named Java Champion Kito Mann walks you through the process from set up to using helpful libraries.",
@@ -2016,7 +2016,7 @@
     "url": "https://dzone.com/refcardz/introduction-to-web-components-and-polymer"
   },
   {
-    "number": "Refcard #254",
+    "number": 254,
     "title": "Apache Kafka",
     "subtitle": "",
     "description": "Download this new Refcard to get started with Apache Kafka. Learn more about its background, steps to run the quickstart script, components, and how to connect REST APIs.",
@@ -2024,7 +2024,7 @@
     "url": "https://dzone.com/refcardz/apache-kafka"
   },
   {
-    "number": "Refcard #255",
+    "number": 255,
     "title": "DevOps for Database",
     "subtitle": "",
     "description": "While\u202fthere has been a sharp focus and tremendous acceleration in the velocity of application software releases,\u202fupdates to the\u202funderlying\u202fdatabase have remained manual and are increasingly a bottleneck to the overall software delivery pipeline. Download this new Refcard to get started with Database Release Automation and eliminate bottlenecks. Learn the key best practices that your\u202fDevOps\u202fdatabase solution\u202fshould meet in order for you\u202fto get the most out of your investment.",
@@ -2032,7 +2032,7 @@
     "url": "https://dzone.com/refcardz/devops-for-database"
   },
   {
-    "number": "Refcard #256",
+    "number": 256,
     "title": "Getting Started With Ethereum Private Blockchain",
     "subtitle": "",
     "description": "Ethereum is a programmable blockchain that allows users to create their own operations. This Refcard highlights fundamental information on Ethereum Blockchain and demonstrates the steps to get a private blockchain up and running. By the end, you will be able to set up two running nodes on one local machine.",
@@ -2040,7 +2040,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-etherium-private-blockchain"
   },
   {
-    "number": "Refcard #257",
+    "number": 257,
     "title": "Getting Started With Kotlin",
     "subtitle": "",
     "description": "Kotlin has become one of the most popular JVM languages in the past few months, partly because it experienced a lot of attention in the Android community after Google made Kotlin an official language for Android development. Download this Refcard to start working with this open-source language, which can be found on GitHub.",
@@ -2048,7 +2048,7 @@
     "url": "https://dzone.com/refcardz/getting-started-with-kotlin"
   },
   {
-    "number": "Refcard #258",
+    "number": 258,
     "title": "Docker Security",
     "subtitle": "",
     "description": "This Refcard will lay out the basics of the container security challenge, give you hands-on experience with basic security options, and also spell out some more advanced workflows. We split container security into three sections covering what to do at each step of your container security lifecycle.",
@@ -2056,7 +2056,7 @@
     "url": "https://dzone.com/refcardz/docker-security"
   },
   {
-    "number": "Refcard #259",
+    "number": 259,
     "title": "Test Design Automation",
     "subtitle": "Driving Testing at the Speed of Agile",
     "description": "Download this new Refcard to get started with test design automation, explore the many benefits, and find real-world use cases.",
@@ -2064,7 +2064,7 @@
     "url": "https://dzone.com/refcardz/test-design-automation"
   },
   {
-    "number": "Refcard #260",
+    "number": 260,
     "title": "REST API Security",
     "subtitle": "",
     "description": "API security is the single biggest challenge organizations want to see solved in the years ahead. Download this Refcard to gain a better understanding of REST APIs, authentication types, and other aspects of security.",
@@ -2072,7 +2072,7 @@
     "url": "https://dzone.com/refcardz/rest-api-security-1"
   },
   {
-    "number": "Refcard #261",
+    "number": 261,
     "title": "Improving Web Performance With Varnish",
     "subtitle": "",
     "description": "Web performance is cited by companies as one of the biggest challenges in delivering content. Varnish gives you the ability to combat this issue. Download this Refcard to get started with Varnish, learn how built-in VCL and caching rules boosts performance, and how to utilize the Varnish Configuration Language.",
@@ -2080,7 +2080,7 @@
     "url": "https://dzone.com/refcardz/improving-web-performance-with-varnish"
   },
   {
-    "number": "Refcard #262",
+    "number": 262,
     "title": "Introduction to DevOps Analytics",
     "subtitle": "",
     "description": "Discover the hidden value of using historical data to analyze and estimate a probabilistic measure of the success of a new release. This Refcard goes in-depth on the process to make the delivery lifecycle more efficient, the best analytics-as-a-service (AaaS) tools to use, and dashboards that will effectively help you display and understand your data.",
@@ -2088,7 +2088,7 @@
     "url": "https://dzone.com/refcardz/introduction-to-devops-analytics"
   },
   {
-    "number": "Refcard #263",
+    "number": 263,
     "title": "Messaging Infrastructure for IoT at Scale",
     "subtitle": "",
     "description": "IoT technology is all around us and can no longer be ignored. At the core of IoT technology is the messaging infrastructure. Download this Refcard to learn more about the foundation of an IoT platform, how to get started with EnMasse, and open source projects focused on IoT device connectivity.",
@@ -2096,7 +2096,7 @@
     "url": "https://dzone.com/refcardz/messaging-infrastructure-for-iot-at-scale"
   },
   {
-    "number": "Refcard #264",
+    "number": 264,
     "title": "Blockchain and Distributed Ledger Technology for Documents",
     "subtitle": "",
     "description": "Blockchain has become well-known because of its use with Bitcoin, but there are several lesser known applications of Blockchain and Distributed Ledger Technology (DLT). This Refcard focuses on how you can use DLT and Blockchain in combination with PDFs to write applications. Learn how to reduce the complexity of your code when needing digital signing and verification functionality, assure the integrity and authenticity of a document, and automate your document-oriented workflows.",
@@ -2104,7 +2104,7 @@
     "url": "https://dzone.com/refcardz/blockchain-and-distributed-ledger-technology-for-d"
   },
   {
-    "number": "Refcard #265",
+    "number": 265,
     "title": "Understanding Stream Processing",
     "subtitle": "Fast Processing of Infinite and Big Data",
     "description": "Stream processing is incredibly useful for processing big data volumes and providing useful insights in real-time. This is especially important when the value of the information in the data decreases as it gets older. This Refcard covers the building blocks of a stream processing solution, use cases that benefit from stream processing, and hands-on examples using Hazelcast Jet.",
@@ -2112,7 +2112,7 @@
     "url": "https://dzone.com/refcardz/understanding-stream-processing"
   },
   {
-    "number": "Refcard #266",
+    "number": 266,
     "title": "Agile Patterns",
     "subtitle": "",
     "description": "Many companies struggle with maintaining an agile approach that will bring practical process control to complex and uncertain environments. This Refcard focuses on recurring patterns you can follow to ensure that an agile enterprise can be built that will ultimately make an imprint upon organizational culture. Dive in to discover effective agile patterns and best practices to begin your agile transformation.",
@@ -2120,7 +2120,7 @@
     "url": "https://dzone.com/refcardz/agile-patterns"
   },
   {
-    "number": "Refcard #267",
+    "number": 267,
     "title": "Introduction to DevSecOps",
     "subtitle": "",
     "description": "With DevSecOps, you can reach higher security standards while following DevOps principles. This Refcard will show you how to get started with DevSecOps with key themes, crucial steps to begin your journey, and a guide to choosing security tools and technologies to build your DevSecOps pipeline.",
@@ -2128,7 +2128,7 @@
     "url": "https://dzone.com/refcardz/introduction-to-devsecops"
   },
   {
-    "number": "Refcard #268",
+    "number": 268,
     "title": "Cloud Capacity Management",
     "subtitle": "",
     "description": "With the increasing use of cloud environments in IT, it\u2019s key to ensure you\u2019re managing and optimizing your cloud resources as you would with on-premise resources. This Refcard dives into what it means to extend capacity management to the cloud, how it differs from traditional on-premises capacity management, and how to apply it in specific use cases.",
@@ -2136,7 +2136,7 @@
     "url": "https://dzone.com/refcardz/cloud-capacity-management"
   },
   {
-    "number": "Refcard #269",
+    "number": 269,
     "title": "Understanding Data Quality",
     "subtitle": "",
     "description": "Data is one of the single most important resources for an organization. It can be used to help your business run smoothly, implement new strategies, and more. This Refcard will show you the key places data derives from, characteristics of high-quality data, and the five phases of a data quality strategy that you can follow.",
@@ -2144,7 +2144,7 @@
     "url": "https://dzone.com/refcardz/understanding-data-quality"
   },
   {
-    "number": "Refcard #270",
+    "number": 270,
     "title": "Persistent Container Storage",
     "subtitle": "",
     "description": "Containers are great for building applications with ephemeral data. But what if you need your data to persist? Download this Refcard to learn what you need for container storage, discover the benefits of cloud-native storage, and more!",
@@ -2152,7 +2152,7 @@
     "url": "https://dzone.com/refcardz/persistent-container-storage"
   },
   {
-    "number": "Refcard #271",
+    "number": 271,
     "title": "Compliant DevOps",
     "subtitle": "",
     "description": "With new data protection laws coming into play, and consumers more aware than ever before of how their privacy is being compromised, there is now a requirement for companies to adopt a compliant DevOps approach. Download this Refcard to discover the best practices to adopt compliant DevOps.",
@@ -2160,7 +2160,7 @@
     "url": "https://dzone.com/refcardz/compliant-devops"
   },
   {
-    "number": "Refcard #273",
+    "number": 273,
     "title": "Java API Best Practices",
     "subtitle": "",
     "description": "If you want people to use your software, you're going to have to become an API developer. In this Refcard, you'll learn how to make well-documented, consistent, evolvable APIs to help your users make the most of your Java applications.",
@@ -2168,7 +2168,7 @@
     "url": "https://dzone.com/refcardz/java-api-best-practices"
   },
   {
-    "number": "Refcard #274",
+    "number": 274,
     "title": "Temporal Data Processing",
     "subtitle": "",
     "description": "Download this Refcard to learn how to handle data that varies over time in relational databases using temporal tables.",
@@ -2176,7 +2176,7 @@
     "url": "https://dzone.com/refcardz/temporal-data-processing"
   },
   {
-    "number": "Refcard #275",
+    "number": 275,
     "title": "Kubernetes Security",
     "subtitle": "",
     "description": "This Refcard will teach you the essentials of security in Kubernetes, addressing topics like container network access, user authorization, service token access, and more. You\u2019ll discover how to secure exposed network services, learn about threat vectors for Kubernetes deployments, and see how to authenticate users in Kubernetes.",
@@ -2184,7 +2184,7 @@
     "url": "https://dzone.com/refcardz/kubernetes-security-1"
   },
   {
-    "number": "Refcard #276",
+    "number": 276,
     "title": "Responsive Web Design",
     "subtitle": "",
     "description": "The line between mobile and web development is more and more blurred, and new web apps have to adapt to any new devices or screens. In this Refcard, learn the basics of responsive design to help your app reach the most users possible.",
@@ -2192,7 +2192,7 @@
     "url": "https://dzone.com/refcardz/responsive-web-design-8"
   },
   {
-    "number": "Refcard #277",
+    "number": 277,
     "title": "CI/CD With Containers",
     "subtitle": "",
     "description": "Containers and orchestration tools have often been cited as ways to facilitate continuous delivery and continuous integration. Download this Refcard to learn about the challenges and solutions to utilizing containers in your DevOps pipeline.",
