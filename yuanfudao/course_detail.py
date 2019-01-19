@@ -55,11 +55,13 @@ if __name__ == '__main__':
         course_urls = json.load(fp)
 
     course_details = []
-    for i, url in tqdm(enumerate(course_urls)):
+    i = 0
+    for url in tqdm(course_urls):
         # noinspection PyBroadException
         try:
             course_details.append(parse_detail(url))
-            if (i+1) % 20 == 0:
+            i += 1
+            if i % 20 == 0:
                 json.dump(course_details, open("course_details.json", 'w'), indent=2, ensure_ascii=False)
             time.sleep(0.02)
         except Exception as e:
