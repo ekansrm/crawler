@@ -1,5 +1,7 @@
 import time
 import json
+import traceback
+import trace
 from tqdm import tqdm
 from pyquery import PyQuery as pq
 
@@ -19,16 +21,11 @@ def parse_detail(course_url: str) -> map:
     course_fit = doc("""p[class="features"]""").text()
     course_quota = doc("""p[id="J_QuotaDesc"]""").text()
     teacher_name = doc("""a[href^="/teachers"] p""").text()
-    teacher_url = base_url + doc("""a[href^="/teachers"]""").attr('href')
-    #
-    # teacher_infos = doc("""div[class="teacher-credentials"]""")
-    # teacher_name = teacher_infos.children("""p[class="name"]""").text()
-    #
-    # teacher_credential = []
-    # teacher_span = teacher_infos.children("""p[class="credentials"]""")
-    # for i in range(0, teacher_span.length):
-    #     teacher_credential.append(teacher_span.eq(i).text())
-    # teacher_credential = "|".join(teacher_credential)
+    teacher_url = doc("""a[href^="/teachers"]""").attr('href')
+    if teacher_url is not None:
+        teacher_url = base_url + teacher_url
+    else:
+        teacher_url = "null"
 
     return {
         'course_url': course_url,
@@ -62,13 +59,14 @@ if __name__ == '__main__':
             course_details.append(parse_detail(url))
             i += 1
             if i % 20 == 0:
-                json.dump(course_details, open("course_details.json", 'w'), indent=2, ensure_ascii=False)
+                json.dump(course_details, open("course_details.json", 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
             time.sleep(0.02)
         except Exception as e:
+            traceback.print_tb(e)
             print("error occurs!")
 
     # print(json.dumps(course_details, indent=2, ensure_ascii=False))
-    json.dump(course_details, open("course_details.json", 'w'), indent=2, ensure_ascii=False)
+    json.dump(course_details, open("course_details.json", 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
 
 

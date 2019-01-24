@@ -4,7 +4,7 @@ if __name__ == '__main__':
 
     head = '\t'.join(["课程名称", "课程时间", "课程目标", "课程价格", "课程配额", "课程链接", "教师名称", "教师链接"])
 
-    with open('course_details.json', 'r') as fp:
+    with open('course_details.json', 'r', encoding='utf-8') as fp:
         course_details = json.load(fp)
 
     context = [head]
@@ -23,6 +23,6 @@ if __name__ == '__main__':
 
     context = '\n'.join(context)
 
-    with open('course_details.csv', 'w') as fp:
+    with open('course_details.csv', 'w', encoding='utf-8') as fp:
         fp.write(context)
 

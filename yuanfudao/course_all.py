@@ -14,20 +14,22 @@ info = {'grade': [], 'channelid': [], 'lessonid': [], 'lessonurl': [], 'lessonna
 # 定义主页面筛选表
 gradeList = range(1, 13)
 urlList = {
-    1: [3],
-    2: [3],
-    3: [3],
-    4: [3, 201],
-    5: [3, 201],
-    6: [3, 201],
-    7: [1, 2, 3, 7, 8],
-    8: [1, 2, 3, 4, 5, 7, 8],
-    9: [1, 2, 3, 4, 5, 7, 8, 14],
-    10: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    11: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    12: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    100: [2],
+    1: [0, 2, 3],
+    2: [0, 2, 3, 201],
+    3: [0, 1, 2, 3, 201],
+    4: [0, 1, 2, 3, 201],
+    5: [0, 1, 2, 3, 201],
+    6: [0, 1, 2, 3, 201],
+    7: [0, 1, 2, 3, 4, 5, 6, 7, 8, 14],
+    8: [0, 1, 2, 3, 4, 5, 6, 7, 8, 14],
+    9: [0, 1, 2, 3, 4, 5, 6, 7, 8, 14],
+    10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    11: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+lessons = set()
 # 获取每个主页面系统课的info：
 for grade in gradeList:
     for channelid in urlList[grade]:
@@ -41,7 +43,11 @@ for grade in gradeList:
             soup2 = BeautifulSoup(res2.text, 'html.parser')
             # 循环取出每个groupurl，即课程下面的课程信息
             for classlist in soup2.select('li h3'):
-                info['lessonid'].append(classlist.select('a')[0]['href'][9:16])
+                lessonsid = classlist.select('a')[0]['href'][9:16]
+                if lessonsid in lessons:
+                    continue
+                lessons.add(lessonsid)
+                info['lessonid'].append(lessonsid)
                 info['lessonurl'].append(domain + classlist.select('a')[0]['href'])
                 info['lessonname'].append(classlist.select('a span')[0].text)
                 info['grade'].append(grade)
