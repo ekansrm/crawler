@@ -189,13 +189,13 @@ def get_fund_manager(doc):
     ).parent().children('''p[class="b2"]''').text()
 
     return {
-               '名字': manager_name,
-               '管理数量': manager_admin_num,
-               '从业时间': manager_admin_time,
-               '从业年均回报': manager_roi,
-               '从业最大盈利': manager_max_gain,
-               '从业最大跌幅': manager_max_drop,
-           },
+        '名字': manager_name,
+        '管理数量': manager_admin_num,
+        '从业时间': manager_admin_time,
+        '从业年均回报': manager_roi,
+        '从业最大盈利': manager_max_gain,
+        '从业最大跌幅': manager_max_drop,
+    }
 
 
 def get_fund_all(code):
@@ -260,8 +260,50 @@ def get_fund_all(code):
     pass
 
 
+def print_row_header():
+    return ','.join([
+        '名称', '代码', '类型', '规模',
+        '风格-类型',
+        '阶段涨幅-今年以来', '阶段涨幅-近1周', '阶段涨幅-近1月', '阶段涨幅-近3月', '阶段涨幅-近6月', '阶段涨幅-近1年', '阶段涨幅-近2年', '阶段涨幅-近3年',
+        '经理-名字', '经理-管理数量', '经理-从业时间', '经理-从业年均回报', '经理-从业最大盈利', '经理-从业最大跌幅'
+                                                                 '风险-年化夏普比率-1年', '风险-年化夏普比率-2年', '风险-年化夏普比率-3年'
+    ])
+
+
+def print_row_data(data):
+    rise_data = data['涨幅']['阶段涨幅']
+    rise_data_irow = rise_data['irow']
+    rise_data_icol = rise_data['icol']
+
+    def get_rise_data(row, col):
+        return rise_data['data'][rise_data_irow[row]][rise_data_icol[col]]
+
+    risk_data = data['风险']
+    risk_data_irow = risk_data['irow']
+    risk_data_icol = risk_data['icol']
+
+    def get_risk_data(row, col):
+        return risk_data['data'][risk_data_irow[row]][risk_data_icol[col]]
+
+    return ','.join([
+        data['名称'], data['代码'], data['类型'], data['规模'],
+
+        data['风格']['类型'],
+
+        get_rise_data('区间回报', '今年以来'), get_rise_data('区间回报', '近1周'), get_rise_data('区间回报', '近1月'),
+        get_rise_data('区间回报', '近3月'), get_rise_data('区间回报', '近6月'), get_rise_data('区间回报', '近1年'),
+        get_rise_data('区间回报', '近2年'), get_rise_data('区间回报', '近3年'),
+
+        data['经理']['名字'], data['经理']['管理数量'], data['经理']['从业时间'],
+        data['经理']['从业年均回报'], data['经理']['从业最大盈利'], data['经理']['从业最大跌幅'],
+
+        get_risk_data('年化夏普比率', '1年'), get_risk_data('年化夏普比率', '2年'), get_risk_data('年化夏普比率', '3年')
+
+    ])
+
+
 if __name__ == '__main__':
     doc = get_fund_all('001790')
-    print(json.dumps(doc, indent=2, ensure_ascii=False))
-    # data = get_fund_data('001790', per=200, sdate='1900-01-01', edate='2099-12-31')
-    # print(data)
+    # print(json.dumps(doc, indent=2, ensure_ascii=False))
+    print(print_row_header())
+    print(print_row_data(doc))
