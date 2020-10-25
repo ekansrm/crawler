@@ -87,7 +87,7 @@ def get_fund_doc(code):
 def get_fund_info(code):
     doc = get_fund_doc(code)
 
-    fund_name = doc(
+    name = doc(
         """body > div.main > div.file_top_box > div > div.file_t_righ.rt > div > 
         div.gmfund_title > div > div.lt > h1""") \
         .clone().children().remove().end().text()
@@ -98,45 +98,45 @@ def get_fund_info(code):
         .children().text()
     code = code.replace('(', '').replace(')', '')
 
-    sharp_doc = doc(
+    sharpe_ratio_doc = doc(
         """#nTab2_0 > div:nth-child(5) > div.con-container-right.file_zcpz.clearfix > 
         div.chart > div > div.fxzb > table > tbody > tr.bottom"""
     )
-    sharp = [sharp_doc.children('''td[class="tdl"]''').text()]
-    for a in sharp_doc.children('''td[class!="tdl"]''').items():
-        sharp.append(a.text())
+    sharpe_ratio = [sharpe_ratio_doc.children('''td[class="tdl"]''').text()]
+    for a in sharpe_ratio_doc.children('''td[class!="tdl"]''').items():
+        sharpe_ratio.append(a.text())
 
-    manager_name = doc(
+    fund_manager_name = doc(
         '''
         #nTab3_0 > div.manager_b_l.lt > div > div.manager_b_r > div > ul.item_4 > li:nth-child(1)
         '''
     ).text()
 
-    manager_reward = doc(
+    manager_roi = doc(
         '''p:contains('从业年均回报')'''
     ).parent().children('''p[class="b2"]''').text()
 
-    manager_max_rise = doc(
+    manager_max_gain = doc(
         '''p:contains('最大盈利')'''
     ).parent().children('''p[class="b2"]''').text()
 
-    manager_max_redraw = doc(
+    manager_max_drop = doc(
         '''p:contains('最大回撤')'''
     ).parent().children('''p[class="b2"]''').text()
 
-    style_doc = doc(
+    investment_style_doc = doc(
         '''div:contains('当前投资风格')'''
     ).parent().children('''div[class="right_content"]''')
 
-    style_type = style_doc.children(
+    investment_style_type = investment_style_doc.children(
         '''p[class="right_p1"]'''
     ).text()
 
-    style_desc = style_doc.children(
+    investment_style_desc = investment_style_doc.children(
         '''div[class="right_text"]'''
     ).text()
 
-    style_suggest = style_doc.children(
+    investment_style_suggest = investment_style_doc.children(
         '''div[class="suggest_text"]'''
     ).text()
 
@@ -157,16 +157,19 @@ def get_fund_info(code):
         func_up[fund_up_title[table_id]] = get_table(table_doc)
 
     return {
-        '基金名称': fund_name,
-        'code': code,
-        'sharp': sharp,
-        'manager': manager_name,
-        'manager_reward': manager_reward,
-        'manager_max_rise': manager_max_rise,
-        'manager_max_redraw': manager_max_redraw,
-        'style_type': style_type,
-        'style_desc': style_desc,
-        'style_suggest': style_suggest,
+        '基金名称': name,
+        '基金代码': code,
+        '夏普比率': sharpe_ratio,
+        '基金经理': fund_manager_name,
+        '基金经理从业年均回报': manager_roi,
+        '基金经理从业最大盈利': manager_max_gain,
+        '基金经理从业最大跌幅': manager_max_drop,
+        '投资风格': {
+            '类型': investment_style_type,
+            '描述': investment_style_desc,
+            '建议': investment_style_suggest,
+        },
+        '涨幅': func_up
     }
 
     pass
@@ -174,6 +177,6 @@ def get_fund_info(code):
 
 if __name__ == '__main__':
     doc = get_fund_info('001790')
-    print(json.dumps(doc,indent=2,ensure_ascii=False))
+    print(json.dumps(doc, indent=2, ensure_ascii=False))
     # data = get_fund_data('001790', per=200, sdate='1900-01-01', edate='2099-12-31')
     # print(data)
