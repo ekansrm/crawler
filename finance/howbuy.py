@@ -7,11 +7,13 @@ import requests
 from pyquery import PyQuery as pq
 import os
 
+
 # 抓取网页
 def get_url(url, params=None, proxies=None):
     rsp = requests.get(url, params=params, proxies=proxies)
     rsp.raise_for_status()
     return rsp.text
+
 
 def get_table(table_doc):
     rv = []
@@ -26,17 +28,18 @@ def get_table(table_doc):
 
     return rv
 
+
 # 从网页抓取数据
-def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
+def get_fund_data(code, per=10, sdate='', edate='', proxies=None):
     url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
-    params = {'type': 'lsjz', 'code': code, 'page':1,'per': per, 'sdate': sdate, 'edate': edate}
+    params = {'type': 'lsjz', 'code': code, 'page': 1, 'per': per, 'sdate': sdate, 'edate': edate}
     html = get_url(url, params, proxies)
     soup = BeautifulSoup(html, 'html.parser')
 
     # 获取总页数
-    pattern=re.compile(r'pages:(.*),')
-    result=re.search(pattern,html).group(1)
-    pages=int(result)
+    pattern = re.compile(r'pages:(.*),')
+    result = re.search(pattern, html).group(1)
+    pages = int(result)
 
     # 获取表头
     heads = []
@@ -47,9 +50,9 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
     records = []
 
     # 从第1页开始抓取所有页面数据
-    page=1
-    while page<=pages:
-        params = {'type': 'lsjz', 'code': code, 'page':page,'per': per, 'sdate': sdate, 'edate': edate}
+    page = 1
+    while page <= pages:
+        params = {'type': 'lsjz', 'code': code, 'page': page, 'per': per, 'sdate': sdate, 'edate': edate}
         html = get_url(url, params, proxies)
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -60,7 +63,7 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
                 val = record.contents
 
                 # 处理空值
-                if val == []:
+                if not val:
                     row_records.append('--')
                 else:
                     row_records.append(val[0])
@@ -69,7 +72,7 @@ def get_fund_data(code,per=10,sdate='',edate='',proxies=None):
             records.append(row_records)
 
         # 下一页
-        page=page+1
+        page = page + 1
 
     # 数据整理到dataframe
     return records
@@ -83,13 +86,15 @@ def get_fund_doc(code):
 
 def get_fund_info(code):
     doc = get_fund_doc(code)
-    name = doc(
+
+    fund_name = doc(
         """body > div.main > div.file_top_box > div > div.file_t_righ.rt > div > 
-        div.gmfund_title > div > div.lt > h1""")\
+        div.gmfund_title > div > div.lt > h1""") \
         .clone().children().remove().end().text()
+
     code = doc(
         """body > div.main > div.file_top_box > div > div.file_t_righ.rt > div > 
-        div.gmfund_title > div > div.lt > h1""")\
+        div.gmfund_title > div > div.lt > h1""") \
         .children().text()
     code = code.replace('(', '').replace(')', '')
 
@@ -152,7 +157,7 @@ def get_fund_info(code):
         func_up[fund_up_title[table_id]] = get_table(table_doc)
 
     return {
-        'name': name,
+        '基金名称': fund_name,
         'code': code,
         'sharp': sharp,
         'manager': manager_name,
@@ -166,7 +171,9 @@ def get_fund_info(code):
 
     pass
 
+
 if __name__ == '__main__':
-    # doc = get_fund_info('001790')
-    data = get_fund_data('001790', per=200, sdate='1900-01-01', edate='2099-12-31')
-    print(data)
+    doc = get_fund_info('001790')
+    print(json.dumps(doc,indent=2,ensure_ascii=False))
+    # data = get_fund_data('001790', per=200, sdate='1900-01-01', edate='2099-12-31')
+    # print(data)
