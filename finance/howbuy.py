@@ -29,10 +29,15 @@ def get_table(table_doc):
     return rv
 
 
+def get_fund_doc(code):
+    url = 'https://www.howbuy.com/fund/{0}/'.format(code)
+    doc = pq(url)
+    return doc
+
 # 从网页抓取数据
-def get_fund_data(code, per=10, sdate='', edate='', proxies=None):
+def get_fund_trend(code, line_per_page=10, date_begin='', date_end='', proxies=None):
     url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
-    params = {'type': 'lsjz', 'code': code, 'page': 1, 'per': per, 'sdate': sdate, 'edate': edate}
+    params = {'type': 'lsjz', 'code': code, 'page': 1, 'per': line_per_page, 'sdate': date_begin, 'edate': date_end}
     html = get_url(url, params, proxies)
     soup = BeautifulSoup(html, 'html.parser')
 
@@ -52,7 +57,9 @@ def get_fund_data(code, per=10, sdate='', edate='', proxies=None):
     # 从第1页开始抓取所有页面数据
     page = 1
     while page <= pages:
-        params = {'type': 'lsjz', 'code': code, 'page': page, 'per': per, 'sdate': sdate, 'edate': edate}
+        params = {
+            'type': 'lsjz', 'code': code, 'page': page, 'per': line_per_page, 'sdate': date_begin, 'edate': date_end
+        }
         html = get_url(url, params, proxies)
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -74,14 +81,24 @@ def get_fund_data(code, per=10, sdate='', edate='', proxies=None):
         # 下一页
         page = page + 1
 
-    # 数据整理到dataframe
     return records
 
 
-def get_fund_doc(code):
-    url = 'https://www.howbuy.com/fund/{0}/'.format(code)
-    doc = pq(url)
-    return doc
+def get_fund_rise(doc):
+    rise_doc = doc(
+        '''div[class="file_jjzf"]'''
+    )
+    rise_type_doc = rise_doc('''div[class="title"]''')
+    rise_type = {}
+    for a_rise_type_doc in rise_type_doc('li').items():
+        rise_type[str(a_rise_type_doc.attr('id'))[-1]] = a_rise_type_doc.text()
+    rise_data_doc = rise_doc('''div[class~="jjzf_content"]''')
+    rise = {}
+    for div in rise_data_doc.items():
+        table_id = str(div.attr('id'))[-1]
+        table_doc = div.children()
+        rise[rise_type[table_id]] = get_table(table_doc)
+    return rise
 
 
 def get_fund_info(code):
@@ -106,11 +123,19 @@ def get_fund_info(code):
     for a in sharpe_ratio_doc.children('''td[class!="tdl"]''').items():
         sharpe_ratio.append(a.text())
 
-    fund_manager_name = doc(
+    manager_name = doc(
         '''
         #nTab3_0 > div.manager_b_l.lt > div > div.manager_b_r > div > ul.item_4 > li:nth-child(1)
         '''
     ).text()
+
+    manager_admin_num = doc(
+        '''li:contains('当前管理基金')'''
+    ).children().text()
+
+    manager_admin_time = doc(
+        '''span:contains('从业时间')'''
+    ).text().split('：')[-1]
 
     manager_roi = doc(
         '''p:contains('从业年均回报')'''
@@ -140,36 +165,26 @@ def get_fund_info(code):
         '''div[class="suggest_text"]'''
     ).text()
 
-    fund_up_doc = doc(
-        '''div[class="file_jjzf"]'''
-    )
-
-    fund_up_tab = fund_up_doc('''div[class="title"]''')
-    fund_up_title = {}
-    for fund_up_title_doc in fund_up_tab('li').items():
-        fund_up_title[str(fund_up_title_doc.attr('id'))[-1]] = fund_up_title_doc.text()
-
-    fund_up_data_doc = fund_up_doc('''div[class~="jjzf_content"]''')
-    func_up = {}
-    for div in fund_up_data_doc.items():
-        table_id = str(div.attr('id'))[-1]
-        table_doc = div.children()
-        func_up[fund_up_title[table_id]] = get_table(table_doc)
+    rise = get_fund_rise(doc)
 
     return {
         '基金名称': name,
         '基金代码': code,
         '夏普比率': sharpe_ratio,
-        '基金经理': fund_manager_name,
-        '基金经理从业年均回报': manager_roi,
-        '基金经理从业最大盈利': manager_max_gain,
-        '基金经理从业最大跌幅': manager_max_drop,
+        '基金经理': {
+            '名字': manager_name,
+            '管理数量': manager_admin_num,
+            '从业时间': manager_admin_time,
+            '从业年均回报': manager_roi,
+            '从业最大盈利': manager_max_gain,
+            '从业最大跌幅': manager_max_drop,
+        },
         '投资风格': {
             '类型': investment_style_type,
             '描述': investment_style_desc,
             '建议': investment_style_suggest,
         },
-        '涨幅': func_up
+        '基金涨幅': rise
     }
 
     pass
