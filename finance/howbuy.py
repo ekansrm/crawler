@@ -7,6 +7,16 @@ import requests
 from pyquery import PyQuery as pq
 import os
 import time
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+browser = webdriver.Chrome(options=chrome_options, executable_path='./chromedriver.exe')
+wait = WebDriverWait(browser, 10)
 
 
 def get_url_response(url, params=None, proxies=None):
@@ -58,6 +68,14 @@ def get_fund_dom(code):
     url = 'https://www.howbuy.com/fund/{0}/'.format(code)
     doc = pq(url)
     return doc
+
+
+
+def get_fund_page(code):
+    url = 'https://www.howbuy.com/fund/{0}/'.format(code)
+    browser.get(url)
+    html = browser.page_source
+    return html
 
 
 def get_fund_trend(code, line_per_page=10, date_begin='', date_end='', proxies=None):
@@ -136,7 +154,7 @@ def get_fund_rise(doc):
     for div in rise_data_doc.items():
         table_id = str(div.attr('id'))[-1]
         table_doc = div.children()
-        rise[rise_type[table_id]] = get_table_body_data(table_doc)
+        rise[rise_type[table_id]] = get_table_body_data(table_doc('tbody'))
     return rise
 
 
@@ -162,19 +180,16 @@ def get_fund_config(dom):
         '''h3:contains("行业配置")'''
     ).parent().parent()
 
-    a = config_dom.html()
-
     config_concentration = config_dom(
         '''b:contains("行业集中度")'''
-    ).text()
+    ).children().text()
 
-    config_industry = [a.text() for a in config_dom.children('''tspan''').items()]
+    config_industry = [a.text() for a in config_dom('''g[class="highcharts-legend-item"]''').items()]
 
     return {
         '集中度': config_concentration,
         '配置': config_industry
     }
-
 
 
 def get_fund_manager(doc):
@@ -234,7 +249,9 @@ def get_fund_all(code):
 
     try:
 
-        doc = get_fund_dom(code)
+        html = get_fund_page(code)
+
+        doc = pq(html)
 
         name = doc(
             """body > div.main > div.file_top_box > div > div.file_t_righ.rt > div > 
@@ -319,7 +336,7 @@ def get_fund_all_from_list(list_path):
 
 if __name__ == '__main__':
 
-    fund_detail = get_fund_all('000126')
-    print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
-    # get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
+    # fund_detail = get_fund_all('000126')
+    # print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
+    get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
 
