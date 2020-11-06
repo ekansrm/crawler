@@ -318,6 +318,18 @@ def get_fund_all(code):
         }
 
 
+def get_fund_list(save_fund_list_file):
+    r = requests.get('http://fund.eastmoney.com/js/fundcode_search.js')
+    content = r.text
+    content = content[content.find('['):content.find(';')]
+    fund_list = json.loads(content)
+    fund_list = [[a[0], a[2]] for a in fund_list]
+    with open(save_fund_list_file, 'w', encoding='utf-8') as fp:
+        fund_list_content = '\r'.join(['{0},{1}'.format(a[0], a[1]) for a in fund_list])
+        fp.write(fund_list_content)
+    return fund_list
+
+
 def get_fund_all_from_list(list_path):
 
     fund_code_list = set()
@@ -325,18 +337,20 @@ def get_fund_all_from_list(list_path):
         for line in fp.readlines():
             line = line.strip()
             if len(line) != 0:
-                fund_code_list.add(line)
+                fund_code_list.add(line.split(',')[0])
 
     for fund_code in tqdm(fund_code_list):
         fund_detail = get_fund_all(fund_code)
         with open(os.path.join('data', 'fund_info', 'fund_' + fund_code + '.json'), 'w', encoding='utf-8') as fp:
             json.dump(fund_detail, fp, indent=2, ensure_ascii=False)
-        time.sleep(0.05)
+        # time.sleep(0.05)
 
 
 if __name__ == '__main__':
 
-    # fund_detail = get_fund_all('000126')
-    # print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
-    get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
-
+    # get_fund_list(os.path.join('data', 'fund_list.txt'))
+    fund_detail = get_fund_all('000126')
+    print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
+    # get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
+    # print(get_fund_trend('000126', 100, date_begin='1990-01-01', date_end='2099-12-31'))
+#
