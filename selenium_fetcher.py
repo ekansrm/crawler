@@ -2,7 +2,7 @@
 selenium web driver for js fetcher
 """
 
-import urlparse
+from urllib.parse import urlparse
 import json
 import time
 import datetime
@@ -90,7 +90,7 @@ class InitWebDriver(object):
             if fetch.get('proxy'):
                 if '://' not in fetch['proxy']:
                     fetch['proxy'] = 'http://' + fetch['proxy']
-                proxy = urlparse.urlparse(fetch['proxy']).netloc
+                proxy = urlparse(fetch['proxy']).netloc
                 options.add_argument('--proxy-server=%s' % proxy)
 
             # reset headers, for now, do nothing
@@ -154,5 +154,5 @@ class InitWebDriver(object):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 9000)
+    app.run('0.0.0.0', 9001)
     InitWebDriver.quit_web_driver()
