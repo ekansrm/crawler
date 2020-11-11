@@ -308,11 +308,14 @@ def get_fund_info(dom):
             },
             '涨幅': rise_info,
             '配置': config_info,
+            '_success': True
         }
 
     except Exception as e:
         traceback.print_exc(e)
-        return {}
+        return {
+            '_success': False
+        }
 
 
 def get_fund_all(code):
