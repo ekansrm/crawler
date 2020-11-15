@@ -1,6 +1,9 @@
 """
 selenium web driver for js fetcher
 """
+from gevent import monkey
+
+monkey.patch_all()
 
 from urllib.parse import urlparse
 import json
@@ -154,5 +157,5 @@ class InitWebDriver(object):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 9001)
+    app.run(host='0.0.0.0', port=9001, threaded=True)
     InitWebDriver.quit_web_driver()

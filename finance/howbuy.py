@@ -51,8 +51,9 @@ def get_table_body_data(table_body_dom):
 
     icol = {}
 
-    for i, a in enumerate(data[0]):
-        icol[a] = i
+    if len(data) > 0:
+        for i, a in enumerate(data[0]):
+            icol[a] = i
 
     return {
         'irow': irow,
@@ -358,8 +359,8 @@ def get_fund_all_from_list(fund_code_list):
 if __name__ == '__main__':
 
     # get_fund_list(os.path.join('data', 'fund_list.txt'))
-    fund_detail = get_fund_all('000126')
-    print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
+    # fund_detail = get_fund_all('000434')
+    # print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
     # get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
-    # print(get_fund_trend('000126', 100, date_begin='1990-01-01', date_end='2099-12-31'))
+    print(get_fund_trend('000126', 20, date_begin='1990-01-01', date_end='2099-12-31'))
 #
