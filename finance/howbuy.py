@@ -16,19 +16,6 @@ browser = webdriver.Chrome(options=chrome_options, executable_path='./chromedriv
 wait = WebDriverWait(browser, 10)
 
 
-def get_url_response(url, params=None, proxies=None):
-    """
-    获取 URL 内容
-    :param url:
-    :param params:
-    :param proxies:
-    :return:
-    """
-    rsp = requests.get(url, params=params, proxies=proxies)
-    rsp.raise_for_status()
-    return rsp.text
-
-
 def get_table_body_data(table_body_dom):
     """
     读取 Table Body DOM 的表格数据
@@ -145,7 +132,6 @@ def get_fund_manager(dom):
     """
 
     def get_a_fun_manager(manager_doc):
-
         manager_name = manager_doc(
             '''span:contains("综合评分")'''
         ).parent().parent().children().eq(0).text()
@@ -190,46 +176,72 @@ def get_fund_manager(dom):
     return managers_info
 
 
-def get_fund_trend(code, line_per_page=10, date_begin='', date_end='', proxies=None):
+def get_fund_trend(code, date_begin='', date_end='', proxies=None):
+    page = 1
+    html = get_fund_trend_html(code, page, date_begin, date_end, proxies)
+    total_page, data = get_fund_trend_data(code, html)
+
+    while page < total_page:
+        page = page + 1
+        next_html = get_fund_trend_html(code, page, date_begin, date_end, proxies)
+        total_page, more_data = get_fund_trend_data(code, next_html)
+        data.extend(more_data)
+
+    return data
+
+
+def get_fund_trend_url(code, page=1, date_begin='', date_end=''):
+    line_per_page = 20
+    url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
+    params = {'type': 'lsjz', 'code': code, 'page': page, 'per': line_per_page, 'sdate': date_begin, 'edate': date_end}
+    param = '&'.join([i[0] + '=' + str(i[1]) for i in params.items()])
+    full_url = url + '?' + param
+    return full_url
+
+
+def get_fund_trend_html(code, page=1, date_begin='', date_end='', proxies=None):
     """
-    获取基金走势数据
-    :param code: 基金代码
-    :param line_per_page:
-    :param date_begin:
+    获取 URL 内容
     :param date_end:
+    :param date_begin:
+    :param line_per_page:
+    :param code:
+    :param page:
     :param proxies:
     :return:
     """
-    url = 'http://fund.eastmoney.com/f10/F10DataApi.aspx'
-    params = {'type': 'lsjz', 'code': code, 'page': 1, 'per': line_per_page, 'sdate': date_begin, 'edate': date_end}
-    html = get_url_response(url, params, proxies)
+    full_url = get_fund_trend_url(code, page, date_begin, date_end)
+    rsp = requests.get(full_url, proxies=proxies)
+    rsp.raise_for_status()
+    return rsp.text
+
+
+def get_fund_trend_data(code, html):
+    """
+    获取基金走势数据
+    :param html:
+    :return:
+    """
     soup = BeautifulSoup(html, 'html.parser')
 
     # 获取总页数
     pattern = re.compile(r'pages:(.*),')
     result = re.search(pattern, html).group(1)
-    pages = int(result)
+    total_page = int(result)
 
     # 获取表头
-    heads = []
-    for head in soup.findAll("th"):
-        heads.append(head.contents[0])
+    head = []
+    for oneHead in soup.findAll("th"):
+        head.append(oneHead.contents[0])
 
     # 数据存取列表
-    records = []
+    data = []
 
-    # 从第1页开始抓取所有页面数据
-    page = 1
-    while page <= pages:
-        params = {
-            'type': 'lsjz', 'code': code, 'page': page, 'per': line_per_page, 'sdate': date_begin, 'edate': date_end
-        }
-        html = get_url_response(url, params, proxies)
-        soup = BeautifulSoup(html, 'html.parser')
+    # 获取数据
+    for row in soup.findAll("tbody")[0].findAll("tr"):
+        row_records = []
 
-        # 获取数据
-        for row in soup.findAll("tbody")[0].findAll("tr"):
-            row_records = []
+        try:
             for record in row.findAll('td'):
                 val = record.contents
 
@@ -239,17 +251,34 @@ def get_fund_trend(code, line_per_page=10, date_begin='', date_end='', proxies=N
                 else:
                     row_records.append(val[0])
 
+            row_records = zip(head, row_records)
+
+            row_records = {
+                i[0]: i[1] for i in row_records
+            }
+
+            row_records['code'] = code
+            row_records['date'] = re.sub('[^0-9]', '', row_records['净值日期'])
+            if not row_records['date'].isdigit():
+                continue
+            row_records['date'] = int(row_records['date'])
+
+            # row_records['单位净值'] = float(row_records['单位净值']) if row_records['单位净值'] != '--' else 0.0
+            # row_records['累计净值'] = float(row_records['累计净值']) if row_records['累计净值'] != '--' else 0.0
+            # row_records['日增长率'] = float(row_records['日增长率'].replace('%', '')) if row_records['日增长率'] != '--' else 0.0
+
             # 记录数据
-            records.append(row_records)
+            data.append(row_records)
+        except:
+            pass
 
-        # 下一页
-        page = page + 1
 
-    return records
+    # 合并结果
+
+    return total_page, data
 
 
 def get_fund_info(dom):
-
     try:
 
         name = dom(
@@ -349,7 +378,6 @@ def load_fund_list(fund_list_file):
 
 
 def get_fund_all_from_list(fund_code_list):
-
     for fund_code in tqdm(fund_code_list):
         fund_detail = get_fund_all(fund_code)
         with open(os.path.join('data', 'fund_info', 'fund_' + fund_code + '.json'), 'w', encoding='utf-8') as fp:
@@ -357,10 +385,9 @@ def get_fund_all_from_list(fund_code_list):
 
 
 if __name__ == '__main__':
-
     # get_fund_list(os.path.join('data', 'fund_list.txt'))
     # fund_detail = get_fund_all('000434')
     # print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
     # get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
-    print(get_fund_trend('000126', 20, date_begin='1990-01-01', date_end='2099-12-31'))
+    print(get_fund_trend('000126', date_begin='1990-01-01', date_end='2099-12-31'))
 #

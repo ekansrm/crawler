@@ -12,7 +12,7 @@ import json
 from finance.howbuy import get_fund_info,get_fund_info_url
 from finance.howbuy import get_fund_list
 from finance.database import DBSession, Fund, FundInfoJson, FundProc
-from finance.database import get_today_dt, get_pending_fund
+from finance.database import get_today_dt, get_pending_info_fund
 
 
 
@@ -23,7 +23,7 @@ class Handler(BaseHandler):
     @every(minutes=24 * 60)
     def on_start(self):
 
-        pengding_list = get_pending_fund()
+        pengding_list = get_pending_info_fund()
 
         session = DBSession()
 
