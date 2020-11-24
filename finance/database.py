@@ -105,7 +105,7 @@ def get_pending_info_fund() -> List[Dict]:
     获取需要爬取的基金
     """
     today = datetime.date.today()
-    info_obsolete_date = today - datetime.timedelta(days=3)
+    info_obsolete_date = today - datetime.timedelta(days=7)
     info_obsolete_dt = int(info_obsolete_date.strftime('%Y%m%d'))
 
     session = DBSession()
@@ -256,8 +256,8 @@ def update_trend_ob(response):
 
 if __name__ == '__main__':
 
-    init_db()
-    # init_fund_proc()
+    # init_db()
+    init_fund_proc()
     # print(get_pending_fund())
     # print_fund_info_json_db()
 
