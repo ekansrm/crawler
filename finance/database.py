@@ -58,6 +58,7 @@ class FundTrend(Base):
     分红送配 = Column('分红送配', String(128))
 
 
+
 engine = create_engine(
     'mysql+pymysql://crawler:1234567Aa!@rm-wz9m5478sy8814agy1o.mysql.rds.aliyuncs.com:3306/invest',
     max_overflow=5)
