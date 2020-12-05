@@ -300,6 +300,10 @@ def get_fund_info(dom):
             '''li:contains('最新规模')'''
         ).children().text()
 
+        establish = dom(
+            '''li:contains('成立时间')'''
+        ).children().text()
+
         risk_info = get_fund_risk(dom)
 
         manager_info = get_fund_manager(dom)
@@ -329,6 +333,7 @@ def get_fund_info(dom):
             '代码': code,
             '类型': label,
             '规模': scale,
+            '成立': establish,
             '风险': risk_info,
             '经理': manager_info,
             '风格': {
@@ -386,8 +391,8 @@ def get_fund_all_from_list(fund_code_list):
 
 if __name__ == '__main__':
     # get_fund_list(os.path.join('data', 'fund_list.txt'))
-    # fund_detail = get_fund_all('000434')
-    # print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
+    fund_detail = get_fund_all('000434')
+    print(json.dumps(fund_detail, indent=2, ensure_ascii=False))
     # get_fund_all_from_list(os.path.join('data', 'fund_list.txt'))
-    print(get_fund_trend('000126', date_begin='1990-01-01', date_end='2099-12-31'))
+    # print(get_fund_trend('000126', date_begin='1990-01-01', date_end='2099-12-31'))
 #
