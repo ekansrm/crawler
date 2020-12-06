@@ -45,20 +45,6 @@ class FundTrendJson(Base):
     json = Column('json', LONGTEXT(), default='{}')
 
 
-# noinspection NonAsciiCharacters
-class FundTrend(Base):
-    __tablename__ = 'fund_trend'
-    基金代码 = Column('基金代码', String(128), primary_key=True)
-    净值日期 = Column('净值日期', Integer(), primary_key=True)
-    单位净值 = Column('单位净值', Float())
-    累计净值 = Column('累计净值', Float())
-    日增长率 = Column('日增长率', String(128))
-    申购状态 = Column('申购状态', String(128))
-    赎回状态 = Column('赎回状态', String(128))
-    分红送配 = Column('分红送配', String(128))
-
-
-
 engine = create_engine(
     'mysql+pymysql://crawler:1234567Aa!@rm-wz9m5478sy8814agy1o.mysql.rds.aliyuncs.com:3306/invest',
     max_overflow=5)
@@ -217,42 +203,15 @@ def print_fund_info_json_db():
     print(json.dumps(json.loads(r.json), indent=2, ensure_ascii=False))
 
 
-def update_trend_ob(response):
-    url = response.orig_url
-    page = url.split('page=')[1]
-    page = int(page[0:page.find('&')])
-    code = url.split('code=')[1]
-    code = code[0:code.find('&')]
-
-    total_page, data = (None, None, None)
-
-    session = DBSession()
-
-    for row in data:
-        session.merge(FundTrend(
-            基金代码=code,
-            净值日期=row['净值日期'],
-            单位净值=row['单位净值'],
-            累计净值=row['累计净值'],
-            日增长率=row['日增长率'],
-            申购状态=row['申购状态'],
-            赎回状态=row['赎回状态'],
-            分红送配=row['分红送配'],
-
-        ))
-
-    max_dt = max([a['净值日期'] for a in data])
-
-    session.merge(FundProc(code=code, trend_status=0, trend_retry=0, trend_mdf=max_dt))
-
-    session.commit()
-    session.close()
-
-    if page < total_page:
-        old_page = 'page={}'.format(page)
-        new_page = 'page={}'.format(page + 1)
-        new_url = url.replace(old_page, new_page)
-    return {'_success': True}
+def read_info_json_from_database(session: DBSession, row=-1):
+    if row > 0:
+        return [
+            json.loads(r.json) for r in session.query(FundInfoJson).limit(row).all()
+        ]
+    else:
+        return [
+            json.loads(r.json) for r in session.query(FundInfoJson).all()
+        ]
 
 
 if __name__ == '__main__':
