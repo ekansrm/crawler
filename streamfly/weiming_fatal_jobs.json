@@ -1,0 +1,2353 @@
+[{
+  "_id": {
+    "$oid": "5ec3dccd4b0d3c738f07df78"
+  },
+  "name": "us_flink_lh2kr_online_stat_ttl",
+  "description": "us_flink_lh2kr_online_stat_ttl, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "lh2k2",
+  "owner": "weiming",
+  "admins": [],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/lh2kr/rtc/p1/online/dw-online-stat-ttl-prod.xml -D \"application=us_flink_lh2kr_online_stat_ttl\" -D \"offset=2020-20-51 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\" ",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2020-05-19T13:19:09.381Z"
+  },
+  "last_submit": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  }
+},{
+  "_id": {
+    "$oid": "5d68921774aabf4fab52810e"
+  },
+  "name": "us_flink_h45_level_distribute_day",
+  "description": "us_flink_h45_level_distribute_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h45",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d5e4a6517b44563caad107b"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h45/rtc/p1/level/dw-level-distribute-day-prod.xml -D \"application=us_flink_h45_level_distribute_day\" -D \"offset=2019-08-28 00:00:00\" -D \"sink=dw_h45_rtc_level_distribute_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4179",
+    "job_id": "7df585b4bb3d9efd27450bae8d864c52",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-08-30T03:03:51.102Z"
+  },
+  "last_submit": {
+    "$date": "2019-08-30T03:04:26.497Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d789ba374aabf144763379b"
+  },
+  "name": "g103tw-test",
+  "description": "g103tw-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/cli/job-simple.xml -D \"application=g103tw-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/g103tw-sql-0b9cf6e89a3f5c331bc7f8048c6f7b42.sql\" -D \"sink=mysql:dw_g103tw_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4874",
+    "job_id": "a52c13c4d9e29564a9377cbfa103c04d",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-11T07:00:51.410Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-11T07:01:23.663Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d78be6d74aabf14476337bb"
+  },
+  "name": "us_flink_g103tw_online_stat",
+  "description": "us_flink_g103tw_online_stat, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/online/dw-online-stat-prod.xml -D \"application=us_flink_g103tw_online_stat\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=realtime\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4960",
+    "job_id": "a6c2c54c26bbfdf804af62015c866858",
+    "save_point": "",
+    "checkpoint": "hdfs://cosmos/flink/g103tw_us/savepoints/5d78be6d74aabf14476337bb/savepoint-98cfb0-063082352c05"
+  },
+  "last_modified": {
+    "$date": "2019-09-11T09:29:17.408Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:58:58.564Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79ae1f74aabf1447633807"
+  },
+  "name": "us_flink_g103tw_p1_onlinerolenum_day",
+  "description": "us_flink_g103tw_p1_onlinerolenum_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/online/dw-p1-onlinerolenum-day-prod.xml -D \"application=us_flink_g103tw_p1_onlinerolenum_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=rtc\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4963",
+    "job_id": "ba63a15f362b76b12a4582a79f9aa8d2",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:59:03.144Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T03:04:14.304Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79b17874aabf144763380b"
+  },
+  "name": "us_flink_g103tw_prepaid_channel_day",
+  "description": "us_flink_g103tw_prepaid_channel_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/prepaid/dw-prepaid-channel-day-prod.xml -D \"application=us_flink_g103tw_prepaid_channel_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_prepaid_channel_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4955",
+    "job_id": "81e8185a15abaa8d61694254796c7a82",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:46:16.769Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:46:48.255Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79b1ad74aabf144763380e"
+  },
+  "name": "us_flink_g103tw_prepaid_misc_day",
+  "description": "us_flink_g103tw_prepaid_misc_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/prepaid/dw-prepaid-misc-day-prod.xml -D \"application=us_flink_g103tw_prepaid_misc_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_prepaid_misc_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4989",
+    "job_id": "f3e36734dc33c6604c0dfeef72813064",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:47:09.327Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T10:17:03.431Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79b1df74aabf1447633810"
+  },
+  "name": "us_flink_g103tw_account_retention_day",
+  "description": "us_flink_g103tw_account_retention_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/retention/dw-account-retention-day-prod.xml -D \"application=us_flink_g103tw_account_retention_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_account_retention_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4957",
+    "job_id": "1dc5dcc6d3b9e593adb37078968e746d",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:47:59.685Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:48:25.931Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79b20574aabf1447633812"
+  },
+  "name": "us_flink_g103tw_device_retention_day",
+  "description": "us_flink_g103tw_device_retention_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/retention/dw-device-retention-day-prod.xml -D \"application=us_flink_g103tw_device_retention_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_device_retention_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4958",
+    "job_id": "9064c5bbacb1f493f17a9aa2e97fd37b",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:48:37.475Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:49:25.670Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79b26a74aabf1447633814"
+  },
+  "name": "us_flink_g103tw_role_retention_day",
+  "description": "us_flink_g103tw_role_retention_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/retention/dw-role-retention-day-prod.xml -D \"application=us_flink_g103tw_role_retention_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_role_retention_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4959",
+    "job_id": "6c0cc2da8e7104a878b0100d5916489d",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:50:18.878Z"
+  },
+  "last_submit": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5dc2656917b4450364aafc85"
+  },
+  "name": "us_flink_g58as_online_stat_ttl",
+  "description": "us_flink_g58as_online_stat_ttl, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g58as",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g58as/rtc/p1/online/dw-online-stat-ttl-prod.xml -D \"application=us_flink_g58as_online_stat_ttl\" -D \"offset=2021-05-04 18:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "zhou",
+    "topic": "streaming_g58as_ustable",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": true,
+      "group_regex": "^us_flink_g58as_online_stat_ttl$",
+      "lag": 100000,
+      "fade_time": 1800,
+      "gap": 900,
+      "aggregate_window": 3
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:11:17.421Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-06T06:17:36.876Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "stop_timeout": 300,
+  "start_timeout": 300
+},{
+  "_id": {
+    "$oid": "5cdbc9c017b4453db274bcac"
+  },
+  "name": "us_flink_g78_onlinerolenum_match_day",
+  "description": "",
+  "department": "us",
+  "project": "g78",
+  "submitter": "weiming",
+  "accepters": [
+    "weiming",
+    "mahaiping"
+  ],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5cdbc90317b4453db274bcab"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g78/rtc/online/dw-onlinerolenum-match-day-z-prod.xml",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 2,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "broker": "shang",
+    "topic": "streaming_g78_us",
+    "lag": 0,
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": ""
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-05-15T08:22:45.121Z"
+  },
+  "last_submit": {
+    "$date": "2019-06-05T08:54:27.903Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  },
+  "owner": "weiming",
+  "admins": [
+    "weiming",
+    "mahaiping",
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5ce290ce74aabf3e9aa9cc42"
+  },
+  "name": "us-flink-g91-itembuy",
+  "description": "",
+  "department": "us",
+  "project": "g91",
+  "submitter": "weiming",
+  "accepters": [
+    "mahaiping",
+    "weiming"
+  ],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g91/rtc/itembuy/dw-itembuy-prod.xml",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "shang",
+    "topic": "streaming_g91_us",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:29:11.947Z"
+  },
+  "last_submit": {
+    "$date": "2019-07-31T03:09:43.433Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "mahaiping",
+    "weiming",
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5d5e4b5c74aabf7645e67451"
+  },
+  "name": "h45-test",
+  "description": "h45-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h45",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d5e4a6517b44563caad107b"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h45/rtc/cli/job-simple.xml -D \"application=h45-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/h45-sql-51433b7da6c1031a0b5f62632fe7e98a.sql\" -D \"sink=mysql:dw_h45_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_3784",
+    "job_id": "46ef056f595544a34c98f696c1239d5b",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-08-22T07:59:24.002Z"
+  },
+  "last_submit": {
+    "$date": "2019-08-22T07:59:47.321Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79ada474aabf1447633804"
+  },
+  "name": "us_flink_g103tw_login_channel_day",
+  "description": "us_flink_g103tw_login_channel_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/login/dw-login-channel-day-prod.xml -D \"application=us_flink_g103tw_login_channel_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_login_channel_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4949",
+    "job_id": "7d779060ed6c53184251afad398ceae7",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:29:56.623Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:30:37.741Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d79adf574aabf1447633805"
+  },
+  "name": "us_flink_g103tw_login_onlinetime_day",
+  "description": "us_flink_g103tw_login_onlinetime_day, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g103tw",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g103tw/rtc/p1/login/dw-login-onlinetime-day-prod.xml -D \"application=us_flink_g103tw_login_onlinetime_day\" -D \"offset=2019-09-11 00:00:00\" -D \"sink=dw_g103tw_rtc_login_onlinetime_day\" -D \"parallelism=3\" -D \"salt=30\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 3,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4951",
+    "job_id": "4eddf75da7245b39ceb9fdb774de49fc",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-12T02:31:17.063Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-12T02:31:47.576Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5db147ed74aabf3559c555ea"
+  },
+  "name": "g104-test",
+  "description": "g104-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g104",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g104/rtc/cli/job-simple.xml -D \"application=g104-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole,Prepaid,Activation\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/g104-sql-f638d276ed560518ca4d8588f591caa8.sql\" -D \"sink=mysql:dw_g104_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_7978",
+    "job_id": "89e172ee6125679713f9ef1938ef149d",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-10-24T06:42:53.940Z"
+  },
+  "last_submit": {
+    "$date": "2019-10-24T06:43:18.154Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  }
+},{
+  "_id": {
+    "$oid": "5db15c2574aabf3559c555fa"
+  },
+  "name": "us_flink_g104_online_stat",
+  "description": "us_flink_g104_online_stat, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g104",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g104/rtc/p1/online/dw-online-stat-prod.xml -D \"application=us_flink_g104_online_stat\" -D \"offset=2019-12-06 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "broker": "zhou",
+    "topic": "streaming_g104_ustable",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": true,
+      "group_regex": "^us_flink_g104_online_stat$",
+      "lag": 1000,
+      "fade_time": 1800,
+      "gap": 300
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_11913",
+    "job_id": "232083ec0c0bd71bf08e71581cf7abce",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-12-06T01:24:38.258Z"
+  },
+  "last_submit": {
+    "$date": "2019-12-06T01:25:09.868Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  }
+},{
+  "_id": {
+    "$oid": "5d70b90e74aabf4fab52825f"
+  },
+  "name": "appdump-test",
+  "description": "appdump-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "appdump",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/appdump/rtc/cli/job-simple.xml -D \"application=appdump-test\" -D \"parallelism=1\" -D \"keyword=AppDump\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/appdump-sql-8227ca644d696cdaf73f71dadc691de4.sql\" -D \"sink=mysql:dw_appdump_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_4456",
+    "job_id": "e9a6ae6de26756b227d6c9e5b3f1ce8c",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-09-05T07:28:14.480Z"
+  },
+  "last_submit": {
+    "$date": "2019-09-05T07:28:35.743Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5d70bdd074aabf4fab528266"
+  },
+  "name": "us_flink_appdump_device_day",
+  "description": "",
+  "department": "us",
+  "project": "appdump",
+  "submitter": "weiming",
+  "accepters": [],
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": {
+      "$date": "2019-09-04T03:27:37.542Z"
+    }
+  },
+  "param": "-c /home/scheduler.run/us/jobs/appdump/rtc/p2/dump/dw-device-day.xml -D \"application=us_flink_appdump_device_day\" -D \"parallelism=10\" -D \"keyword=AppDump\" -D \"offset=2020-03-16 00:00:00\" -D \"sink=mysql:dw_appdump_device_day\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "broker": "zhou",
+    "topic": "streaming_appdump_us",
+    "methods": [
+      "sms",
+      "popo"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": true,
+      "group_regex": "^us_flink_appdump_device_day$",
+      "lag": 10000,
+      "fade_time": 1800,
+      "gap": 900
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_20878",
+    "job_id": "8549048c1ab45e35a8bd833eef0a98ae",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2020-03-16T01:23:25.619Z"
+  },
+  "last_submit": {
+    "$date": "2020-03-16T01:24:33.622Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public"
+},{
+  "_id": {
+    "$oid": "5da809b917b4450364aaf0a0"
+  },
+  "name": "us_flink_g90na_online_stat",
+  "description": "us_flink_g90na_online_stat, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g90na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "60053d53fa481651ff36687c"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g90na/rtc/p1/online/dw-online-stat-prod.xml -D \"application=us_flink_g90na_online_stat\" -D \"offset=2021-05-04 18:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5ffbf002fa4816604e34043b"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "tokyo01",
+    "topic": "streaming_g90na_ustable",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T17:10:05.903Z"
+  },
+  "last_submit": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5db1689917b4450364aaf6f2"
+  },
+  "name": "us_flink_h37jp_online_stat",
+  "description": "us_flink_h37jp_online_stat, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h37jp",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "60053d53fa481651ff36687c"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h37jp/rtc/p1/online/dw-online-stat-prod.xml -D \"application=us_flink_h37jp_online_stat\" -D \"offset=2021-05-04 18:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T17:10:42.732Z"
+  },
+  "last_submit": {
+    "$date": "2019-10-24T09:02:41.579Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5dc2350374aabf3559c55bcf"
+  },
+  "name": "us_flink_h38na_online_stat_ttl",
+  "description": "us_flink_h38na_online_stat_ttl, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h38na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "60053d53fa481651ff36687c"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h38na/rtc/p1/online/dw-online-stat-ttl-prod.xml -D \"application=us_flink_h38na_online_stat_ttl\" -D \"offset=2021-05-04 18:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "",
+    "topic": "",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T17:05:17.631Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-06T02:51:19.722Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "stop_timeout": 300,
+  "start_timeout": 300
+},{
+  "_id": {
+    "$oid": "5dc2358917b4450364aafc32"
+  },
+  "name": "us_flink_h38na_online_prepaid",
+  "description": "us_flink_h38na_online_prepaid, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h38na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "60053d53fa481651ff36687c"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h38na/rtc/p1/online/dw-online-prepaid-prod.xml -D \"application=us_flink_h38na_online_prepaid\" -D \"offset=2021-05-04 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T17:05:32.098Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-06T02:53:19.984Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5dc2656717b4450364aafc84"
+  },
+  "name": "us_flink_g58as_online_prepaid",
+  "description": "us_flink_g58as_online_prepaid, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g58as",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g58as/rtc/p1/online/dw-online-prepaid-prod.xml -D \"application=us_flink_g58as_online_prepaid\" -D \"offset=2021-05-04 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "zhou",
+    "topic": "streaming_g58as_ustable",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": true,
+      "group_regex": "^us_flink_g58as_online_prepaid$",
+      "lag": 100000,
+      "fade_time": 1800,
+      "gap": 900,
+      "aggregate_window": 3
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:11:26.880Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-06T06:17:40.786Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5dc2656974aabf3559c55c11"
+  },
+  "name": "g58as-test",
+  "description": "g58as-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g58as",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g58as/rtc/cli/job-simple.xml -D \"application=g58as-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole,Prepaid,Activation\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/g58as-sql-f638d276ed560518ca4d8588f591caa8.sql\" -D \"sink=mysql:dw_g58as_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_8988",
+    "job_id": "4641fca24c84ae270aa1524bfb137d18",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-11-06T06:17:13.120Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-06T06:17:35.084Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  }
+},{
+  "_id": {
+    "$oid": "5dc27a8b74aabf3559c55c2b"
+  },
+  "name": "us_flink_z3_online_prepaid",
+  "description": "us_flink_z3_online_prepaid, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "z3",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/z3/rtc/p1/online/dw-online-prepaid-prod.xml -D \"application=us_flink_z3_online_prepaid\" -D \"offset=2019-11-06 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1620114974491_4169",
+    "job_id": "27aaff07b83be81200298f3433cb7970",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-11-06T07:47:23.256Z"
+  },
+  "last_submit": {
+    "$date": "2021-05-04T17:13:22.605Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  }
+},{
+  "_id": {
+    "$oid": "5ddf383417b4450364ab071d"
+  },
+  "name": "h59na-test",
+  "description": "h59na-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h59na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h59na/rtc/cli/job-simple.xml -D \"application=h59na-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole,Prepaid,Activation\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/h59na-sql-f638d276ed560518ca4d8588f591caa8.sql\" -D \"sink=mysql:dw_h59na_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_11058",
+    "job_id": "0a5321951298f9d940f89df5a9ebd47c",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-11-28T03:00:04.731Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-28T03:00:34.618Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  }
+},{
+  "_id": {
+    "$oid": "5ddf391b17b4450364ab0722"
+  },
+  "name": "us_flink_h59na_online_stat_ttl",
+  "description": "us_flink_h59na_online_stat_ttl, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h59na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5fed92a34b0d3c66bdde6fa2"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h59na/rtc/p1/online/dw-online-stat-ttl-prod.xml -D \"application=us_flink_h59na_online_stat_ttl\" -D \"offset=2021-05-04 18:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "zhou",
+    "topic": "streaming_h59na_ustable",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": true,
+      "group_regex": "^us_flink_h59na_online_stat_ttl$",
+      "lag": 100000,
+      "fade_time": 1800,
+      "gap": 900,
+      "aggregate_window": 3
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:24:01.096Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-28T03:04:23.697Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5ddf442174aabf6000e46ae5"
+  },
+  "name": "us_flink_h59na_online_prepaid",
+  "description": "us_flink_h59na_online_prepaid, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "h59na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5fed92a34b0d3c66bdde6fa2"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/h59na/rtc/p1/online/dw-online-prepaid-prod.xml -D \"application=us_flink_h59na_online_prepaid\" -D \"offset=2021-05-04 00:00:00\" -D \"sink=realtime\" -D \"parallelism=1\" -D \"salt=1\"",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:24:17.705Z"
+  },
+  "last_submit": {
+    "$date": "2019-11-28T03:51:27.338Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5df9fa7a74aabf1cc407624c"
+  },
+  "name": "g104na-test",
+  "description": "g104na-test, 通过 CLI 工具提交",
+  "department": "us",
+  "project": "g104na",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "ccsn0739"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g104na/rtc/cli/job-simple.xml -D \"application=g104na-test\" -D \"parallelism=1\" -D \"keyword=LoginRole,LogoutRole,Prepaid,Activation\" -D \"offset=earliest\" -D \"sql=hdfs://gdccluster/tmp/g104na-sql-f638d276ed560518ca4d8588f591caa8.sql\" -D \"sink=mysql:dw_g104na_flink_test_keyword\"\n",
+  "class": "com.netease.ux.app.rtc.flink.App",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1560933068890_12972",
+    "job_id": "0b0e046d0020335638d62eba6340c0cb",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2019-12-18T10:07:54.523Z"
+  },
+  "last_submit": {
+    "$date": "2019-12-18T10:08:32.706Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  }
+},{
+  "_id": {
+    "$oid": "5e5cba1d17b445285630ffaf"
+  },
+  "name": "us_flink_pm02_ods_dashen_prod",
+  "description": "",
+  "department": "us",
+  "project": "pm02",
+  "owner": "weiming",
+  "admins": [],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/pm02/rtc/ods/dashen/ods-dashen-prod.xml -D \"application=us_flink_pm02_ods_dashen\" -D \"offset=2021-05-04 00:00:00\" -D \"parallelism=1\" -D \"sink=hbase:rs_us_pm02_flink_dashen_role_info\"",
+  "class": "",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 1,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "is_log_alarm": false,
+    "log_alarm_types": [],
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "blackhole_rule": "",
+    "blackhole_project": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0,
+      "aggregate_window": 0
+    }
+  },
+  "application": {
+    "id": "",
+    "job_id": "",
+    "save_point": "",
+    "checkpoint": ""
+  },
+  "last_modified": {
+    "$date": "2021-05-04T16:05:53.617Z"
+  },
+  "last_submit": {
+    "$date": "2020-03-02T07:48:18.015Z"
+  },
+  "dirty": true,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  },
+  "start_timeout": 300,
+  "stop_timeout": 300
+},{
+  "_id": {
+    "$oid": "5e99744717b4451db63799b8"
+  },
+  "name": "us_flink_g90_ods_dashen_test",
+  "description": "",
+  "department": "us",
+  "project": "g90",
+  "owner": "weiming",
+  "admins": [],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g90/rtc/ods/dashen/ods-dashen-test.xml -D \"application=us_flink_g90_ods_dashen_test\" -D \"offset=2020-07-08 00:00:00\" -D \"parallelism=2\" -D \"sink=hbase:rs_us_g90_flink_dashen_role_info_test\"",
+  "class": "",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 2,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": true,
+    "broker": "",
+    "topic": "",
+    "methods": [
+      "popo",
+      "sms"
+    ],
+    "receivers": [
+      "weiming"
+    ],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1605449855017_0730",
+    "job_id": "5ca2b9f42b8c1564219723f444f585dd",
+    "save_point": "",
+    "checkpoint": "hdfs://cosmos/flink/g90_us/savepoints/5e99744717b4451db63799b8/savepoint-436529-d372e35e9989"
+  },
+  "last_modified": {
+    "$date": "2020-07-08T02:15:19.897Z"
+  },
+  "last_submit": {
+    "$date": "2020-11-20T05:16:30.879Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  }
+},{
+  "_id": {
+    "$oid": "5f226f4a4b0d3c2ac8cc6501"
+  },
+  "name": "us_flink_l10_ods_dashen_test",
+  "description": "",
+  "department": "us",
+  "project": "l10",
+  "owner": "weiming",
+  "admins": [],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/l10/rtc/ods/dashen/ods-dashen-test.xml -D \"application=us_flink_l10_ods_dashen_test\" -D \"offset=2020-07-30 15:00:00\" -D \"parallelism=2\" -D \"sink=hbase:rs_us_l10_flink_dashen_role_info_test\"",
+  "class": "",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 2,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1620114974491_2249",
+    "job_id": "c66b1dff322055856f43b6e356401de2",
+    "save_point": "",
+    "checkpoint": "hdfs://cosmos/flink/l10_us/checkpoints/5f226f4a4b0d3c2ac8cc6501/15d98db2c15b80b709e34b54d8510f9d/chk-508302"
+  },
+  "last_modified": {
+    "$date": "2020-07-30T06:57:14.916Z"
+  },
+  "last_submit": {
+    "$date": "2021-05-04T09:16:51.778Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 8192
+  }
+},{
+  "_id": {
+    "$oid": "5f924a284b0d3c429e98536b"
+  },
+  "name": "us_flink_g99_ods_dashen_test",
+  "description": "",
+  "department": "us",
+  "project": "g99",
+  "owner": "weiming",
+  "admins": [
+    "zhangxiaopeng01",
+    "linzecheng"
+  ],
+  "visibility": "public",
+  "biz_type": "basic",
+  "type": "flink",
+  "jar": {
+    "id": {
+      "$oid": "5d67ba0b74aabf4fab5280ee"
+    },
+    "utime": "latest"
+  },
+  "param": "-c /home/scheduler.run/us/jobs/g99/rtc/ods/dashen/ods-dashen-test.xml -D \"application=us_flink_g99_ods_dashen_test\" -D \"offset=2020-10-29 00:00:00\" -D \"parallelism=2\" -D \"sink=hbase:rs_us_g99_flink_dashen_role_info_test\"",
+  "class": "",
+  "cluster": {
+    "$oid": "5c90bdee6542a75e9689d7ae"
+  },
+  "local_files": [],
+  "parallelism": 2,
+  "status": "fatal",
+  "alarm": {
+    "is_alarm": false,
+    "broker": "",
+    "topic": "",
+    "methods": [],
+    "receivers": [],
+    "escalate_project": "",
+    "escalate_policy_key": "",
+    "lag": {
+      "on": false,
+      "group_regex": "",
+      "lag": 0,
+      "fade_time": 0,
+      "gap": 0
+    }
+  },
+  "application": {
+    "id": "application_1620114974491_3007",
+    "job_id": "a5c90a711bad4cd37d3fec5754ce3e14",
+    "save_point": "",
+    "checkpoint": "hdfs://cosmos/flink/g99_us/checkpoints/5f924a284b0d3c429e98536b/888995fb4a799da26e79c6d7c9d14f21/chk-320742"
+  },
+  "last_modified": {
+    "$date": "2020-10-30T08:21:02.850Z"
+  },
+  "last_submit": {
+    "$date": "2021-05-04T09:33:17.488Z"
+  },
+  "dirty": false,
+  "extras": {
+    "job_manager_memory": 4096,
+    "task_manager_memory": 4096
+  }
+}]
