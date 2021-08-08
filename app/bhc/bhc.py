@@ -5,6 +5,7 @@ import requests
 from tqdm import tqdm
 from pyquery import PyQuery as pq
 from utils.fs import FsRowDict
+from utils.img import download_img
 
 
 class Crawler(object):
@@ -12,6 +13,7 @@ class Crawler(object):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
     }
 
+    _base_dir = ''
     _session = None
     _row_dict = None
 
@@ -105,9 +107,10 @@ class Crawler(object):
         r = self._session.get(url, headers=self._header)
         return Crawler.parse_qm_info_from_dom(pq(r.text))
 
-    def __init__(self, row_dict):
+    def __init__(self, base_dir):
+        self._base_dir = base_dir
         self._session = Crawler.get_session_by_login()
-        self._row_dict = row_dict
+        self._row_dict = FsRowDict(os.path.join(base_dir, 'all.json'))
 
     def __del__(self):
         self._session.close()
@@ -166,8 +169,8 @@ class Crawler(object):
         for tid in pbar:
             pbar.set_description('抓取详情 ' + tid)
             row = self._row_dict.select(tid)
-            is_empty = 'txt' not in row or row['txt'] is None or row['txt'].strip() == ''
-            if is_empty:
+            row_empty = 'txt' not in row or row['txt'] is None or row['txt'].strip() == ''
+            if row_empty:
                 info_url = Crawler.info_url(tid)
                 _row = self.get_qm_info_by_url(info_url)
                 self._row_dict.upsert(tid, _row)
@@ -184,13 +187,51 @@ class Crawler(object):
 
         return rv
 
+    def download_qm_info_img(self, interval=0.2):
+        tid_list = self._row_dict.select_all().keys()
+        pbar = tqdm(tid_list)
+        i = 0
+        u = 10
+        rv = {}
+        for tid in pbar:
+            pbar.set_description('抓取图片 ' + tid)
+            img_dir = os.path.join(self._base_dir, tid)
+
+            row = self._row_dict.select(tid)
+            img = row.get('img', [])
+            img_done = row.get('img_done', [])
+            for a_img in img:
+                if a_img in img_done:
+                    continue
+                try:
+                    download_img(a_img, img_dir)
+                    img_done.append(a_img)
+                except Exception as e:
+                    print('下载错误: ' + a_img)
+                time.sleep(interval)
+
+            row['img_done'] = img_done
+            self._row_dict.upsert(tid, row)
+            row = self._row_dict.select(tid)
+            rv[tid] = row
+
+            i += 1
+            if i >= u:
+                i = 0
+                self._row_dict.commit()
+
+        self._row_dict.commit()
+
+        return rv
+
 
 if __name__ == '__main__':
 
-    row_dict = FsRowDict(os.path.join('.', '_rst', 'bhc', 'all.json'))
+    base_dir = os.path.join('.', '_rst', 'bhc')
 
-    crawler = Crawler(row_dict)
-    crawler.upsert_qm_info_missing()
+    crawler = Crawler(base_dir)
+    crawler.download_qm_info_img()
+    # crawler.upsert_qm_info_missing()
     # qm_list = crawler.upsert_qm_list_by_area('天河', 30)
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
 
