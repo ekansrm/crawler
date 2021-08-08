@@ -15,7 +15,7 @@ class FsRowDict(object):
         self._path = path
         if not os.path.exists(path):
             return
-        with open(path, 'r', encoding='utf-8') as fp:
+        with open(self._path, 'r', encoding='utf-8') as fp:
             lines = fp.readlines()
             db_json = '\n'.join(lines)
             if db_json.strip() == '':
