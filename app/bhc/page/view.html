@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <title>QM 大全</title>
+</head>
+<body>
+    {% for row in rows %}
+        <hr/>
+        <h2 style="margin-left: 2em;">{{ row.title }} - {{ row.tid }}</h2>
+        {% for line in row.txt_line %}
+            <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
+                {{ line }}
+            </p>
+        {% endfor %}
+        {% for img in row.img_local %}
+            <p style="margin-left: 4em;">
+                <img src="{{ img }}" width="600"/>
+            </p>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

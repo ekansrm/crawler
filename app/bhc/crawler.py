@@ -17,7 +17,6 @@ class Crawler(object):
     _session = None
     _row_dict = None
 
-
     @staticmethod
     def base_url():
         return 'http://www.bhcvs.com/'
@@ -26,6 +25,9 @@ class Crawler(object):
     def list_url(page, area='天河'):
         if area == '天河':
             url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&typeid=2&filter=lastpost&orderby=lastpost&typeid=2&page={0}'
+            return url_tpl.format(page)
+        if area == '全部':
+            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&filter=lastpost&orderby=lastpost&page={0}'
             return url_tpl.format(page)
         raise Exception('未知地区: ' + area)
 
@@ -91,12 +93,14 @@ class Crawler(object):
         post_dom = dom('div[id="postlist"]>div[id*="post"]:first')
         post_txt_dom = post_dom('td[id*="postmessage"]')
         post_txt = post_txt_dom.text()
-        post_img_dom = post_dom('div[class*="savephotop"]>img')
+        post_img_dom = post_dom('img[file*="data/attachment/forum"]')
         post_img = [Crawler.base_url() + e.attr('file') for e in post_img_dom.items()]
-
+        post_area_dom = dom('h1[class="ts"]>a')
+        post_area = post_area_dom.text().replace('[', '').replace(']', '')
         return {
             'txt': post_txt,
             'img': post_img,
+            'area': post_area,
         }
 
     def get_qm_list_by_url(self, url):
@@ -113,7 +117,8 @@ class Crawler(object):
         self._row_dict = FsRowDict(os.path.join(base_dir, 'all.json'))
 
     def __del__(self):
-        self._session.close()
+        # self._session.close()
+        pass
 
     def upsert_qm_list_by_area(self, area, page_num, interval=0.5):
         pbar = tqdm(range(1, page_num + 1))
@@ -124,7 +129,6 @@ class Crawler(object):
                 url = Crawler.list_url(page, area)
                 page_rv = self.get_qm_list_by_url(url)
                 for e in page_rv:
-                    page_rv[e]['area'] = area
                     self._row_dict.upsert(page_rv[e]['tid'], page_rv[e])
                     rv[e] = self._row_dict.select(page_rv[e]['tid'])
                 time.sleep(interval)
@@ -225,14 +229,11 @@ class Crawler(object):
         return rv
 
 
+base_dir = os.path.join('.', '_rst', 'bhc')
+
 if __name__ == '__main__':
-
-    base_dir = os.path.join('.', '_rst', 'bhc')
-
     crawler = Crawler(base_dir)
-    crawler.download_qm_info_img()
+    # crawler.download_qm_info_img()
     # crawler.upsert_qm_info_missing()
-    # qm_list = crawler.upsert_qm_list_by_area('天河', 30)
-    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
-
-
+    qm_list = crawler.upsert_qm_list_by_area('全部', 1)
+    qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
