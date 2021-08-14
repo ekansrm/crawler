@@ -27,6 +27,15 @@ class Crawler(object):
         if area == '天河':
             url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&typeid=2&filter=lastpost&orderby=lastpost&typeid=2&page={0}'
             return url_tpl.format(page)
+        if area == '海珠':
+            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=3&filter=typeid&typeid=3&page={0}'
+            return url_tpl.format(page)
+        if area == '番禺':
+            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=7&filter=typeid&typeid=7&page={0}'
+            return url_tpl.format(page)
+        if area == '越秀':
+            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=5&filter=typeid&typeid=5&page={0}'
+            return url_tpl.format(page)
         if area == '全部':
             url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&filter=lastpost&orderby=lastpost&page={0}'
             return url_tpl.format(page)
@@ -236,7 +245,7 @@ class Crawler(object):
 
 
 
-    def download_qm_info_img(self, interval=0.2):
+    def download_qm_info_img(self, interval=0.5):
         tid_list = self._row_dict.select_all().keys()
         pbar = tqdm(tid_list)
         i = 0
@@ -280,10 +289,10 @@ crawler = Crawler(base_dir)
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    # qm_list = crawler.upsert_qm_list_by_area('天河', 5)
+    qm_list = crawler.upsert_qm_list_by_area('番禺', 4, interval=1)
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
-    # crawler.upsert_qm_info_missing()
-    # crawler.download_qm_info_img()
+    crawler.upsert_qm_info_missing()
+    crawler.download_qm_info_img()
     crawler.clean_qm_txt()
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
     pass
