@@ -220,6 +220,22 @@ class Crawler(object):
         infos = self._row_dict.select_all()
         return {e: infos[e] for e in infos if 'img' not in infos[e] or len(infos[e]['img']) == 0}
 
+    def clean_qm_txt(self):
+        for tid, row in self._row_dict.select_all().items():
+            lines = row.get('txt', '暂无介绍').split('\n')
+            lines = [line for line in lines
+                     if '本帖最后由' not in line
+                     and '下载附件' not in line
+                     and '下载次数' not in line
+                     and '上传' not in line
+                     and len(line.strip()) > 0]
+            txt = '\n'.join(lines)
+            row['txt'] = txt
+
+        self._row_dict.commit()
+
+
+
     def download_qm_info_img(self, interval=0.2):
         tid_list = self._row_dict.select_all().keys()
         pbar = tqdm(tid_list)
@@ -264,9 +280,10 @@ crawler = Crawler(base_dir)
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    qm_list = crawler.upsert_qm_list_by_area('天河', 5)
-    qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
-    crawler.upsert_qm_info_missing()
-    crawler.download_qm_info_img()
+    # qm_list = crawler.upsert_qm_list_by_area('天河', 5)
+    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
+    # crawler.upsert_qm_info_missing()
+    # crawler.download_qm_info_img()
+    crawler.clean_qm_txt()
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
     pass

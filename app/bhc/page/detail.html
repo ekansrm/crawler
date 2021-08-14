@@ -3,8 +3,6 @@
     <title>大全</title>
 </head>
 <body>
-    {% for row in rows %}
-        <hr/>
         <h2 style="margin-left: 2em;">{{ row.area }} - {{ row.time }} - {{ row.title }}</h2>
         <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
             时间: {{ row.time }}
@@ -12,7 +10,7 @@
         <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
             地区: {{ row.area }}
         </p>
-    {% for line in row.txt_line %}
+        {% for line in row.txt_line %}
             <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
                 {{ line }}
             </p>
@@ -22,6 +20,5 @@
                 <img src="{{ img }}" width="600"/>
             </p>
         {% endfor %}
-    {% endfor %}
 </body>
 </html>

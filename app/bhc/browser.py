@@ -4,12 +4,6 @@ from flask import Flask, render_template
 from jinja2 import Template
 from utils.fs import FsRowDict
 
-page_dir = os.path.join('.', 'app', 'bhc', 'page')
-view_path = os.path.join(page_dir, 'view.html')
-with open(view_path, 'r', encoding='utf-8') as fp:
-    view_htm = '\n'.join(fp.readlines())
-    view_tpl = Template(view_htm)
-
 
 class Browser(object):
     _base_dir = ''
@@ -27,13 +21,17 @@ class Browser(object):
             img_list = []
         return img_list
 
-    def render_qm_info_by_tid(self, tid_list):
+    def render_qm_info(self, tid):
+        row = self._row_dict.select(tid)
+        _row = dict(row)
+        _row['img_local'] = self._list_img(tid)
+        _row['txt_line'] = _row.get('txt', '暂无介绍').split('\n')
+        return _row
+
+    def render_qm_info_list(self, tid_list):
         rv = []
         for tid in tid_list:
-            row = self._row_dict.select(tid)
-            _row = dict(row)
-            _row['img_local'] = self._list_img(tid)
-            _row['txt_line'] = _row['txt'].split('\n')
+            _row = self.render_qm_info(tid)
             rv.append(_row)
         rv = sorted(rv, key=lambda x: time.strptime(x.get('time', '2000-01-01 00:00:00'), "%Y-%m-%d %H:%M:%S"), reverse=True)
         rv = sorted(rv, key=lambda x: 'VIP会员可查看' not in x['txt'], reverse=True)
@@ -51,17 +49,29 @@ class Browser(object):
 base_dir = os.path.join('.', '_rst', 'bhc')
 browser = Browser(base_dir)
 
-app = Flask(__name__, static_url_path='', static_folder='../../_rst/bhc')
+app = Flask(__name__, template_folder='page', static_url_path='', static_folder='../../_rst/bhc')
 
 
 @app.route('/')
 def index():
-    return view_tpl.render(rows=browser.render_qm_info_by_tid(browser.select_all_tid()))
+    rows = browser.render_qm_info_list(browser.select_all_tid())
+    return render_template('index.html', rows=rows)
 
 
 @app.route('/<area>')
-def page(area):
-    return view_tpl.render(rows=browser.render_qm_info_by_tid(browser.select_tid_by_area(area)))
+def index_by_area(area):
+    if area == 'all':
+        rows = browser.render_qm_info_list(browser.select_all_tid())
+    else:
+        rows = browser.render_qm_info_list(browser.select_tid_by_area(area))
+
+    return render_template('index.html', rows=rows)
+
+
+@app.route('/detail/<tid>')
+def detail(tid):
+    return render_template('detail.html', row=browser.render_qm_info(tid))
+
 
 if __name__ == '__main__':
     app.run()
