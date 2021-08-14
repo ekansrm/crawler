@@ -1,6 +1,7 @@
 import re
 import os
 import time
+import json
 import requests
 from tqdm import tqdm
 from pyquery import PyQuery as pq
@@ -97,23 +98,45 @@ class Crawler(object):
         post_img = [Crawler.base_url() + e.attr('file') for e in post_img_dom.items()]
         post_area_dom = dom('h1[class="ts"]>a')
         post_area = post_area_dom.text().replace('[', '').replace(']', '')
+        post_time_dom = post_dom('em:contains(发表于)>span')
+        post_time = post_time_dom.attr('title')
+
+        if post_time is None:
+            post_time_dom = post_dom('em:contains(发表于)')
+            post_time = post_time_dom.text().replace('发表于', '').strip()
+        try:
+            post_time = time.strftime("%Y-%m-%d %H:%M:%S", time.strptime(post_time, "%Y-%m-%d %H:%M:%S"))
+        except:
+            try:
+                post_time = time.strftime("%Y-%m-%d %H:%M:%S", time.strptime(post_time, "%Y-%m-%d %H:%M"))
+            except:
+                pass
+
         return {
             'txt': post_txt,
             'img': post_img,
             'area': post_area,
+            'time': post_time,
         }
 
-    def get_qm_list_by_url(self, url):
-        r = self._session.get(url, headers=self._header)
+    @property
+    def session(self):
+        if self._session is None:
+            self._session = Crawler.get_session_by_login()
+        return self._session
+
+    def _get_qm_list_by_url(self, url):
+        r = self.session.get(url, headers=self._header)
         return Crawler.parse_qm_list_from_dom(pq(r.text))
 
-    def get_qm_info_by_url(self, url):
-        r = self._session.get(url, headers=self._header)
+    def _get_qm_info_by_url(self, url):
+        r = self.session.get(url, headers=self._header)
         return Crawler.parse_qm_info_from_dom(pq(r.text))
+
 
     def __init__(self, base_dir):
         self._base_dir = base_dir
-        self._session = Crawler.get_session_by_login()
+        # self._session = Crawler.get_session_by_login()
         self._row_dict = FsRowDict(os.path.join(base_dir, 'all.json'))
 
     def __del__(self):
@@ -127,18 +150,20 @@ class Crawler(object):
             try:
                 pbar.set_description('抓取列表信息 ' + str(page))
                 url = Crawler.list_url(page, area)
-                page_rv = self.get_qm_list_by_url(url)
+                page_rv = self._get_qm_list_by_url(url)
                 for e in page_rv:
                     self._row_dict.upsert(page_rv[e]['tid'], page_rv[e])
                     rv[e] = self._row_dict.select(page_rv[e]['tid'])
                 time.sleep(interval)
             except Exception as e:
-                print('发生异常, 停止翻页')
+                print('发生异常, 停止翻页, error=' + e)
                 break
         self._row_dict.commit()
         return rv
 
-    def upsert_qm_info_by_list(self, tid_list, refresh=True, interval=0.2):
+    def upsert_qm_info_by_list(self, tid_list, refresh=True, interval=0.5):
+        if len(tid_list) == 0:
+            return {}
         pbar = tqdm(tid_list)
         i = 0
         u = 10
@@ -149,7 +174,7 @@ class Crawler(object):
             is_empty = 'txt' not in row or row['txt'] is None or row['txt'].strip() == ''
             if is_empty or refresh:
                 info_url = Crawler.info_url(tid)
-                _row = self.get_qm_info_by_url(info_url)
+                _row = self._get_qm_info_by_url(info_url)
                 self._row_dict.upsert(tid, _row)
                 row = self._row_dict.select(tid)
                 time.sleep(interval)
@@ -164,7 +189,7 @@ class Crawler(object):
 
         return rv
 
-    def upsert_qm_info_missing(self, interval=0.2):
+    def upsert_qm_info_missing(self, interval=0.5):
         tid_list = self._row_dict.select_all().keys()
         pbar = tqdm(tid_list)
         i = 0
@@ -176,7 +201,7 @@ class Crawler(object):
             row_empty = 'txt' not in row or row['txt'] is None or row['txt'].strip() == ''
             if row_empty:
                 info_url = Crawler.info_url(tid)
-                _row = self.get_qm_info_by_url(info_url)
+                _row = self._get_qm_info_by_url(info_url)
                 self._row_dict.upsert(tid, _row)
                 row = self._row_dict.select(tid)
                 time.sleep(interval)
@@ -190,6 +215,10 @@ class Crawler(object):
         self._row_dict.commit()
 
         return rv
+
+    def select_qm_info_missing_img(self):
+        infos = self._row_dict.select_all()
+        return {e: infos[e] for e in infos if 'img' not in infos[e] or len(infos[e]['img']) == 0}
 
     def download_qm_info_img(self, interval=0.2):
         tid_list = self._row_dict.select_all().keys()
@@ -230,10 +259,14 @@ class Crawler(object):
 
 
 base_dir = os.path.join('.', '_rst', 'bhc')
+crawler = Crawler(base_dir)
 
 if __name__ == '__main__':
-    crawler = Crawler(base_dir)
-    # crawler.download_qm_info_img()
-    # crawler.upsert_qm_info_missing()
-    qm_list = crawler.upsert_qm_list_by_area('全部', 1)
+    # missing_img_qm = crawler.select_qm_info_missing_img()
+    # print(json.dumps(missing_img_qm, indent=2))
+    qm_list = crawler.upsert_qm_list_by_area('天河', 5)
     qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
+    crawler.upsert_qm_info_missing()
+    crawler.download_qm_info_img()
+    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
+    pass

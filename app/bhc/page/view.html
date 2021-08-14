@@ -5,8 +5,14 @@
 <body>
     {% for row in rows %}
         <hr/>
-        <h2 style="margin-left: 2em;">{{ row.title }} - {{ row.tid }}</h2>
-        {% for line in row.txt_line %}
+        <h2 style="margin-left: 2em;">{{ row.area }} - {{ row.time }} - {{ row.title }}</h2>
+        <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
+            时间: {{ row.time }}
+        </p>
+        <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
+            地区: {{ row.area }}
+        </p>
+    {% for line in row.txt_line %}
             <p style="margin-left: 4em; width: 600px;white-space:normal; word-break:break-all;">
                 {{ line }}
             </p>

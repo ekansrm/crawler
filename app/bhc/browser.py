@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, render_template
 from jinja2 import Template
 from utils.fs import FsRowDict
@@ -34,11 +35,17 @@ class Browser(object):
             _row['img_local'] = self._list_img(tid)
             _row['txt_line'] = _row['txt'].split('\n')
             rv.append(_row)
+        rv = sorted(rv, key=lambda x: time.strptime(x.get('time', '2000-01-01 00:00:00'), "%Y-%m-%d %H:%M:%S"), reverse=True)
+        rv = sorted(rv, key=lambda x: 'VIP会员可查看' not in x['txt'], reverse=True)
+
         return rv
 
     def select_all_tid(self):
         return self._row_dict.select_all().keys()
 
+    def select_tid_by_area(self, area):
+        self._row_dict.select_all()
+        return [tid for tid in self._row_dict.select_all().keys() if area == self._row_dict.select(tid)['area'] ]
 
 
 base_dir = os.path.join('.', '_rst', 'bhc')
@@ -46,10 +53,15 @@ browser = Browser(base_dir)
 
 app = Flask(__name__, static_url_path='', static_folder='../../_rst/bhc')
 
+
 @app.route('/')
 def index():
     return view_tpl.render(rows=browser.render_qm_info_by_tid(browser.select_all_tid()))
 
+
+@app.route('/<area>')
+def page(area):
+    return view_tpl.render(rows=browser.render_qm_info_by_tid(browser.select_tid_by_area(area)))
 
 if __name__ == '__main__':
     app.run()
