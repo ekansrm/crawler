@@ -289,7 +289,7 @@ crawler = Crawler(base_dir)
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    qm_list = crawler.upsert_qm_list_by_area('番禺', 4, interval=1)
+    qm_list = crawler.upsert_qm_list_by_area('越秀', 10, interval=1)
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
     crawler.upsert_qm_info_missing()
     crawler.download_qm_info_img()
