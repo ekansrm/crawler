@@ -36,6 +36,9 @@ class Crawler(object):
         if area == '越秀':
             url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=5&filter=typeid&typeid=5&page={0}'
             return url_tpl.format(page)
+        if area == '白云':
+            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=4&filter=typeid&typeid=4&page={0}'
+            return url_tpl.format(page)
         if area == '全部':
             url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&filter=lastpost&orderby=lastpost&page={0}'
             return url_tpl.format(page)
@@ -289,7 +292,7 @@ crawler = Crawler(base_dir)
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    qm_list = crawler.upsert_qm_list_by_area('越秀', 10, interval=1)
+    qm_list = crawler.upsert_qm_list_by_area('越秀', 5, interval=0.5)
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
     crawler.upsert_qm_info_missing()
     crawler.download_qm_info_img()
