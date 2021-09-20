@@ -4,7 +4,7 @@ from tqdm import tqdm
 import requests
 from pyquery import PyQuery as pq
 import os
-from utils.fs import FsRowDict
+from utils.fs import FsRowDict, build_fill_zero
 from utils.img import download_img
 
 
@@ -43,28 +43,28 @@ class Crawler(object):
 
 
     @staticmethod
-    def get_book_details(book_url):
+    def get_book_details(book_url, interval=0.1):
         url = Crawler.base_url() + book_url
+        url_format = url.replace('.html', '') + '_p{0}.html'
         doc = pq(url=url)
 
-        total_pages = []
-        fail_pages = []
+        page_select_doc = doc('div[data-page]')
+        total_page_num = int(page_select_doc.attr('data-total'))
 
+        img_url_list = []
+        img_url_list.append(Crawler._get_img_url(doc))
 
-        while True:
-            img_url = Crawler._get_img_url(doc)
-            print("processing " + img_url)
-            try:
-                total_pages.append(img_url)
-                download_img(img_url, '.')
+        for page_num in range(2, total_page_num+1,1):
+            n_url = url_format.format(page_num)
+            n_doc = pq(url=n_url)
+            n_img_url = Crawler._get_img_url(n_doc)
+            img_url_list.append(n_img_url)
+            time.sleep(interval)
 
-                # _save_img(vol_dir, base_url + img_url)
-                next_url = Crawler._get_next_page_url(doc)
-                if next_url is None:
-                    break
-                doc = pq(url=Crawler.base_url() + next_url)
-            except Exception as e:
-                fail_pages.append(img_url)
+        return img_url_list
+
+        # download_img(img_url_list[0], './123/0001.jpg', True)
+
 
     @staticmethod
     def _get_book_id_title_list(keyword):
@@ -87,13 +87,17 @@ class Crawler(object):
         book_info = {}
         for i in range(0, book_info_list_doc.length):
             version = book_info_title_doc.eq(i).text()
-            title = version[version.find('[') + 1:version.find(']')]
-            columns_doc = book_info_list_doc.eq(i).children()
+            title = version[version.find('[') + 1:version.find(']')].replace(' ', '-')
+
+            book_info_doc = book_info_list_doc.eq(i)
+            columns_doc = book_info_doc.children()
             columns = {}
             for j in range(0, columns_doc.length):
-                column_url = columns_doc.eq(j).children().attr('href')
-                column_title = columns_doc.eq(j).children().attr('title')
-                columns[column_url] = {
+                column_doc = columns_doc.eq(j)
+                column_idx = column_doc.attr('data-sort')
+                column_url = column_doc.children().attr('href')
+                column_title = column_doc.children().attr('title').replace(' ', '-')
+                columns[column_idx] = {
                     'title': column_title,
                     'url': column_url,
 
@@ -117,12 +121,13 @@ class Crawler(object):
         pbar = tqdm(book_list)
         i = 0
         u = 1
-        rv = {}
-        for b_id, b_title in pbar:
-            pbar.set_description('抓取详情 {0}(id={1})'.format(b_id, b_title))
-            _row = Crawler._get_book_info(b_id)
-            rv[b_id] = _row
-            self._row_dict.upsert(b_id, _row)
+        for p_id, p_title in pbar:
+            pbar.set_description('获取产品详情: {0}(id={1})'.format(p_id, p_title))
+            books = Crawler._get_book_info(p_id)
+            row = self._row_dict.select(p_id)
+            if 'books' in row:
+                books.update(row['books'])
+            self._row_dict.upsert(p_id, {'id': p_id, 'title': p_title, 'books': books})
 
             i += 1
             if i >= u:
@@ -134,22 +139,107 @@ class Crawler(object):
 
     def get_book_download(self, reflesh=False):
 
-        all_book = self._row_dict.select_all()
+        all_product = self._row_dict.select_all()
 
-        for bid in all_book:
-            books = all_book[bid]
+        all_columns = {}
+
+        for pid in all_product:
+            product = all_product[pid]
+            p_title = product['title']
+            books = product['books']
+
             for book_id in books:
                 book = books[book_id]
+
+
                 columns = book['columns']
                 for column_id in columns:
                     column = columns[column_id]
-                    column_url = column['url']
+
+
                     column_title = column['title']
 
-                    Crawler.get_book_details(column_url)
+                    big_title = p_title + '-' + book_id + '-' + column_id + '-' + column_title
 
+                    all_columns[big_title] = column
 
+        pbar = tqdm(all_columns)
+        for title in pbar:
+            pbar.set_description('获取卷详情: {0}'.format(title))
 
+            column = all_columns[title]
+
+            if column.get('fetched', False) and (not reflesh):
+                continue
+
+            column_url = column['url']
+            try:
+                column_img = Crawler.get_book_details(column_url, 0.05)
+                column['img'] = column_img
+                column['fetched'] = True
+                self._row_dict.commit()
+            except:
+                column['fetched'] = False
+                self._row_dict.commit()
+
+    def get_book_download_img(self, reflesh=False, interval=0.02):
+
+        all_product = self._row_dict.select_all()
+
+        all_columns = {}
+
+        for pid in all_product:
+            product = all_product[pid]
+            p_title = product['title']
+            books = product['books']
+
+            for book_id in books:
+                book = books[book_id]
+                book_version = book['version']
+                columns = book['columns']
+                columns_ids = [int(i) for i in columns.keys()]
+                column_fill_zero = build_fill_zero(max(columns_ids))
+
+                for column_id in columns:
+                    column = columns[column_id]
+
+                    column_dir = str(os.path.abspath(os.path.join(self._base_dir, book_version, column_fill_zero(column_id))))
+
+                    all_columns[column_dir] = column
+
+        pbar = tqdm(all_columns)
+        for column_dir in pbar:
+            pbar.set_description('下载卷: {0}'.format(column_dir))
+
+            column = all_columns[column_dir]
+
+            if 'img' not in column:
+                continue
+
+            column_img = column['img']
+
+            if column_img is None or len(column_img) == 0:
+                continue
+
+            if 'img_d' not in column:
+                column['img_d'] = []
+            column_img_d = column['img_d']
+
+            column_dir = column_dir
+            try:
+                page_fill_zero = build_fill_zero(len(column_img))
+                for i, img in enumerate(column_img):
+                    if img in column_img_d:
+                        continue
+
+                    img_path = os.path.join(column_dir, page_fill_zero(str(i + 1)) + '.' + img.split('.')[-1])
+                    download_img(img, img_path, True)
+                    column_img_d.append(img)
+                    self._row_dict.commit()
+                    time.sleep(interval)
+            except Exception as e:
+                print(e)
+                pass
 
 
 
@@ -177,9 +267,10 @@ if __name__ == '__main__':
     #     json.dump(book_info, fp, indent=2)
     # get_book_list('伊藤润二')
 
-    base_dir = os.path.join('.', '_rst', 'manhuadb')
+    base_dir = os.path.join('.', '_rst', 'manhuadb', '伊藤润二')
     crawler = Crawler(base_dir)
     # crawler.get_book_info_by_keyword('伊藤润二')
-    crawler.get_book_download()
+    # crawler.get_book_download()
+    crawler.get_book_download_img(interval=0.01)
     # Crawler._get_book_info('3481')
 

@@ -43,3 +43,11 @@ class FsRowDict(object):
             os.mkdir(os.path.dirname(self._path))
         with open(self._path, 'w', encoding='utf-8') as fp:
             fp.write(json.dumps(self._data, indent=2, ensure_ascii=False))
+
+
+def build_fill_zero(maxnum):
+    def fill_zero(num):
+        digits = len(str(int(maxnum) + 1))
+        num_format = '{0:0>' + str(digits) + 'd}'
+        return num_format.format(int(num))
+    return fill_zero
