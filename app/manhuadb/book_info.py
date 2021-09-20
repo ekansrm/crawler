@@ -27,22 +27,6 @@ class Crawler(object):
         return img_url
 
     @staticmethod
-    def _get_vol_name(doc):
-        vol_name = doc("""h2[class~="text-center"]""").text()
-        return vol_name
-
-
-    @staticmethod
-    def _get_next_page_url(doc):
-        next_url = doc("""a[id="right"]""").attr('href')
-
-        # 这一章已经完成
-        if 'goNumPage' in next_url:
-            next_url = None
-        return next_url
-
-
-    @staticmethod
     def get_book_details(book_url, interval=0.1):
         url = Crawler.base_url() + book_url
         url_format = url.replace('.html', '') + '_p{0}.html'
@@ -63,11 +47,8 @@ class Crawler(object):
 
         return img_url_list
 
-        # download_img(img_url_list[0], './123/0001.jpg', True)
-
-
     @staticmethod
-    def _get_book_id_title_list(keyword):
+    def search_book_brief(keyword):
         url = Crawler.base_url() + '/search?q=' + keyword
         doc = pq(url)
         book_list_doc = doc("""a[class="d-block"]""")
@@ -76,7 +57,7 @@ class Crawler(object):
 
 
     @staticmethod
-    def _get_book_info(bid):
+    def crawl_book_details(bid):
         url = Crawler.manhua_url(bid)
         doc = pq(url)
 
@@ -115,19 +96,22 @@ class Crawler(object):
         self._base_dir = base_dir
         self._row_dict = FsRowDict(os.path.join(base_dir, 'all.json'))
 
-    def get_book_info_by_keyword(self, keyword):
+    def search_book(self, keyword):
 
-        book_list = Crawler._get_book_id_title_list(keyword)
-        pbar = tqdm(book_list)
+        book_list = Crawler.search_book_brief(keyword)
+        book_process_bar = tqdm(book_list)
+
         i = 0
         u = 1
-        for p_id, p_title in pbar:
-            pbar.set_description('获取产品详情: {0}(id={1})'.format(p_id, p_title))
-            books = Crawler._get_book_info(p_id)
-            row = self._row_dict.select(p_id)
-            if 'books' in row:
-                books.update(row['books'])
-            self._row_dict.upsert(p_id, {'id': p_id, 'title': p_title, 'books': books})
+        for book_id, book_title in book_process_bar:
+            book_process_bar.set_description('获取书籍详情: {0}(id={1})'.format(book_title, book_id))
+            book_detail = Crawler.crawl_book_details(book_id)
+
+            # 将书籍信息合并到字典里
+            cached_book_info = self._row_dict.select(book_id)
+            if 'books' in cached_book_info:
+                book_detail.update(cached_book_info['books'])
+            self._row_dict.upsert(book_id, {'id': book_id, 'title': book_title, 'books': book_detail})
 
             i += 1
             if i >= u:
@@ -182,7 +166,7 @@ class Crawler(object):
                 column['fetched'] = False
                 self._row_dict.commit()
 
-    def get_book_download_img(self, reflesh=False, interval=0.02):
+    def download_book(self, reflesh=False, interval=0.02):
 
         all_product = self._row_dict.select_all()
 
@@ -241,15 +225,6 @@ class Crawler(object):
                 print(e)
                 pass
 
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     # url = 'https://www.manhuadb.com/manhua/3481'
     # book_info = get_book_info(pq(url))
@@ -271,6 +246,6 @@ if __name__ == '__main__':
     crawler = Crawler(base_dir)
     # crawler.get_book_info_by_keyword('伊藤润二')
     # crawler.get_book_download()
-    crawler.get_book_download_img(interval=0.01)
+    crawler.download_book(interval=0.01)
     # Crawler._get_book_info('3481')
 
