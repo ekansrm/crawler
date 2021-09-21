@@ -230,6 +230,7 @@ class Crawler(object):
         all_product = self._row_dict.select_all()
 
         all_books = []
+        all_columns = []
         for pid in all_product:
             product = all_product[pid]
             books = product['books']
@@ -237,26 +238,32 @@ class Crawler(object):
             for book_id in books:
                 book = books[book_id]
                 book_version = book['version']
+                columns = book['columns']
+                columns_ids = [int(i) for i in columns.keys()]
+                column_fill_zero = build_fill_zero(max(columns_ids))
 
-                book_dir = str(
-                    os.path.join(self._base_dir, book_version)
-                )
+                for column_id in columns:
+                    column = columns[column_id]
 
-                book_zip = str(
-                    os.path.join(self._base_dir, book_version + '.zip.cbz')
-                )
+                    column_dir = str(
+                        os.path.abspath(os.path.join(self._base_dir, book_version, column_fill_zero(column_id))))
 
-                all_books.append((book_dir, book_zip))
+                    column_zip = str(
+                        os.path.join(self._base_dir, '_zip', book_version, column_fill_zero(column_id) + '.zip.cbz')
+                    )
 
-        book_process_bar = tqdm(all_books)
-        for book_dir, book_zip in book_process_bar:
-            book_process_bar.set_description('压缩文件: {0}'.format(book_zip))
+                    all_columns.append((column_dir, column_zip))
 
-            with zipfile.ZipFile(book_zip, 'w', zipfile.ZIP_STORED) as zf:
-                for i in os.walk(book_dir):
+        column_process_bar = tqdm(all_columns)
+        for column_dir, column_zip in column_process_bar:
+            column_process_bar.set_description('压缩文件: {0}'.format(column_zip))
+
+            os.makedirs(os.path.dirname(column_zip), exist_ok=True)
+            with zipfile.ZipFile(column_zip, 'w', zipfile.ZIP_STORED) as zf:
+                for i in os.walk(column_dir):
                     for j in i[2]:
                         file_path = os.path.join(i[0], j)
-                        zip_path = str(file_path).replace(book_dir, '')
+                        zip_path = str(file_path).replace(column_dir, '')
                         zf.write(file_path, zip_path)
 
 
@@ -278,7 +285,8 @@ if __name__ == '__main__':
     # get_book_list('伊藤润二')
 
     crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '妄想学生会'))
-    crawler.search_book('妄想学生会')
-    crawler.crawl_book(interval=0.01)
+    # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '伊藤润二'))
+    # crawler.search_book('妄想学生会')
+    # crawler.crawl_book(interval=0.01)
     crawler.download_book(interval=0.01)
     # crawler.zip_book()
