@@ -1,8 +1,9 @@
+import os
 import time
 import traceback
+import zipfile
 from tqdm import tqdm
 from pyquery import PyQuery as pq
-import os
 from utils.fs import FsRowDict, build_fill_zero
 from utils.img import download_img
 
@@ -39,7 +40,7 @@ class Crawler(object):
         # 可能有番外篇、单行本什么的
         book_info = {}
         for i in range(0, book_info_list_doc.length):
-            version = book_info_title_doc.eq(i).text()
+            version = book_info_title_doc.eq(i).text().replace(' ', '-')
             title = version[version.find('[') + 1:version.find(']')].replace(' ', '-')
 
             book_info_doc = book_info_list_doc.eq(i)
@@ -94,6 +95,7 @@ class Crawler(object):
         self._row_dict = FsRowDict(os.path.join(base_dir, 'all.json'))
 
     def search_book(self, keyword):
+        """查找漫画"""
 
         book_list = Crawler.search_book_brief(keyword)
         book_process_bar = tqdm(book_list)
@@ -118,6 +120,7 @@ class Crawler(object):
         self._row_dict.commit()
 
     def crawl_book(self, refresh=False, interval=0.02):
+        """爬取漫画"""
 
         all_product = self._row_dict.select_all()
 
@@ -162,6 +165,7 @@ class Crawler(object):
                 self._row_dict.commit()
 
     def download_book(self, refresh=False, interval=0.02):
+        """下载漫画"""
 
         all_product = self._row_dict.select_all()
 
@@ -220,6 +224,41 @@ class Crawler(object):
             except Exception as e:
                 traceback.print_exc(e)
 
+    def zip_book(self):
+        """压缩漫画为 ZIP 格式"""
+
+        all_product = self._row_dict.select_all()
+
+        all_books = []
+        for pid in all_product:
+            product = all_product[pid]
+            books = product['books']
+
+            for book_id in books:
+                book = books[book_id]
+                book_version = book['version']
+
+                book_dir = str(
+                    os.path.join(self._base_dir, book_version)
+                )
+
+                book_zip = str(
+                    os.path.join(self._base_dir, book_version + '.zip.cbz')
+                )
+
+                all_books.append((book_dir, book_zip))
+
+        book_process_bar = tqdm(all_books)
+        for book_dir, book_zip in book_process_bar:
+            book_process_bar.set_description('压缩文件: {0}'.format(book_zip))
+
+            with zipfile.ZipFile(book_zip, 'w', zipfile.ZIP_STORED) as zf:
+                for i in os.walk(book_dir):
+                    for j in i[2]:
+                        file_path = os.path.join(i[0], j)
+                        zip_path = str(file_path).replace(book_dir, '')
+                        zf.write(file_path, zip_path)
+
 
 if __name__ == '__main__':
     # url = 'https://www.manhuadb.com/manhua/3481'
@@ -238,7 +277,8 @@ if __name__ == '__main__':
     #     json.dump(book_info, fp, indent=2)
     # get_book_list('伊藤润二')
 
-    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '伊藤润二'))
-    crawler.search_book('伊藤润二')
+    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '妄想学生会'))
+    crawler.search_book('妄想学生会')
     crawler.crawl_book(interval=0.01)
     crawler.download_book(interval=0.01)
+    # crawler.zip_book()
