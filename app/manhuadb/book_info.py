@@ -224,7 +224,17 @@ class Crawler(object):
             except Exception as e:
                 traceback.print_exc(e)
 
-    def zip_book(self):
+    def zip(self, dir_p, zip_p):
+        os.makedirs(os.path.dirname(zip_p), exist_ok=True)
+
+        with zipfile.ZipFile(zip_p, 'w', zipfile.ZIP_STORED) as zf:
+            for i in os.walk(dir_p):
+                for j in i[2]:
+                    file_path = os.path.join(i[0], j)
+                    zip_path = str(file_path).replace(dir_p, '')
+                    zf.write(file_path, zip_path)
+
+    def zip_column(self):
         """压缩漫画为 ZIP 格式"""
 
         all_product = self._row_dict.select_all()
@@ -258,35 +268,42 @@ class Crawler(object):
         for column_dir, column_zip in column_process_bar:
             column_process_bar.set_description('压缩文件: {0}'.format(column_zip))
 
-            os.makedirs(os.path.dirname(column_zip), exist_ok=True)
-            with zipfile.ZipFile(column_zip, 'w', zipfile.ZIP_STORED) as zf:
-                for i in os.walk(column_dir):
-                    for j in i[2]:
-                        file_path = os.path.join(i[0], j)
-                        zip_path = str(file_path).replace(column_dir, '')
-                        zf.write(file_path, zip_path)
+            self.zip(column_dir, column_zip)
 
+    def zip_book(self):
+        all_product = self._row_dict.select_all()
+
+        all_books = []
+        all_columns = []
+        for pid in all_product:
+            product = all_product[pid]
+            books = product['books']
+
+            for book_id in books:
+                book = books[book_id]
+                book_version = book['version']
+
+                book_dir = str(
+                    os.path.abspath(os.path.join(self._base_dir, book_version)))
+
+                book_zip = str(
+                    os.path.join(self._base_dir, '_zip', book_version + '.zip.cbz')
+                )
+
+                all_books.append((book_dir, book_zip))
+
+        book_process_bar = tqdm(all_books)
+
+        for book_dir, book_zip in book_process_bar:
+            book_process_bar.set_description('压缩文件: {0}'.format(book_zip))
+            self.zip(book_dir, book_zip)
 
 if __name__ == '__main__':
-    # url = 'https://www.manhuadb.com/manhua/3481'
-    # book_info = get_book_info(pq(url))
-    # with open("铳梦-火星战记.json", 'w') as fp:
-    #     json.dump(book_info, fp, indent=2)
-    #
-    # url = 'https://www.manhuadb.com/manhua/369'
-    # book_info = get_book_info(pq(url))
-    # with open("铳梦-LastOrder.json", 'w') as fp:
-    #     json.dump(book_info, fp, indent=2)
-    #
-    # url = 'https://www.manhuadb.com/manhua/370'
-    # book_info = get_book_info(pq(url))
-    # with open("铳梦.json", 'w') as fp:
-    #     json.dump(book_info, fp, indent=2)
-    # get_book_list('伊藤润二')
 
-    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '妄想学生会'))
+    # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '妄想学生会'))
+    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '徒然喜欢你'))
     # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '伊藤润二'))
-    # crawler.search_book('妄想学生会')
-    # crawler.crawl_book(interval=0.01)
-    crawler.download_book(interval=0.01)
-    # crawler.zip_book()
+    #crawler.search_book('徒然喜欢你')
+    #crawler.crawl_book(interval=0.01)
+    # crawler.download_book(interval=0.01)
+    crawler.zip_book()
