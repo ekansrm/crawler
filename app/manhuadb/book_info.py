@@ -301,9 +301,14 @@ class Crawler(object):
 if __name__ == '__main__':
 
     # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '妄想学生会'))
-    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '徒然喜欢你'))
+    # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '徒然喜欢你'))
     # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '伊藤润二'))
+    # crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '女友成双'))
+    crawler = Crawler(os.path.join('.', '_rst', 'manhuadb', '辉夜姬想让人告白'))
+    crawler.search_book('辉夜姬想让人告白~天才们的恋爱头脑战')
+    crawler.crawl_book(interval=0.01)
+    crawler.download_book(interval=0.01)
     #crawler.search_book('徒然喜欢你')
     #crawler.crawl_book(interval=0.01)
     # crawler.download_book(interval=0.01)
-    crawler.zip_book()
+    # crawler.zip_book()

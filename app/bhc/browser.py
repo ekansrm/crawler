@@ -33,7 +33,11 @@ class Browser(object):
         for tid in tid_list:
             _row = self.render_qm_info(tid)
             rv.append(_row)
-        rv = sorted(rv, key=lambda x: time.strptime(x.get('time', '2000-01-01 00:00:00'), "%Y-%m-%d %H:%M:%S"), reverse=True)
+        rv = sorted(rv,
+                    key=lambda x: time.strptime(
+                        x['time'] if 'time' in x and len(x['time']) > 0 else '2000-01-01 00:00:00',
+                        "%Y-%m-%d %H:%M:%S"
+                    ), reverse=True)
         rv = sorted(rv, key=lambda x: 'VIP会员可查看' not in x['txt'], reverse=True)
 
         return rv
@@ -71,6 +75,11 @@ def index_by_area(area):
 @app.route('/detail/<tid>')
 def detail(tid):
     return render_template('detail.html', row=browser.render_qm_info(tid))
+
+
+@app.route('/test')
+def text():
+    return {1:2}
 
 
 if __name__ == '__main__':

@@ -20,53 +20,73 @@ class Crawler(object):
 
     @staticmethod
     def base_url():
-        return 'http://www.bhcvs.com/'
+        return 'http://hdq2023.com/'
 
     @staticmethod
     def list_url(page, area='天河'):
         if area == '天河':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&typeid=2&filter=lastpost&orderby=lastpost&typeid=2&page={0}'
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=1&filter=typeid&typeid=1&page={0}'
             return url_tpl.format(page)
         if area == '海珠':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=3&filter=typeid&typeid=3&page={0}'
-            return url_tpl.format(page)
-        if area == '番禺':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=7&filter=typeid&typeid=7&page={0}'
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=2&filter=typeid&typeid=2&page={0}'
             return url_tpl.format(page)
         if area == '越秀':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=5&filter=typeid&typeid=5&page={0}'
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=3&filter=typeid&typeid=3&page={0}'
             return url_tpl.format(page)
         if area == '白云':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&typeid=4&filter=typeid&typeid=4&page={0}'
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=4&filter=typeid&typeid=4&page={0}'
+            return url_tpl.format(page)
+        if area == '荔湾':
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=5&filter=typeid&typeid=5&page={0}'
+            return url_tpl.format(page)
+        if area == '番禺':
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=6&filter=typeid&typeid=6&page={0}'
+            return url_tpl.format(page)
+        if area == '花都':
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=7&filter=typeid&typeid=6&page={0}'
+            return url_tpl.format(page)
+        if area == '南沙':
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=9&filter=typeid&typeid=6&page={0}'
+            return url_tpl.format(page)
+        if area == '黄埔':
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&typeid=10&filter=typeid&typeid=6&page={0}'
             return url_tpl.format(page)
         if area == '全部':
-            url_tpl = 'http://www.bhcvs.com/forum.php?mod=forumdisplay&fid=2&orderby=lastpost&filter=lastpost&orderby=lastpost&page={0}'
+            url_tpl = 'https://hdq2023.com/forum.php?mod=forumdisplay&fid=2&page={0}'
             return url_tpl.format(page)
         raise Exception('未知地区: ' + area)
 
     @staticmethod
     def info_url(tid):
-        return 'http://www.bhcvs.com/thread-{0}-1-2.html'.format(tid)
+        return 'https://hdq2023.com/forum.php?mod=viewthread&tid={0}'.format(tid)
 
     @staticmethod
     def get_session_by_login():
-        url = 'http://www.bhcvs.com/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=LXA4M&inajax=1'
+        url = 'https://hdq2023.com/member.php?mod=logging&action=login'
+        login_url = 'https://hdq2023.com/member.php?mod=logging&action=login&loginsubmit=yes&loginhash={0}&inajax=1'
 
         header_login = {
-            'Referer': 'http://www.bhcvs.com/member.php?mod=logging&action=login&referer=http://www.bhcvs.com/forum.php',
+            'Referer': 'https://hdq2023.com/./',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
         }
 
         data = {
             'loginfield': 'username',
+            'referer': 'https://hdq2023.com/./',
             'username': 'mrsnake',
-            'password': '2271989wlsex',
+            'password': '123456',
             'questionid': 0,
             'answer': '',
         }
 
         session = requests.session()
-        session.post(url, headers=header_login, data=data)
+        r = session.get(url)
+        loginhash = r.text.split('loginhash=')[1].split('"')[0]
+        formhash = r.text.split('"formhash" value="')[1].split('"')[0]
+        data['formhash'] = formhash
+        login_url = login_url.format(loginhash)
+        r = session.post(login_url, headers=header_login, data=data)
+        print(r.text)
         return session
 
     @staticmethod
@@ -87,11 +107,11 @@ class Crawler(object):
     @staticmethod
     def parse_qm_list_from_dom(dom):
         qm_href_list = dom(
-            '''h3>a[href*="thread"]'''
+            '''a[class="s xst"]'''
         )
         rv = {}
         for e in qm_href_list.items():
-            title = e.attr('title')
+            title = e.text()
             href = e.attr('href')
             tid = Crawler.parse_qm_tid_from_href(href)
             row = {
@@ -112,6 +132,8 @@ class Crawler(object):
         post_area = post_area_dom.text().replace('[', '').replace(']', '')
         post_time_dom = post_dom('em:contains(发表于)>span')
         post_time = post_time_dom.attr('title')
+
+        post_txt = post_txt.strip('"').strip("'")
 
         if post_time is None:
             post_time_dom = post_dom('em:contains(发表于)')
@@ -286,14 +308,14 @@ class Crawler(object):
         return rv
 
 
-base_dir = os.path.join('.', '_rst', 'bhc')
+base_dir = os.path.join('.', '_rst', 'hdq')
 crawler = Crawler(base_dir)
 
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    qm_list = crawler.upsert_qm_list_by_area('天河', 20, interval=0.5)
-    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
+    qm_list = crawler.upsert_qm_list_by_area('全部', 1, interval=0.3)
+    qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
     crawler.upsert_qm_info_missing()
     crawler.download_qm_info_img()
     crawler.clean_qm_txt()
