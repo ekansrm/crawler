@@ -7,7 +7,10 @@ from tqdm import tqdm
 from pyquery import PyQuery as pq
 from utils.fs import FsRowDict
 from utils.img import download_img
+from utils.minio_utils import upload_img_to_minio
+from utils.wordpress import post_new_article, delete_article, edit_article
 
+domain = 'hdq'
 
 class Crawler(object):
     _header = {
@@ -86,7 +89,6 @@ class Crawler(object):
         data['formhash'] = formhash
         login_url = login_url.format(loginhash)
         r = session.post(login_url, headers=header_login, data=data)
-        print(r.text)
         return session
 
     @staticmethod
@@ -262,6 +264,7 @@ class Crawler(object):
                      and '下载附件' not in line
                      and '下载次数' not in line
                      and '上传' not in line
+                     and '红灯区' not in line
                      and len(line.strip()) > 0]
             txt = '\n'.join(lines)
             row['txt'] = txt
@@ -308,16 +311,117 @@ class Crawler(object):
         return rv
 
 
-base_dir = os.path.join('.', '_rst', 'hdq')
+    def upload_to_minio(self, refress=False):
+
+        tid_list = self._row_dict.select_all().keys()
+        pbar = tqdm(tid_list)
+        i = 0
+        u = 10
+        rv = {}
+        for tid in pbar:
+            pbar.set_description('上传文件 ' + tid)
+            row = self._row_dict.select(tid)
+            img_dir = os.path.join(self._base_dir, tid)
+            img_done_list = row['img_done']
+            if 'img_minio' not in row or refress is True:
+                row['img_minio'] = {}
+
+            img_minio = row['img_minio']
+
+            for img_url in img_done_list:
+                if img_url in img_minio:
+                    continue
+                file_name = img_url.split('/')[-1]
+                file_path = os.path.join(img_dir, file_name)
+                minio_path = domain + '/' + tid + '/' + file_name
+                minio_url = upload_img_to_minio("sys", minio_path, file_path)
+                img_minio[img_url] = minio_url
+
+            i += 1
+            if i >= u:
+                i = 0
+                self._row_dict.commit()
+
+        self._row_dict.commit()
+
+        return rv
+
+    def purge_wordpress(self):
+        tid_list = self._row_dict.select_all().keys()
+        pbar = tqdm(tid_list)
+        for tid in pbar:
+            pbar.set_description('删除博客 ' + tid)
+            row = self._row_dict.select(tid)
+            if 'post_id' in row:
+                post_id = row['post_id']
+                try:
+                    delete_article(post_id)
+                except:
+                    print("no post id " + post_id)
+                row.pop('post_id')
+            self._row_dict.commit()
+
+    def upload_to_wordpress(self, refresh=False):
+
+        tid_list = self._row_dict.select_all().keys()
+        pbar = tqdm(tid_list)
+        for tid in pbar:
+            pbar.set_description('推送博客 ' + tid)
+            row = self._row_dict.select(tid)
+            title = row['title']
+            area = row['area']
+            txt = row['txt']
+
+
+            txt_html = txt.replace("\n", "<br/>")
+
+            img_done = row['img_done']
+            img_minio = row['img_minio']
+
+            img_tag_list = []
+            featured_img = None
+            for img_url in img_done:
+                minio_url = img_minio[img_url]
+                if featured_img is None:
+                    featured_img = minio_url
+                img_tag_list.append('<img src="{0}"/>'.format(minio_url))
+            img_html = '<br/>'.join(img_tag_list)
+
+            content = txt_html + '<br/>' + img_html
+
+            terms_names = {
+                'category': [area],
+                'post_tag': [],
+            }
+
+            if 'post_id' in row:
+                post_id = row['post_id']
+                if refresh:
+                    edit_article(post_id, title, content, terms_names, featured_img)
+                else:
+                    continue
+            else:
+                post_id = post_new_article(title, content, terms_names, featured_img)
+                row['post_id'] = post_id
+
+            self._row_dict.commit()
+
+
+
+
+base_dir = os.path.join('.', '_rst', domain)
 crawler = Crawler(base_dir)
 
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    qm_list = crawler.upsert_qm_list_by_area('全部', 1, interval=0.3)
-    qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=True)
-    crawler.upsert_qm_info_missing()
-    crawler.download_qm_info_img()
-    crawler.clean_qm_txt()
+    # qm_list = crawler.upsert_qm_list_by_area('全部', 20, interval=0.3)
+    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
+    # crawler.upsert_qm_info_missing()
+    # crawler.download_qm_info_img()
+    # crawler.clean_qm_txt()
+    # crawler.upload_to_minio()
+    crawler.upload_to_wordpress()
+    # crawler.purge_wordpress()
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
     pass

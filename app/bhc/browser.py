@@ -49,11 +49,11 @@ class Browser(object):
         self._row_dict.select_all()
         return [tid for tid in self._row_dict.select_all().keys() if area == self._row_dict.select(tid)['area'] ]
 
-
-base_dir = os.path.join('.', '_rst', 'bhc')
+sub = 'hdq'
+base_dir = os.path.join('.', '_rst', sub)
 browser = Browser(base_dir)
 
-app = Flask(__name__, template_folder='page', static_url_path='', static_folder='../../_rst/bhc')
+app = Flask(__name__, template_folder='page', static_url_path='', static_folder='../../_rst/' + sub)
 
 
 @app.route('/')
