@@ -2,8 +2,8 @@ import requests
 import os
 
 
-def download_img(url, path, full_path=False):
-    response = requests.get(url)
+def download_img(url, path, full_path=False, verify=False):
+    response = requests.get(url, verify=verify)
 
     if not full_path:
         if not os.path.exists(path):

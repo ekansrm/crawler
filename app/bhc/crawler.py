@@ -2,15 +2,26 @@ import re
 import os
 import time
 import json
+import traceback
 import requests
 from tqdm import tqdm
 from pyquery import PyQuery as pq
 from utils.fs import FsRowDict
 from utils.img import download_img
 from utils.minio_utils import upload_img_to_minio
-from utils.wordpress import post_new_article, delete_article, edit_article
+from utils.wordpress import post_new_article, delete_article, edit_article, upload_feature_img
+
+import os
+import sys
+
+# 获取当前文件所在的目录
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# 将当前目录添加到系统路径中
+sys.path.append(current_dir)
 
 domain = 'hdq'
+certificate = './app/bhc/520hdq.crt'
 
 class Crawler(object):
     _header = {
@@ -83,12 +94,17 @@ class Crawler(object):
         }
 
         session = requests.session()
-        r = session.get(url)
+        try:
+            r = session.get(url, headers=header_login, verify=certificate)
+        except Exception as e:
+            print(e)
+            exit(-1)
+
         loginhash = r.text.split('loginhash=')[1].split('"')[0]
         formhash = r.text.split('"formhash" value="')[1].split('"')[0]
         data['formhash'] = formhash
         login_url = login_url.format(loginhash)
-        r = session.post(login_url, headers=header_login, data=data)
+        r = session.post(login_url, headers=header_login, data=data, verify=certificate)
         return session
 
     @staticmethod
@@ -162,11 +178,11 @@ class Crawler(object):
         return self._session
 
     def _get_qm_list_by_url(self, url):
-        r = self.session.get(url, headers=self._header)
+        r = self.session.get(url, headers=self._header, verify=certificate)
         return Crawler.parse_qm_list_from_dom(pq(r.text))
 
     def _get_qm_info_by_url(self, url):
-        r = self.session.get(url, headers=self._header)
+        r = self.session.get(url, headers=self._header, verify=certificate)
         return Crawler.parse_qm_info_from_dom(pq(r.text))
 
 
@@ -293,6 +309,7 @@ class Crawler(object):
                     download_img(a_img, img_dir)
                     img_done.append(a_img)
                 except Exception as e:
+                    print(e)
                     print('下载错误: ' + a_img)
                 time.sleep(interval)
 
@@ -372,18 +389,20 @@ class Crawler(object):
             area = row['area']
             txt = row['txt']
 
-
             txt_html = txt.replace("\n", "<br/>")
 
+            img_dir = os.path.join(self._base_dir, tid)
             img_done = row['img_done']
             img_minio = row['img_minio']
-
+            # 没有图片就不用发布了
+            if len(img_minio) == 0:
+                continue
             img_tag_list = []
             featured_img = None
             for img_url in img_done:
                 minio_url = img_minio[img_url]
                 if featured_img is None:
-                    featured_img = minio_url
+                    featured_img = img_url
                 img_tag_list.append('<img src="{0}"/>'.format(minio_url))
             img_html = '<br/>'.join(img_tag_list)
 
@@ -394,15 +413,30 @@ class Crawler(object):
                 'post_tag': [],
             }
 
-            if 'post_id' in row:
-                post_id = row['post_id']
-                if refresh:
-                    edit_article(post_id, title, content, terms_names, featured_img)
-                else:
-                    continue
+            thumbnail_id = None
+            if 'thumbnail_id' not in row:
+                featured_img_file_name = featured_img.split('/')[-1]
+                featured_img_file_path = os.path.join(img_dir, featured_img_file_name)
+                res = upload_feature_img(featured_img_file_path)
+                thumbnail_id = res['id']
+                row['thumbnail_id'] = thumbnail_id
             else:
-                post_id = post_new_article(title, content, terms_names, featured_img)
-                row['post_id'] = post_id
+                thumbnail_id = row['thumbnail_id']
+
+
+            try:
+                if 'post_id' in row:
+                    post_id = row['post_id']
+                    if refresh:
+                        edit_article(post_id, title, content, terms_names, thumbnail_id)
+                    else:
+                        continue
+                else:
+                    post_id = post_new_article(title, content, terms_names, thumbnail_id)
+                    row['post_id'] = post_id
+            except Exception as e:
+                print(e)
+                exit(-1)
 
             self._row_dict.commit()
 
@@ -415,13 +449,13 @@ crawler = Crawler(base_dir)
 if __name__ == '__main__':
     # missing_img_qm = crawler.select_qm_info_missing_img()
     # print(json.dumps(missing_img_qm, indent=2))
-    # qm_list = crawler.upsert_qm_list_by_area('全部', 20, interval=0.3)
-    # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
-    # crawler.upsert_qm_info_missing()
-    # crawler.download_qm_info_img()
-    # crawler.clean_qm_txt()
-    # crawler.upload_to_minio()
-    crawler.upload_to_wordpress()
+    qm_list = crawler.upsert_qm_list_by_area('全部', 20, interval=0.3)
+    qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
+    crawler.upsert_qm_info_missing()
+    crawler.download_qm_info_img()
+    crawler.clean_qm_txt()
+    crawler.upload_to_minio()
+    crawler.upload_to_wordpress(refresh=True)
     # crawler.purge_wordpress()
     # qm_info = crawler.upsert_qm_info_by_list(qm_list.keys(), refresh=False)
     pass
