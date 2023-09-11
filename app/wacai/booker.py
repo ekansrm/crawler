@@ -9,9 +9,10 @@ import copy
 import hashlib
 
 
-
-
 class Booker(object):
+
+    _token = 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew'
+
     _header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
         'X-Access-Token': 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew',
@@ -1204,9 +1205,7 @@ class Booker(object):
 
     _dict_category_by_name = {}
 
-    url = 'https://www.wacai.com/activity/bkk-frontier/api/v2/flow/save?___t='
-
-    _expense_body = {
+    _body_expense = {
         "flows": [
             {
                 "amount": 1,
@@ -1246,8 +1245,37 @@ class Booker(object):
         ]
     }
 
+    _body_income = {
+        "flows": [{
+            "amount": 33,
+            "category": {"key": "18", "label": "退款返款"},
+            "tradetgt": {},
+            "account": {"key": "432305E56ED946D48DA0973940A3A73E", "label": "忻忻-现金（CNY）"},
+            "member": {"key": "1", "label": "KAMIWei"},
+            "comment": "",
+            "reimburse": 0,
+            "categoryId": "18",
+            "tradetgtId": None,
+            "accountId": "432305E56ED946D48DA0973940A3A73E",
+            "bizTime": "2023-09-11T15:32:25.579Z",
+            "address": "",
+            "bkId": 113509541,
+            "bookId": "A1BFB7D05F6C9C201225C5FDAC2F6A69",
+            "edited": 0,
+            "deleted": 0,
+            "id": 0,
+            "members": [{"memberId": "1", "amount": 33}],
+            "recType": 2,
+            "type": None,
+            "sourceSystem": 201,
+            "bizId": "EE439684D830761E57AC3EAC9E1FCF48"
+        }]}
+
     def __init__(self):
         self._map_category_by_name()
+
+    def set_token(self, token):
+        self._token = token
 
     def _time_convert(self, t_time):
         # 定义东八区的时区
@@ -1257,7 +1285,6 @@ class Booker(object):
         formatted_dt = dt.strftime('%Y-%m-%dT%H:%M:%S.000Z')
 
         return formatted_dt
-
 
     def _map_category_by_name(self):
         def _map_node(node):
@@ -1270,7 +1297,7 @@ class Booker(object):
             for e in v:
                 _map_node(e)
 
-    def book_expense(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
+    def _build_body(self, template, book_name, member_name, category_name, account_name, amount, t_time, comment):
         account = self._dict_account[account_name]
         book = self._dict_book[book_name]
         member = self._dict_book[book_name]['bookMembers'][member_name]
@@ -1278,7 +1305,7 @@ class Booker(object):
 
         token = str(account) + '#' + t_time + '#' + comment
 
-        body = copy.deepcopy(self._expense_body)
+        body = copy.deepcopy(template)
 
         flow = body['flows'][0]
 
@@ -1289,7 +1316,6 @@ class Booker(object):
             "memberId": member['uuid'],
             "amount": amount
         }]
-
         flow['member'] = {
             "key": member['uuid'],
             "label": member['name']
@@ -1303,28 +1329,52 @@ class Booker(object):
 
         flow['amount'] = amount
 
+        flow['categoryId'] = category['categoryId']
+
         flow['bizTime'] = self._time_convert(t_time)
 
         flow['comment'] = comment
 
         flow['bizId'] = hashlib.md5(token.encode()).hexdigest()
 
-        self._push(body)
+        return body
 
-    def _push(self, body):
+    def _commit(self, body):
         ts = str(int(datetime.datetime.now().timestamp() * 1000))
         url = 'https://www.wacai.com/activity/bkk-frontier/api/v2/flow/save?___t={0}'.format(ts)
-        r = requests.post(url, json=body, headers=self._header)
-        print(r.content)
+        header = copy.deepcopy(self._header)
+        header['X-Access-Token'] = self._token
+        r = requests.post(url, json=body, headers=header)
+
+    def book_income(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
+        body = self._build_body(self._body_income,
+                                book_name, member_name, category_name, account_name, amount, t_time, comment)
+        self._commit(body)
+
+    def book_expense(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
+        body = self._build_body(self._body_expense,
+                                book_name, member_name, category_name, account_name, amount, t_time, comment)
+        self._commit(body)
 
 
 if __name__ == '__main__':
+
     crawler = Booker()
-    # crawler.run()
+
+    crawler.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+
     crawler.book_expense(book_name='日常账本',
                          member_name='KAMIWei',
-                         category_name='购物其他',
+                         category_name='宝宝用品',
                          account_name='现金',
                          amount=123,
                          t_time='2023-09-22 09:11:22',
                          comment='中文测试')
+
+    crawler.book_income(book_name='日常账本',
+                        member_name='KAMIWei',
+                        category_name='退款返款',
+                        account_name='现金',
+                        amount=123,
+                        t_time='2023-09-11 18:11:22',
+                        comment='中文测试, 这是退款')
