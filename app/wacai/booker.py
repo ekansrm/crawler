@@ -10,7 +10,6 @@ import hashlib
 
 
 class Booker(object):
-
     _token = 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew'
 
     _header = {
@@ -1346,35 +1345,143 @@ class Booker(object):
         header['X-Access-Token'] = self._token
         r = requests.post(url, json=body, headers=header)
 
+        return 1
+
     def book_income(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
         body = self._build_body(self._body_income,
                                 book_name, member_name, category_name, account_name, amount, t_time, comment)
-        self._commit(body)
+        return self._commit(body)
 
     def book_expense(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
         body = self._build_body(self._body_expense,
                                 book_name, member_name, category_name, account_name, amount, t_time, comment)
-        self._commit(body)
+        return self._commit(body)
+
+
+class Fetcher(object):
+    def fetch_one(self):
+        record_id = 'dfdfafaf'
+
+        record_time = 'dadfadfaf'
+
+        record_content = '1112132312'
+
+        return record_id, record_time, record_content
+
+
+class Database(object):
+
+    def upsert_record(self, record_id, record):
+        print(record_id, record)
+
+    def remove_record(self, record_id):
+        pass
+
+    def find_success_record(self, n):
+        pass
+
+    def find_failure_record(self, n):
+        pass
+
+
+class Service(object):
+    _database: Database = None
+
+    _booker: Booker = None
+
+    _fetcher: Fetcher = None
+
+    _book_name = '日常账本'
+
+    _member_name = 'KAMIWei'
+
+    _account_name = '现金'
+
+    def __init__(self):
+        self._booker = Booker()
+
+        self._fetcher = Fetcher()
+
+        self._database = Database()
+
+    def set_token(self, token):
+        self._booker.set_token(token)
+
+    def parse(self, content):
+        t_time = '2023-09-22 09:11:22'
+        amount = 123
+        record_type = 'income'
+        comment = '中文测试'
+        return {
+            'type': record_type,
+
+            'category_name': '退款返款',
+            't_time': t_time,
+            'amount': amount,
+            'comment': comment
+        }
+
+    def fetch(self):
+
+        record_id, record_time, record_content = self._fetcher.fetch_one()
+
+        record = {
+            'id': record_id,
+            'time': record_time,
+            'content': record_content,
+        }
+
+        try:
+            record = self.parse(record_content)
+        except Exception as e:
+            record['code'] = -1
+            record['message'] = 'parse 异常'
+            self._database.upsert_record(record_id, record)
+
+        if record['type'] == 'income':
+            result = self._booker.book_income(
+                book_name=self._book_name,
+                member_name=self._member_name,
+                account_name=self._account_name,
+                category_name=record['category_name'],
+                amount=record['amount'],
+                t_time=record['t_time'],
+                comment=record['comment'],
+            )
+
+            if result < 0:
+                record['code'] = result
+                record['message'] = 'Booker.income 异常'
+            else:
+                record['code'] = 0
+                record['message'] = 'SUCCESS'
+
+            self._database.upsert_record(record_id, record)
 
 
 if __name__ == '__main__':
+    # crawler = Booker()
+    #
+    # crawler.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+    #
+    # crawler.book_expense(book_name='日常账本',
+    #                      member_name='KAMIWei',
+    #                      account_name='现金',
+    #                      category_name='宝宝用品',
+    #                      amount=123,
+    #                      t_time='2023-09-22 09:11:22',
+    #                      comment='中文测试')
+    #
+    # crawler.book_income(book_name='日常账本',
+    #                     member_name='KAMIWei',
+    #                     account_name='现金',
+    #                     category_name='退款返款',
+    #                     amount=123,
+    #                     t_time='2023-09-11 18:11:22',
+    #                     comment='中文测试, 这是退款')
 
-    crawler = Booker()
+    service = Service()
 
-    crawler.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+    service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
 
-    crawler.book_expense(book_name='日常账本',
-                         member_name='KAMIWei',
-                         category_name='宝宝用品',
-                         account_name='现金',
-                         amount=123,
-                         t_time='2023-09-22 09:11:22',
-                         comment='中文测试')
-
-    crawler.book_income(book_name='日常账本',
-                        member_name='KAMIWei',
-                        category_name='退款返款',
-                        account_name='现金',
-                        amount=123,
-                        t_time='2023-09-11 18:11:22',
-                        comment='中文测试, 这是退款')
+    service.fetch()
