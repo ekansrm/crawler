@@ -7,6 +7,7 @@ import datetime
 import requests
 import copy
 import hashlib
+import pymongo
 
 
 class Booker(object):
@@ -1343,9 +1344,21 @@ class Booker(object):
         url = 'https://www.wacai.com/activity/bkk-frontier/api/v2/flow/save?___t={0}'.format(ts)
         header = copy.deepcopy(self._header)
         header['X-Access-Token'] = self._token
-        r = requests.post(url, json=body, headers=header)
-
-        return 1
+        try:
+            r = requests.post(url, json=body, headers=header)
+            if r.status_code == 200:
+                r_data = json.loads(r.text)
+                if 'code' in r_data:
+                    if r_data['code'] == 0:
+                        return 0, 'SUCCESS'
+                    else:
+                        return -1, '接口返回异常, error=' + r_data['error']
+                else:
+                    return -1, '结果解析异常, r.text=' + str(r.text)
+            else:
+                return -1, '接口调用异常, status_code=' + str(r.status_code)
+        except Exception as e:
+            return -1, '未知异常, e=' + json.dumps(e)
 
     def book_income(self, book_name, member_name, category_name, account_name, amount, t_time, comment):
         body = self._build_body(self._body_income,
@@ -1359,6 +1372,8 @@ class Booker(object):
 
 
 class Fetcher(object):
+
+
     def fetch_one(self):
         record_id = 'dfdfafaf'
 
@@ -1371,20 +1386,32 @@ class Fetcher(object):
 
 class Database(object):
 
+    _client = None
+    _db = None
+    _collection_record_sms = None
+
+    def __init__(self):
+        self._client = pymongo.MongoClient(host="192.168.1.11", port=27017)
+        self._db = self._client['booking']
+        self._collection_record_sms = self._db['record_sms']
+
     def upsert_record(self, record_id, record):
-        print(record_id, record)
+        self._collection_record_sms.update_one({'_id': record_id}, {'$set': record}, upsert=True)
 
     def remove_record(self, record_id):
-        pass
+        self._collection_record_sms.delete_many({'_id': record_id})
 
     def find_success_record(self, n):
-        pass
+        cursor = self._collection_record_sms.find({'code': 0}).sort([('time', pymongo.DESCENDING)]).limit(n)
+        return [r for r in cursor]
 
     def find_failure_record(self, n):
-        pass
+        cursor = self._collection_record_sms.find({'code': {'$ne': 0}}).sort([('time', pymongo.DESCENDING)]).limit(n)
+        return [r for r in cursor]
 
 
 class Service(object):
+
     _database: Database = None
 
     _booker: Booker = None
@@ -1421,25 +1448,24 @@ class Service(object):
             'comment': comment
         }
 
-    def fetch(self):
+    def handle(self, record):
 
-        record_id, record_time, record_content = self._fetcher.fetch_one()
-
-        record = {
-            'id': record_id,
-            'time': record_time,
-            'content': record_content,
-        }
+        record_id = record['uid']
+        record_time = record['time']
+        record_content = record['content']
 
         try:
-            record = self.parse(record_content)
+            result = self.parse(record_content)
+            record.update(result)
+            
         except Exception as e:
             record['code'] = -1
             record['message'] = 'parse 异常'
             self._database.upsert_record(record_id, record)
+            return
 
         if record['type'] == 'income':
-            result = self._booker.book_income(
+            code, message = self._booker.book_income(
                 book_name=self._book_name,
                 member_name=self._member_name,
                 account_name=self._account_name,
@@ -1449,14 +1475,26 @@ class Service(object):
                 comment=record['comment'],
             )
 
-            if result < 0:
-                record['code'] = result
-                record['message'] = 'Booker.income 异常'
+            if code != 0:
+                record['code'] = code
+                record['message'] = message
             else:
                 record['code'] = 0
                 record['message'] = 'SUCCESS'
 
             self._database.upsert_record(record_id, record)
+
+    def collect_next(self):
+
+        record_id, record_time, record_content = self._fetcher.fetch_one()
+
+        record = {
+            'uid': record_id,
+            'time': record_time,
+            'content': record_content,
+        }
+
+        self.handle(record)
 
 
 if __name__ == '__main__':
@@ -1484,4 +1522,4 @@ if __name__ == '__main__':
 
     service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
 
-    service.fetch()
+    service.collect_next()
