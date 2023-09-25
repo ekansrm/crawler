@@ -9,6 +9,9 @@ import copy
 import hashlib
 import pymongo
 
+import imaplib
+import email
+
 
 class Booker(object):
     _token = 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew'
@@ -1373,8 +1376,58 @@ class Booker(object):
 
 class Fetcher(object):
 
+    _mail_config = {
+        'server': 'imap.163.com',
+        'port': 993,
+        'address': 'ekansrm0001@163.com',
+        'password': 'SMIQPMGAOIMSUIPY',
+    }
+
+    _mail = None
+
+    _sender = 'newsletter@newsletter.aliyun.com'
+
+    _last_mail_id = None
+
+    def __init__(self) -> None:
+        config = self._mail_config
+        self._mail = imaplib.IMAP4_SSL(config['server'], config['port'])
+        self._mail.login(config['address'], config['password'])
+
+        if config['server'] == 'imap.163.com':
+            args = ("name", "ekansrm", "version", "1.0.0", "vendor", "myclient")
+            typ, dat = self._mail.xatom('ID', '("' + '" "'.join(args) + '")')
+            if typ != 'OK':
+                raise Exception('ID command error: %s %s' % (typ, dat))
+    
+    def fetch_mail(self):
+        mail = self._mail
+        mail.select('INBOX')
+        # 获取今天开始，来自指定发送者的新邮件
+        status, data = mail.search(None, '(SUBJECT "阿里云")'.format(self._sender).encode("UTF-8"))
+
+        print(status, data)
+
+        mail_ids = data[0].split()
+
+        if len(mail_ids) == 0:
+            return None
+        
+        mail_id = mail_ids[-1]
+
+        status, email_data = mail.fetch(mail_id, "(RFC822)")
+        raw_email = email_data[0][1]
+        email_message = email.message_from_bytes(raw_email)
+
+        print(email_message)
+
+
 
     def fetch_one(self):
+        
+
+
+
         record_id = 'dfdfafaf'
 
         record_time = 'dadfadfaf'
@@ -1474,13 +1527,26 @@ class Service(object):
                 t_time=record['t_time'],
                 comment=record['comment'],
             )
+        elif record['type'] == 'expense':
+            code, message = self._booker.book_expense(
+                book_name=self._book_name,
+                member_name=self._member_name,
+                account_name=self._account_name,
+                category_name=record['category_name'],
+                amount=record['amount'],
+                t_time=record['t_time'],
+                comment=record['comment'],
+            )
+        else:
+            code = -1
+            message = "Unknown Type '{0}'".format(record['type'])
 
-            if code != 0:
-                record['code'] = code
-                record['message'] = message
-            else:
-                record['code'] = 0
-                record['message'] = 'SUCCESS'
+        if code != 0:
+            record['code'] = code
+            record['message'] = message
+        else:
+            record['code'] = 0
+            record['message'] = 'SUCCESS'
 
             self._database.upsert_record(record_id, record)
 
@@ -1518,8 +1584,12 @@ if __name__ == '__main__':
     #                     t_time='2023-09-11 18:11:22',
     #                     comment='中文测试, 这是退款')
 
-    service = Service()
+    # service = Service()
 
-    service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+    # service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
 
-    service.collect_next()
+    # service.collect_next()
+
+    fetcher = Fetcher()
+
+    fetcher.fetch_mail()
