@@ -11,6 +11,9 @@ import pymongo
 
 import imaplib
 import email
+import email.utils
+from email.header import decode_header
+from bs4 import BeautifulSoup
 
 
 class Booker(object):
@@ -1380,7 +1383,7 @@ class Fetcher(object):
         'server': 'imap.163.com',
         'port': 993,
         'address': 'ekansrm0001@163.com',
-        'password': 'SMIQPMGAOIMSUIPY',
+        'password': '',
     }
 
     _mail = None
@@ -1404,23 +1407,41 @@ class Fetcher(object):
         mail = self._mail
         mail.select('INBOX')
         # 获取今天开始，来自指定发送者的新邮件
-        status, data = mail.search(None, '(SUBJECT "阿里云")'.format(self._sender).encode("UTF-8"))
+        res, message = mail.search(None, 'ALL')
+        # if you want all mail, use: '(ALL)'
 
-        print(status, data)
-
-        mail_ids = data[0].split()
-
-        if len(mail_ids) == 0:
-            return None
-        
-        mail_id = mail_ids[-1]
-
-        status, email_data = mail.fetch(mail_id, "(RFC822)")
-        raw_email = email_data[0][1]
-        email_message = email.message_from_bytes(raw_email)
-
-        print(email_message)
-
+        if res == 'OK':
+            for num in message[0].split():
+                res, message = mail.fetch(num, '(BODY.PEEK[HEADER])')
+                if res == 'OK':
+                    for raw_email in message:
+                        if isinstance(raw_email, tuple):
+                            raw_msg = raw_email[1].decode()
+                            email_message = email.message_from_string(raw_msg)
+                            for part in email_message.walk():
+                                # check if the email part is a text/plain or text/html
+                                if part.get_content_type() == "text/plain":
+                                    body = part.get_payload(decode=True)
+                                    print(f'Body: {body.decode("utf-8")}')
+                                if part.get_content_type() == "text/html":
+                                    body = part.get_payload(decode=True)
+                                    soup = BeautifulSoup(body, "lxml")
+                                    print(f'Body: {soup.get_text()}')
+                                else:
+                                    continue
+                            # print subject, sender
+                            subjects = decode_header(email_message['Subject'])
+                            subject = decode_header(email_message['Subject'])[0]
+                            from_obj = decode_header(email_message['From'])[0]
+                            if isinstance(subject[0], str):
+                                print("Subject: ", subject[0])
+                            else:
+                                if subject[1] is not None:
+                                    print("Subject: ", subject[0].decode(subject[1]))
+                                else:
+                                    print("Subject ", subject[0].decode())
+                            sender_name, sender_email = email.utils.parseaddr(email_message['From'])
+                            print("From: ", sender_email)
 
 
     def fetch_one(self):
