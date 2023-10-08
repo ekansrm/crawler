@@ -1,26 +1,34 @@
+# -*- coding: utf-8 -*-
 import re
 import os
 import time
+import io
+import sys
+import codecs
 import json
-import traceback
 import datetime
 import requests
 import copy
 import hashlib
 import pymongo
 
-import imaplib
-import email
-import email.utils
-from email.header import decode_header
-from bs4 import BeautifulSoup
+from flask import Flask,render_template, request
 
+
+def sha3(text):
+    # 创建一个 sha3_256 对象
+    s = hashlib.sha3_256()
+    s.update(text.encode('utf-8'))
+    # 获取十六进制哈希字符串
+    hash_string = s.hexdigest()
+    return hash_string
 
 class Booker(object):
     _token = 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew'
 
     _header = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/92.0.4515.131 Safari/537.36',
         'X-Access-Token': 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew',
     }
 
@@ -1283,7 +1291,8 @@ class Booker(object):
     def set_token(self, token):
         self._token = token
 
-    def _time_convert(self, t_time):
+    @staticmethod
+    def _time_convert(t_time):
         # 定义东八区的时区
 
         dt = datetime.datetime.strptime(t_time, '%Y-%m-%d %H:%M:%S')
@@ -1377,87 +1386,6 @@ class Booker(object):
         return self._commit(body)
 
 
-class Fetcher(object):
-
-    _mail_config = {
-        'server': 'imap.163.com',
-        'port': 993,
-        'address': 'ekansrm0001@163.com',
-        'password': '',
-    }
-
-    _mail = None
-
-    _sender = 'newsletter@newsletter.aliyun.com'
-
-    _last_mail_id = None
-
-    def __init__(self) -> None:
-        config = self._mail_config
-        self._mail = imaplib.IMAP4_SSL(config['server'], config['port'])
-        self._mail.login(config['address'], config['password'])
-
-        if config['server'] == 'imap.163.com':
-            args = ("name", "ekansrm", "version", "1.0.0", "vendor", "myclient")
-            typ, dat = self._mail.xatom('ID', '("' + '" "'.join(args) + '")')
-            if typ != 'OK':
-                raise Exception('ID command error: %s %s' % (typ, dat))
-    
-    def fetch_mail(self):
-        mail = self._mail
-        mail.select('INBOX')
-        # 获取今天开始，来自指定发送者的新邮件
-        res, message = mail.search(None, 'ALL')
-        # if you want all mail, use: '(ALL)'
-
-        if res == 'OK':
-            for num in message[0].split():
-                res, message = mail.fetch(num, '(BODY.PEEK[HEADER])')
-                if res == 'OK':
-                    for raw_email in message:
-                        if isinstance(raw_email, tuple):
-                            raw_msg = raw_email[1].decode()
-                            email_message = email.message_from_string(raw_msg)
-                            for part in email_message.walk():
-                                # check if the email part is a text/plain or text/html
-                                if part.get_content_type() == "text/plain":
-                                    body = part.get_payload(decode=True)
-                                    print(f'Body: {body.decode("utf-8")}')
-                                if part.get_content_type() == "text/html":
-                                    body = part.get_payload(decode=True)
-                                    soup = BeautifulSoup(body, "lxml")
-                                    print(f'Body: {soup.get_text()}')
-                                else:
-                                    continue
-                            # print subject, sender
-                            subjects = decode_header(email_message['Subject'])
-                            subject = decode_header(email_message['Subject'])[0]
-                            from_obj = decode_header(email_message['From'])[0]
-                            if isinstance(subject[0], str):
-                                print("Subject: ", subject[0])
-                            else:
-                                if subject[1] is not None:
-                                    print("Subject: ", subject[0].decode(subject[1]))
-                                else:
-                                    print("Subject ", subject[0].decode())
-                            sender_name, sender_email = email.utils.parseaddr(email_message['From'])
-                            print("From: ", sender_email)
-
-
-    def fetch_one(self):
-        
-
-
-
-        record_id = 'dfdfafaf'
-
-        record_time = 'dadfadfaf'
-
-        record_content = '1112132312'
-
-        return record_id, record_time, record_content
-
-
 class Database(object):
 
     _client = None
@@ -1487,21 +1415,14 @@ class Database(object):
 class Service(object):
 
     _database: Database = None
-
     _booker: Booker = None
 
-    _fetcher: Fetcher = None
-
     _book_name = '日常账本'
-
     _member_name = 'KAMIWei'
-
     _account_name = '现金'
 
     def __init__(self):
         self._booker = Booker()
-
-        self._fetcher = Fetcher()
 
         self._database = Database()
 
@@ -1528,15 +1449,15 @@ class Service(object):
         record_time = record['time']
         record_content = record['content']
 
+        # noinspection PyBroadException
         try:
             result = self.parse(record_content)
             record.update(result)
-            
         except Exception as e:
             record['code'] = -1
-            record['message'] = 'parse 异常'
+            record['message'] = 'parse 异常, error=' + str(e)
             self._database.upsert_record(record_id, record)
-            return
+            return record['code'], record['message']
 
         if record['type'] == 'income':
             code, message = self._booker.book_income(
@@ -1569,14 +1490,14 @@ class Service(object):
             record['code'] = 0
             record['message'] = 'SUCCESS'
 
-            self._database.upsert_record(record_id, record)
+        self._database.upsert_record(record_id, record)
 
-    def collect_next(self):
+        return record['code'], record['message']
 
-        record_id, record_time, record_content = self._fetcher.fetch_one()
+    def collect_post(self, record_uid, record_time, record_content):
 
         record = {
-            'uid': record_id,
+            'uid': record_uid,
             'time': record_time,
             'content': record_content,
         }
@@ -1584,7 +1505,33 @@ class Service(object):
         self.handle(record)
 
 
+app = Flask(__name__)
+
+
+@app.route('/app/account/api/collect/sms', methods=['POST', 'GET'])
+def parse_sms():
+    if request.method == 'POST':
+        record = codecs.encode(request.json['content'], 'utf-8').decode()
+        record_lines = record.split('\n')
+        record_content = record_lines[1]
+        record_time = record_lines[-1]
+        record_uid = sha3(record_content)
+        print(record_content)
+        print(record_time)
+        print(record_uid)
+        return 'success'
+
+
+@app.route('/health', methods=['GET'])
+def health():
+    return {
+        'code': 0,
+        'message': 'SUCCESS'
+    }
+
+
 if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=9800, debug=True)
     # crawler = Booker()
     #
     # crawler.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
@@ -1611,6 +1558,6 @@ if __name__ == '__main__':
 
     # service.collect_next()
 
-    fetcher = Fetcher()
+    # fetcher = Fetcher()
 
-    fetcher.fetch_mail()
+    # fetcher.fetch_mail()
