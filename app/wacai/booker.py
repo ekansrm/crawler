@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-import os
-import time
-import io
-import sys
 import codecs
 import json
 import datetime
@@ -12,7 +8,7 @@ import copy
 import hashlib
 import pymongo
 
-from flask import Flask,render_template, request
+from flask import Flask, render_template, request, abort
 
 
 def sha3(text):
@@ -22,6 +18,7 @@ def sha3(text):
     # 获取十六进制哈希字符串
     hash_string = s.hexdigest()
     return hash_string
+
 
 class Booker(object):
     _token = 'WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew'
@@ -1387,7 +1384,6 @@ class Booker(object):
 
 
 class Database(object):
-
     _client = None
     _db = None
     _collection_record_sms = None
@@ -1413,7 +1409,6 @@ class Database(object):
 
 
 class Service(object):
-
     _database: Database = None
     _booker: Booker = None
 
@@ -1429,21 +1424,52 @@ class Service(object):
     def set_token(self, token):
         self._booker.set_token(token)
 
-    def parse(self, content):
-        t_time = '2023-09-22 09:11:22'
-        amount = 123
-        record_type = 'income'
-        comment = '中文测试'
-        return {
-            'type': record_type,
+    @staticmethod
+    def convert_sms_time(s):
+        # 将原始日期字符串转换为datetime对象
+        d = datetime.datetime.strptime(s, '%m月%d日%H:%M')
+        d_now = datetime.datetime.now()
+        d = d.replace(year=d_now.year)
+        # 将datetime对象格式化为新的日期字符串
+        new_s = d.strftime('%Y-%m-%d %H:%M:%S')
+        return new_s
 
-            'category_name': '退款返款',
-            't_time': t_time,
-            'amount': amount,
-            'comment': comment
+    def icbc_sms_parse(self, content):
+
+        pattern = r"尾号(?P<card_no>\d+)卡(?P<transaction_time>\d+月\d+日\d+:\d+)(.+)(?P<transaction_type>收入|支出)" \
+                  r"\((?P<transaction_channel>.+)\)(?P<amount>[.,\d]+)元，余额(?P<balance>[.,\d]+)元"
+
+        record = {
+            'comment': content,
         }
+        match = re.search(pattern, content)
 
-    def handle(self, record):
+        if not match:
+            return -1, '解析异常, 正则不匹配', record
+
+        card_no = match.group('card_no')
+        transaction_time = match.group('transaction_time')
+        transaction_type = match.group('transaction_type')
+        transaction_channel = match.group('transaction_channel')
+        amount = match.group('amount').replace(',', '')
+        balance = match.group('balance').replace(',', '')
+
+        record['t_time'] = Service.convert_sms_time(transaction_time)
+        record['amount'] = amount
+        record['balance'] = balance
+
+        if transaction_type in ['消费', '支出']:
+            record['type'] = 'expense'
+            record['category_name'] = '购物其他'
+        elif transaction_type in ['入账', '收入']:
+            record['type'] = 'income'
+            record['category_name'] = '退款返款'
+        else:
+            return -1, "解析异常, 未知交易类型 '{0}'".format(str(transaction_type)), record
+
+        return 0, 'SUCCESS', record
+
+    def handle(self, record, parser):
 
         record_id = record['uid']
         record_time = record['time']
@@ -1451,11 +1477,16 @@ class Service(object):
 
         # noinspection PyBroadException
         try:
-            result = self.parse(record_content)
+            code, message, result = parser(record_content)
             record.update(result)
+            if code != 0:
+                record['code'] = code
+                record['message'] = message
+                self._database.upsert_record(record_id, record)
+
         except Exception as e:
             record['code'] = -1
-            record['message'] = 'parse 异常, error=' + str(e)
+            record['message'] = '解析异常, error=' + str(e)
             self._database.upsert_record(record_id, record)
             return record['code'], record['message']
 
@@ -1494,7 +1525,7 @@ class Service(object):
 
         return record['code'], record['message']
 
-    def collect_post(self, record_uid, record_time, record_content):
+    def collect_icbc_post(self, record_uid, record_time, record_content):
 
         record = {
             'uid': record_uid,
@@ -1502,24 +1533,30 @@ class Service(object):
             'content': record_content,
         }
 
-        self.handle(record)
+        return self.handle(record, self.icbc_sms_parse)
 
+
+# 服务
+service = Service()
 
 app = Flask(__name__)
 
 
-@app.route('/app/account/api/collect/sms', methods=['POST', 'GET'])
+@app.route('/app/account/api/collect/sms', methods=['POST'])
 def parse_sms():
-    if request.method == 'POST':
-        record = codecs.encode(request.json['content'], 'utf-8').decode()
-        record_lines = record.split('\n')
-        record_content = record_lines[1]
-        record_time = record_lines[-1]
-        record_uid = sha3(record_content)
-        print(record_content)
-        print(record_time)
-        print(record_uid)
-        return 'success'
+    record = codecs.encode(request.json['content'], 'utf-8').decode()
+    record_lines = record.split('\n')
+    record_content = record_lines[1]
+    record_time = record_lines[-1]
+    record_uid = sha3(record_content)
+    code, message = service.collect_icbc_post(record_uid, record_time, record_content)
+    if code != 0:
+        abort(400, message)
+    return {
+        'code': 0,
+        'message': 'SUCCESS'
+    }
+
 
 
 @app.route('/health', methods=['GET'])
@@ -1531,6 +1568,9 @@ def health():
 
 
 if __name__ == '__main__':
+
+    service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+
     app.run(host='0.0.0.0', port=9800, debug=True)
     # crawler = Booker()
     #
