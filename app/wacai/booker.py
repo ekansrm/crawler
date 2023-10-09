@@ -1383,6 +1383,23 @@ class Booker(object):
         return self._commit(body)
 
 
+class Notify(object):
+
+    _bark_list = []
+
+    def set_bark_list(self, bark_list):
+        self._bark_list = bark_list
+
+    def send(self, title, content):
+        if self._bark_list is not None:
+            for bark in self._bark_list:
+                try:
+                    bark_url = bark + '/{0}/{1}?groupName=余额变动'.format(title, content)
+                    requests.get(bark_url)
+                except Exception:
+                    pass
+
+
 class Database(object):
     _client = None
     _db = None
@@ -1409,8 +1426,10 @@ class Database(object):
 
 
 class Service(object):
+
     _database: Database = None
     _booker: Booker = None
+    _notify: Notify = None
 
     _book_name = '日常账本'
     _member_name = 'KAMIWei'
@@ -1424,8 +1443,11 @@ class Service(object):
     def set_token(self, token):
         self._booker.set_token(token)
 
+    def set_notify(self, notify: Notify):
+        self._notify = notify
+
     @staticmethod
-    def convert_sms_time(s):
+    def icbc_sms_time_convert(s):
         # 将原始日期字符串转换为datetime对象
         d = datetime.datetime.strptime(s, '%m月%d日%H:%M')
         d_now = datetime.datetime.now()
@@ -1454,9 +1476,11 @@ class Service(object):
         amount = match.group('amount').replace(',', '')
         balance = match.group('balance').replace(',', '')
 
-        record['t_time'] = Service.convert_sms_time(transaction_time)
+        record['t_time'] = Service.icbc_sms_time_convert(transaction_time)
         record['amount'] = amount
         record['balance'] = balance
+        record['card_no'] = card_no
+        record['channel'] = transaction_channel
 
         if transaction_type in ['消费', '支出']:
             record['type'] = 'expense'
@@ -1467,7 +1491,28 @@ class Service(object):
         else:
             return -1, "解析异常, 未知交易类型 '{0}'".format(str(transaction_type)), record
 
+        title, content = self.icbc_account_notify(record)
+
+        record['notify'] = {
+            'title': title,
+            'content': content,
+
+        }
+
         return 0, 'SUCCESS', record
+
+    def icbc_account_notify(self, record):
+
+        t_type = None
+        if record['type'] == 'expense':
+            t_type = '支出 {0} 元'.format(record['amount'])
+        elif record['type'] == 'income':
+            t_type = '入账 {0} 元'.format(record['amount'])
+
+        title = '尾号{0}卡{1}'.format(record['card_no'], t_type)
+        content = '当前余额 {0} 元'.format(record['balance'])
+
+        return title, content
 
     def handle(self, record, parser):
 
@@ -1523,6 +1568,10 @@ class Service(object):
 
         self._database.upsert_record(record_id, record)
 
+        if self._notify is not None and 'notify' in record:
+            body = record['notify']
+            self._notify.send(body['title'], body['content'])
+
         return record['code'], record['message']
 
     def collect_icbc_post(self, record_uid, record_time, record_content):
@@ -1536,9 +1585,16 @@ class Service(object):
         return self.handle(record, self.icbc_sms_parse)
 
 
-# 服务
-service = Service()
+notify = Notify()
+notify.set_bark_list([
+    'https://api.day.app/hDEVhSgvCF9RJkTwBYTKfc'
+])
 
+service = Service()
+service.set_notify(notify)
+service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
+
+# 服务
 app = Flask(__name__)
 
 
@@ -1569,7 +1625,6 @@ def health():
 
 if __name__ == '__main__':
 
-    service.set_token('WCeO2k48mBOd2o2PYLKsjDhJcnakUPGvXg9ew')
 
     app.run(host='0.0.0.0', port=9800, debug=True)
     # crawler = Booker()
